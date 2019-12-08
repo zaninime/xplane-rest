@@ -27,3 +27,23 @@ class DatarefService[F[_]: Sync, V: UDPCodec](
     commandHandler.store(value) *> NoContent()
   }
 }
+
+object DatarefService {
+  def apply[F[_]: Sync](description: DatarefDescription,
+                        commandHandler: DatarefCommandHandler[F])
+    : Either[String, DatarefService[F, Any]] = {
+    import org.http4s.circe.CirceEntityDecoder._
+    import me.zanini.xplanerest.backend.Codecs._
+
+    def makeService[V: UDPCodec](implicit entityDecoder: EntityDecoder[F, V]) =
+      Right(
+        new DatarefService[F, V](description, commandHandler)
+          .asInstanceOf[DatarefService[F, Any]])
+
+    description.`type` match {
+      case "float" => makeService[Float]
+      case "int"   => makeService[Int]
+      case t       => Left(s"No mapping defined for type $t")
+    }
+  }
+}

@@ -21,9 +21,12 @@ object Dependencies {
 
   private lazy val slf4j = Seq("org.slf4j" % "slf4j-simple" % "1.7.29")
 
+  private lazy val log4cats = Seq("core", "slf4j").map(lib =>
+    "io.chrisdavenport" %% s"log4cats-$lib" % "1.0.1")
+
   private lazy val scalaTest = "org.scalatest" %% "scalatest" % "3.0.8"
 
   lazy val appDeps
-    : Seq[ModuleID] = monix ++ cats ++ fs2 ++ scodec ++ http4s ++ circe ++ slf4j ++ testDeps
+    : Seq[ModuleID] = monix ++ cats ++ fs2 ++ scodec ++ http4s ++ circe ++ slf4j ++ log4cats ++ testDeps
   lazy val testDeps: Seq[ModuleID] = Seq(scalaTest).map(_ % Test)
 }

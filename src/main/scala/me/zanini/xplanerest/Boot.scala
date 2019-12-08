@@ -3,29 +3,25 @@ package me.zanini.xplanerest
 import java.net.InetSocketAddress
 
 import cats.effect.{Blocker, ExitCode}
-import cats.syntax.functor._
+import cats.implicits._
 import fs2.io.udp.SocketGroup
-import me.zanini.xplanerest.backend.{UDPCodec, UDPDatarefCommandHandler}
+import io.chrisdavenport.log4cats.slf4j.Slf4jLogger
+import io.chrisdavenport.log4cats.{Logger, SelfAwareStructuredLogger}
+import me.zanini.xplanerest.backend.UDPDatarefCommandHandler
 import me.zanini.xplanerest.http.{DatarefDescription, DatarefService}
 import monix.eval.{Task, TaskApp}
-import org.http4s.EntityDecoder
-import org.http4s.server.Router
 import org.http4s.implicits._
+import org.http4s.server.Router
 import org.http4s.server.blaze.BlazeServerBuilder
-import scodec.Codec
-import scodec.codecs.floatL
 
 object Boot extends TaskApp {
-  implicit def floatDecoder: EntityDecoder[Task, Float] =
-    EntityDecoder[Task, String].map(_.toFloat)
+  private implicit def unsafeTaskLogger: SelfAwareStructuredLogger[Task] =
+    Slf4jLogger.getLogger[Task]
 
-  implicit def floatUdpCodec: UDPCodec[Float] = new UDPCodec[Float] {
-    override def getCodec: Codec[Float] = floatL
-  }
-
-  private def datarefs = Seq(
+  private def datarefs: List[DatarefDescription] = List(
     DatarefDescription("sim/cockpit/radios/com1_freq_hz", "float"),
-    DatarefDescription("sim/cockpit/radios/com2_freq_hz", "float")
+    DatarefDescription("sim/cockpit/radios/com2_freq_hz", "float"),
+    DatarefDescription("sim/cockpit/radios/com3_freq_hz", "string")
   )
 
   override def run(args: List[String]): Task[ExitCode] = {
@@ -40,27 +36,32 @@ object Boot extends TaskApp {
         socket,
         new InetSocketAddress("127.0.0.1", 49000))
 
-      val services = datarefs.map(description => {
-        def makeService[V: UDPCodec](
-            implicit entityDecoder: EntityDecoder[Task, V]) =
-          new DatarefService[Task, V](description, datarefCommandHandler)
+      val services = datarefs
+        .map(description => {
+          val service = DatarefService(description, datarefCommandHandler)
 
-        val service = description.`type` match {
-          case "float" => makeService[Float]
-          case t       => throw new Exception(s"No mapping defined for type $t")
-        }
+          service match {
+            case Left(error) => {
+              Logger[Task].error(
+                s"Cannot initialize ${description.name}: $error. Will not be available") *> Task
+                .delay(List())
+            }
+            case Right(svc) =>
+              Task.delay(List(s"/${description.name}" -> svc.routes))
+          }
+        })
+        .sequence
+        .map(_.flatten)
 
-        s"/${description.name}" -> service.routes
-      })
-
-      val datarefRouter = Router(services: _*)
-
-      val httpApp = Router("/dref" -> datarefRouter).orNotFound
-      val serverBuilder = BlazeServerBuilder[Task]
-        .bindHttp(8080, "localhost")
-        .withHttpApp(httpApp)
-
-      serverBuilder.serve.compile.drain.as(ExitCode.Success)
+      for {
+        svc <- services
+        datarefRouter = Router(svc: _*)
+        httpApp = Router("/v0/dref" -> datarefRouter).orNotFound
+        serverBuilder = BlazeServerBuilder[Task]
+          .bindHttp(8080, "localhost")
+          .withHttpApp(httpApp)
+        _ <- serverBuilder.serve.compile.drain
+      } yield ExitCode.Success
     })
   }
 }
