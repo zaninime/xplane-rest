@@ -10,7 +10,11 @@ import io.chrisdavenport.log4cats.slf4j.Slf4jLogger
 import io.chrisdavenport.log4cats.{Logger, SelfAwareStructuredLogger}
 import me.zanini.xplanerest.backend.UDPDatarefCommandHandler
 import me.zanini.xplanerest.config.YamlFileDatarefDescriptionLoader
-import me.zanini.xplanerest.http.{DatarefDescription, DatarefService}
+import me.zanini.xplanerest.http.{
+  DatarefDescription,
+  DatarefDirectoryService,
+  DatarefService
+}
 import monix.eval.{Task, TaskApp}
 import org.http4s.implicits._
 import org.http4s.server.Router
@@ -49,7 +53,7 @@ object Boot extends TaskApp {
                     .delay(List())
                 }
                 case Right(svc) =>
-                  Task.delay(List(s"/${description.name}" -> svc.routes))
+                  Task.delay(List(description -> svc))
               }
             })
             .sequence
@@ -58,8 +62,8 @@ object Boot extends TaskApp {
         for {
           descriptions <- datarefsDescriptionLoader.load
           svc <- makeDatarefServices(descriptions)
-          datarefRouter = Router(svc: _*)
-          httpApp = Router("/v0/dref" -> datarefRouter).orNotFound
+          datarefDirectory = new DatarefDirectoryService[Task](svc)
+          httpApp = Router("/v0/dref" -> datarefDirectory.router).orNotFound
           serverBuilder = BlazeServerBuilder[Task]
             .bindHttp(8080, "localhost")
             .withHttpApp(httpApp)
