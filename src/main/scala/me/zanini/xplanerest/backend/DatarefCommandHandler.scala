@@ -1,4 +1,4 @@
-package me.zanini.xplanerest
+package me.zanini.xplanerest.backend
 
 import java.net.InetSocketAddress
 import java.nio.charset.StandardCharsets
@@ -7,16 +7,13 @@ import cats.data.EitherT
 import cats.effect.Sync
 import fs2.Chunk
 import fs2.io.udp.{Packet, Socket}
+import me.zanini.xplanerest.model.DatarefValue
 import scodec.bits.{BitVector, ByteVector}
 import scodec.codecs.{constant, paddedFixedSizeBytes, string}
 import scodec.{Codec, Err, GenCodec}
 
 trait DatarefCommandHandler[F[_]] {
   def store[A: UDPCodec](value: DatarefValue[A]): F[Either[Err, Unit]]
-}
-
-trait UDPCodec[A] {
-  def getCodec: Codec[A]
 }
 
 class UDPDatarefCommandHandler[F[_]: Sync](socket: Socket[F],

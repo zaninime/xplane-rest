@@ -4,7 +4,8 @@ import cats.effect.Sync
 import cats.syntax.apply._
 import io.circe.generic.auto._
 import io.circe.syntax._
-import me.zanini.xplanerest.{DatarefCommandHandler, DatarefValue, UDPCodec}
+import me.zanini.xplanerest.backend.{DatarefCommandHandler, UDPCodec}
+import me.zanini.xplanerest.model.DatarefValue
 import org.http4s.circe._
 import org.http4s.dsl.Http4sDsl
 import org.http4s.{EntityDecoder, HttpRoutes, Response}

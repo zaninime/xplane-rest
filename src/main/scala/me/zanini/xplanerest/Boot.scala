@@ -5,6 +5,7 @@ import java.net.InetSocketAddress
 import cats.effect.{Blocker, ExitCode}
 import cats.syntax.functor._
 import fs2.io.udp.SocketGroup
+import me.zanini.xplanerest.backend.{UDPCodec, UDPDatarefCommandHandler}
 import me.zanini.xplanerest.http.{DatarefDescription, DatarefService}
 import monix.eval.{Task, TaskApp}
 import org.http4s.EntityDecoder
