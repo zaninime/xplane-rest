@@ -49,6 +49,4 @@ class DatarefDirectoryService[F[_]: Sync](
     datarefs.map {
       case (description, service) => description.name -> service.routes
     }.toMap
-
-  println(serviceMap)
 }
