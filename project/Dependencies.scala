@@ -19,6 +19,8 @@ object Dependencies {
     Seq("core", "generic", "parser", "generic-extras").map(lib =>
       "io.circe" %% s"circe-$lib" % "0.12.1")
 
+  private lazy val circeYaml = Seq("io.circe" %% "circe-yaml" % "0.12.0")
+
   private lazy val slf4j = Seq("org.slf4j" % "slf4j-simple" % "1.7.29")
 
   private lazy val log4cats = Seq("core", "slf4j").map(lib =>
@@ -27,6 +29,6 @@ object Dependencies {
   private lazy val scalaTest = "org.scalatest" %% "scalatest" % "3.0.8"
 
   lazy val appDeps
-    : Seq[ModuleID] = monix ++ cats ++ fs2 ++ scodec ++ http4s ++ circe ++ slf4j ++ log4cats ++ testDeps
+    : Seq[ModuleID] = monix ++ cats ++ fs2 ++ scodec ++ http4s ++ circe ++ circeYaml ++ slf4j ++ log4cats ++ testDeps
   lazy val testDeps: Seq[ModuleID] = Seq(scalaTest).map(_ % Test)
 }
