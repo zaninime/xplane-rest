@@ -9,22 +9,6 @@ datarefs:
 - name: sim/aircraft/autopilot/radio_altimeter_step_ft
   type: float
   description: Step increment for radio altimeter decision height
-- name: sim/aircraft/autopilot/preconfigured_ap_type
-  type: int
-  description: 0=X-Plane custom, 1=Airliner, 2=GFC-700, 3=S-Tec 55, 4=S-Tec 55 with
-    altitude preselect, 5=KAP-140 single axis, 6=KAP-140 dual axis, 7=KAP-140 dual
-    axis with altitude preselect, 8=Piper Autocontrol
-- name: sim/aircraft/autopilot/single_axis_autopilot
-  type: int
-  description: Whether the autopilot is strictly single axis (bank) only.
-- name: sim/aircraft/autopilot/ah_source
-  type: int
-  description: 'Attitude source for the autopilot: 10 = AHRS, 11 = elec gyro, 12 =
-    vacuum gyro, 13 = turn coordinator and absolute pressure transducer'
-- name: sim/aircraft/autopilot/dg_source
-  type: int
-  description: 'Directional gyro source for the autopillot: 10 = AHRS, 11 = elec gyro
-    (HSI or DG), 12 = vacuum gyro (DG)'
 - name: sim/aircraft/view/acf_tailnum
   type: byte[40]
   description: Tail number
@@ -97,41 +81,13 @@ datarefs:
 - name: sim/aircraft/view/acf_ICAO
   type: byte[40]
   description: ICAO code for aircraft (a string) entered by author
-- name: sim/aircraft/view/acf_door_x
-  type: float
-  description: position of door relative to CG, latitude offset in meters
-- name: sim/aircraft/view/acf_door_y
-  type: float
-  description: position of door relative to CG, vertical offset in meters
-- name: sim/aircraft/view/acf_door_z
-  type: float
-  description: position of door relative to CG, longitude offset in meters
 - name: sim/aircraft/view/acf_has_HOOPS_HUD
   type: int
   description: has Hoops HUD
-- name: sim/aircraft/view/acf_livery_index
-  type: int
-  description: index number of livery
-- name: sim/aircraft/view/acf_livery_path
-  type: byte[1024]
-  description: 'path of current livery.  dir separator i, ends in dir separator.  WARNING:
-    slow dataref, don''t read a lot!'
 - name: sim/aircraft/forcefeedback/acf_ff_hydraulic
   type: int
 - name: sim/aircraft/forcefeedback/acf_ff_stickshaker
   type: int
-- name: sim/aircraft/electrical/num_batteries
-  type: int
-  description: The number of batteries on this plane
-- name: sim/aircraft/electrical/num_generators
-  type: int
-  description: The number of generators on this plane
-- name: sim/aircraft/electrical/num_inverters
-  type: int
-  description: The number of inverters on this plane
-- name: sim/aircraft/electrical/num_buses
-  type: int
-  description: The number of busses on this plane
 - name: sim/aircraft/engine/acf_num_engines
   type: int
 - name: sim/aircraft/engine/acf_auto_featherEQ
@@ -229,18 +185,6 @@ datarefs:
 - name: sim/aircraft/engine/acf_max_OILT
   type: float
   description: Max Oil Temperature the plane can have before engine failure.
-- name: sim/aircraft/engine/acf_oilT_is_C
-  type: int
-  description: Oil temperature dataref reads in Celsius
-- name: sim/aircraft/engine/acf_ITT_is_C
-  type: int
-  description: Inter-turbine temperature dataref reads in Celsius
-- name: sim/aircraft/engine/acf_EGT_is_C
-  type: int
-  description: Exhaust gas temperature dataref reads in Celsius
-- name: sim/aircraft/engine/acf_CHT_is_C
-  type: int
-  description: Cylinder head temperature dataref reads in Celsius
 - name: sim/aircraft/engine/acf_max_FUELP
   type: float
   description: Max Fuel Pressure the plane can have before engine failure.
@@ -271,310 +215,6 @@ datarefs:
 - name: sim/aircraft/engine/acf_APU_spooldn_time
   type: float
   description: How long the APU takes to spool down to 10 percent
-- name: sim/aircraft/limits/green_lo_MP
-  type: float
-  description: Low value of the green arc for the manifold pressure instrument
-- name: sim/aircraft/limits/green_hi_MP
-  type: float
-  description: High value of the green arc for the manifold pressure instrument
-- name: sim/aircraft/limits/yellow_lo_MP
-  type: float
-  description: Low value of the yellow arc for the manifold pressure instrument
-- name: sim/aircraft/limits/yellow_hi_MP
-  type: float
-  description: High value of the yellow arc for the manifold pressure instrument
-- name: sim/aircraft/limits/red_lo_MP
-  type: float
-  description: Low value of the red arc for the manifold pressure instrument
-- name: sim/aircraft/limits/red_hi_MP
-  type: float
-  description: High value of the red arc for the manifold pressure instrument
-- name: sim/aircraft/limits/green_lo_EPR
-  type: float
-  description: Low value of the green arc for the engine pressure ratio instrument
-- name: sim/aircraft/limits/green_hi_EPR
-  type: float
-  description: High value of the green arc for the engine pressure ratio instrument
-- name: sim/aircraft/limits/yellow_lo_EPR
-  type: float
-  description: Low value of the yellow arc for the engine pressure ratio instrument
-- name: sim/aircraft/limits/yellow_hi_EPR
-  type: float
-  description: High value of the yellow arc for the engine pressure ratio instrument
-- name: sim/aircraft/limits/red_lo_EPR
-  type: float
-  description: Low value of the red arc for the engine pressure ratio instrument
-- name: sim/aircraft/limits/red_hi_EPR
-  type: float
-  description: High value of the red arc for the engine pressure ratio instrument
-- name: sim/aircraft/limits/green_lo_TRQ
-  type: float
-  description: Low value of the green arc for the torque instrument
-- name: sim/aircraft/limits/green_hi_TRQ
-  type: float
-  description: High value of the green arc for the torque instrument
-- name: sim/aircraft/limits/yellow_lo_TRQ
-  type: float
-  description: Low value of the yellow arc for the torque instrument
-- name: sim/aircraft/limits/yellow_hi_TRQ
-  type: float
-  description: High value of the yellow arc for the torque instrument
-- name: sim/aircraft/limits/red_lo_TRQ
-  type: float
-  description: Low value of the red arc for the torque instrument
-- name: sim/aircraft/limits/red_hi_TRQ
-  type: float
-  description: High value of the red arc for the torque instrument
-- name: sim/aircraft/limits/green_lo_FF
-  type: float
-  description: Low value of the green arc for the fuel flow instrument
-- name: sim/aircraft/limits/green_hi_FF
-  type: float
-  description: High value of the green arc for the fuel flow instrument
-- name: sim/aircraft/limits/yellow_lo_FF
-  type: float
-  description: Low value of the yellow arc for the fuel flow instrument
-- name: sim/aircraft/limits/yellow_hi_FF
-  type: float
-  description: High value of the yellow arc for the fuel flow instrument
-- name: sim/aircraft/limits/red_lo_FF
-  type: float
-  description: Low value of the red arc for the fuel flow instrument
-- name: sim/aircraft/limits/red_hi_FF
-  type: float
-  description: High value of the red arc for the fuel flow instrument
-- name: sim/aircraft/limits/green_lo_ITT
-  type: float
-  description: Low value of the green arc for the interturbine temperature instrument
-- name: sim/aircraft/limits/green_hi_ITT
-  type: float
-  description: High value of the green arc for the interturbine temperature instrument
-- name: sim/aircraft/limits/yellow_lo_ITT
-  type: float
-  description: Low value of the yellow arc for the interturbine temperature instrument
-- name: sim/aircraft/limits/yellow_hi_ITT
-  type: float
-  description: High value of the yellow arc for the interturbine temperature instrument
-- name: sim/aircraft/limits/red_lo_ITT
-  type: float
-  description: Low value of the red arc for the interturbine temperature instrument
-- name: sim/aircraft/limits/red_hi_ITT
-  type: float
-  description: High value of the red arc for the interturbine temperature instrument
-- name: sim/aircraft/limits/green_lo_EGT
-  type: float
-  description: Low value of the green arc for the exhaust gas temperature instrument
-- name: sim/aircraft/limits/green_hi_EGT
-  type: float
-  description: High value of the green arc for the exhaust gas temperature instrument
-- name: sim/aircraft/limits/yellow_lo_EGT
-  type: float
-  description: Low value of the yellow arc for the exhaust gas temperature instrument
-- name: sim/aircraft/limits/yellow_hi_EGT
-  type: float
-  description: High value of the yellow arc for the exhaust gas temperature instrument
-- name: sim/aircraft/limits/red_lo_EGT
-  type: float
-  description: Low value of the red arc for the exhaust gas temperature instrument
-- name: sim/aircraft/limits/red_hi_EGT
-  type: float
-  description: High value of the red arc for the exhaust gas temperature instrument
-- name: sim/aircraft/limits/green_lo_CHT
-  type: float
-  description: Low value of the green arc for the cylinder-head temperature instrument
-- name: sim/aircraft/limits/green_hi_CHT
-  type: float
-  description: High value of the green arc for the cylinder-head temperature instrument
-- name: sim/aircraft/limits/yellow_lo_CHT
-  type: float
-  description: Low value of the yellow arc for the cylinder-head temperature instrument
-- name: sim/aircraft/limits/yellow_hi_CHT
-  type: float
-  description: High value of the yellow arc for the cylinder-head temperature instrument
-- name: sim/aircraft/limits/red_lo_CHT
-  type: float
-  description: Low value of the red arc for the cylinder-head temperature instrument
-- name: sim/aircraft/limits/red_hi_CHT
-  type: float
-  description: High value of the red arc for the cylinder-head temperature instrument
-- name: sim/aircraft/limits/green_lo_oilT
-  type: float
-  description: Low value of the green arc for the oil temperature instrument
-- name: sim/aircraft/limits/green_hi_oilT
-  type: float
-  description: High value of the green arc for the oil temperature instrument
-- name: sim/aircraft/limits/yellow_lo_oilT
-  type: float
-  description: Low value of the yellow arc for the oil temperature instrument
-- name: sim/aircraft/limits/yellow_hi_oilT
-  type: float
-  description: High value of the yellow arc for the oil temperature instrument
-- name: sim/aircraft/limits/red_lo_oilT
-  type: float
-  description: Low value of the red arc for the oil temperature instrument
-- name: sim/aircraft/limits/red_hi_oilT
-  type: float
-  description: High value of the red arc for the oil temperature instrument
-- name: sim/aircraft/limits/green_lo_oilP
-  type: float
-  description: Low value of the green arc for the oil pressure instrument
-- name: sim/aircraft/limits/green_hi_oilP
-  type: float
-  description: High value of the green arc for the oil pressure instrument
-- name: sim/aircraft/limits/yellow_lo_oilP
-  type: float
-  description: Low value of the yellow arc for the oil pressure instrument
-- name: sim/aircraft/limits/yellow_hi_oilP
-  type: float
-  description: High value of the yellow arc for the oil pressure instrument
-- name: sim/aircraft/limits/red_lo_oilP
-  type: float
-  description: Low value of the red arc for the oil pressure instrument
-- name: sim/aircraft/limits/red_hi_oilP
-  type: float
-  description: High value of the red arc for the oil pressure instrument
-- name: sim/aircraft/limits/green_lo_fuelP
-  type: float
-  description: Low value of the green arc for the fuel pressure instrument
-- name: sim/aircraft/limits/green_hi_fuelP
-  type: float
-  description: High value of the green arc for the fuel pressure instrument
-- name: sim/aircraft/limits/yellow_lo_fuelP
-  type: float
-  description: Low value of the yellow arc for the fuel pressure instrument
-- name: sim/aircraft/limits/yellow_hi_fuelP
-  type: float
-  description: High value of the yellow arc for the fuel pressure instrument
-- name: sim/aircraft/limits/red_lo_fuelP
-  type: float
-  description: Low value of the red arc for the fuel pressure instrument
-- name: sim/aircraft/limits/red_hi_fuelP
-  type: float
-  description: High value of the red arc for the fuel pressure instrument
-- name: sim/aircraft/limits/green_lo_gen_amp
-  type: float
-  description: Low value of the green arc for the generator amperage instrument
-- name: sim/aircraft/limits/green_hi_gen_amp
-  type: float
-  description: High value of the green arc for the generator amperage instrument
-- name: sim/aircraft/limits/yellow_lo_gen_amp
-  type: float
-  description: Low value of the yellow arc for the generator amperage instrument
-- name: sim/aircraft/limits/yellow_hi_gen_amp
-  type: float
-  description: High value of the yellow arc for the generator amperage instrument
-- name: sim/aircraft/limits/red_lo_gen_amp
-  type: float
-  description: Low value of the red arc for the generator amperage instrument
-- name: sim/aircraft/limits/red_hi_gen_amp
-  type: float
-  description: High value of the red arc for the generator amperage instrument
-- name: sim/aircraft/limits/green_lo_bat_amp
-  type: float
-  description: Low value of the green arc for the battery amperage instrument
-- name: sim/aircraft/limits/green_hi_bat_amp
-  type: float
-  description: High value of the green arc for the battery amperage instrument
-- name: sim/aircraft/limits/yellow_lo_bat_amp
-  type: float
-  description: Low value of the yellow arc for the battery amperage instrument
-- name: sim/aircraft/limits/yellow_hi_bat_amp
-  type: float
-  description: High value of the yellow arc for the battery amperage instrument
-- name: sim/aircraft/limits/red_lo_bat_amp
-  type: float
-  description: Low value of the red arc for the battery amperage instrument
-- name: sim/aircraft/limits/red_hi_bat_amp
-  type: float
-  description: High value of the red arc for the battery amperage instrument
-- name: sim/aircraft/limits/max_bat_amp
-  type: float
-  description: Battery amp when the non-standby batteries are fully charged.
-- name: sim/aircraft/limits/green_lo_bat_volt
-  type: float
-  description: Low value of the green arc for the battery voltage instrument
-- name: sim/aircraft/limits/green_hi_bat_volt
-  type: float
-  description: High value of the green arc for the battery voltage instrument
-- name: sim/aircraft/limits/yellow_lo_bat_volt
-  type: float
-  description: Low value of the yellow arc for the battery voltage instrument
-- name: sim/aircraft/limits/yellow_hi_bat_volt
-  type: float
-  description: High value of the yellow arc for the battery voltage instrument
-- name: sim/aircraft/limits/red_lo_bat_volt
-  type: float
-  description: Low value of the red arc for the battery voltage instrument
-- name: sim/aircraft/limits/red_hi_bat_volt
-  type: float
-  description: High value of the red arc for the battery voltage instrument
-- name: sim/aircraft/limits/max_bat_volt_standard
-  type: float
-  description: This is the voltage when the standard (non-standby) batteries are fully
-    charged.
-- name: sim/aircraft/limits/green_lo_vac
-  type: float
-  description: Low value of the green arc for the vacuum pressure instrument
-- name: sim/aircraft/limits/green_hi_vac
-  type: float
-  description: High value of the green arc for the vacuum pressure instrument
-- name: sim/aircraft/limits/yellow_lo_vac
-  type: float
-  description: Low value of the yellow arc for the vacuum pressure instrument
-- name: sim/aircraft/limits/yellow_hi_vac
-  type: float
-  description: High value of the yellow arc for the vacuum pressure instrument
-- name: sim/aircraft/limits/red_lo_vac
-  type: float
-  description: Low value of the red arc for the vacuum pressure instrument
-- name: sim/aircraft/limits/red_hi_vac
-  type: float
-  description: High value of the red arc for the vacuum pressure instrument
-- name: sim/aircraft/limits/max_vac
-  type: float
-  description: Vacuum pressure put out when the engine is running at the bottom of
-    red line (max vacuum).
-- name: sim/aircraft/limits/green_lo_N1
-  type: float
-  description: Low value of the green arc for the N1 instrument
-- name: sim/aircraft/limits/green_hi_N1
-  type: float
-  description: High value of the green arc for the N1 instrument
-- name: sim/aircraft/limits/yellow_lo_N1
-  type: float
-  description: Low value of the yellow arc for the N1 instrument
-- name: sim/aircraft/limits/yellow_hi_N1
-  type: float
-  description: High value of the yellow arc for the N1 instrument
-- name: sim/aircraft/limits/red_lo_N1
-  type: float
-  description: Low value of the red arc for the N1 instrument
-- name: sim/aircraft/limits/red_hi_N1
-  type: float
-  description: High value of the red arc for the N1 instrument
-- name: sim/aircraft/limits/green_lo_N2
-  type: float
-  description: Low value of the green arc for the N2 instrument
-- name: sim/aircraft/limits/green_hi_N2
-  type: float
-  description: High value of the green arc for the N2 instrument
-- name: sim/aircraft/limits/yellow_lo_N2
-  type: float
-  description: Low value of the yellow arc for the N2 instrument
-- name: sim/aircraft/limits/yellow_hi_N2
-  type: float
-  description: High value of the yellow arc for the N2 instrument
-- name: sim/aircraft/limits/red_lo_N2
-  type: float
-  description: Low value of the red arc for the N2 instrument
-- name: sim/aircraft/limits/red_hi_N2
-  type: float
-  description: High value of the red arc for the N2 instrument
-- name: sim/aircraft/prop/acf_en_type
-  type: int[8]
-  description: engine type - read only in v11, but you should NEVER EVER write this
-    in v10 or earlier.  0=recip carb, 1=recip injected, 2=free turbine, 3=electric,
-    4=lo bypass jet, 5=hi bypass jet, 6=rocket, 7=tip rockets, 8=fixed turbine
 - name: sim/aircraft/prop/acf_revthrust_eq
   type: int
   description: 'better organization to do it this way, NOTE : Used to be i8 in version
@@ -585,10 +225,6 @@ datarefs:
 - name: sim/aircraft/prop/acf_prop_gear_rat
   type: float[8]
   description: prop to engine or common power source
-- name: sim/aircraft/prop/acf_prop_dir
-  type: float[8]
-  description: 1.0=CW, -1.0=CCW, float so we can multiply effects by floats - made
-    NOT writable in 11.10.  YOU SHOULD NEVER WRITE THIS IN ANY VERSION OF X-PLANE.
 - name: sim/aircraft/prop/acf_num_blades
   type: float[8]
   description: float so we can multiply effects by floats
@@ -625,9 +261,6 @@ datarefs:
 - name: sim/aircraft/prop/acf_des_kts_acf
   type: float[8]
   description: design point
-- name: sim/aircraft/prop/acf_part_eq
-  type: int[95]
-  description: "[PART]"
 - name: sim/aircraft/parts/acf_Rafl0
   type: byte[2920]
   description: array of airfoil names, per part
@@ -1018,12 +651,6 @@ datarefs:
   type: float[20]
   description: door current angle, not in flite since it is geo and this is a nice
     place to keep all the door geo.
-- name: sim/aircraft/weight/acf_cgY_original
-  type: float
-  description: This is the ORIGINAL reference point in PM in _feet_.
-- name: sim/aircraft/weight/acf_cgZ_original
-  type: float
-  description: This is the ORIGINAL reference point in PM in _feet_.
 - name: sim/aircraft/weight/acf_Jxx_unitmass
   type: float
 - name: sim/aircraft/weight/acf_Jyy_unitmass
@@ -1185,9 +812,6 @@ datarefs:
 - name: sim/aircraft/overflow/acf_refuel_Z
   type: float
   description: refueling port location
-- name: sim/aircraft/overflow/acf_gear_steers
-  type: int[10]
-  description: this gear turns with rudder input - writable until v10
 - name: sim/aircraft/overflow/acf_dihed2
   type: float[56]
   description: "[WING] variable dihedral"
@@ -1326,10 +950,6 @@ datarefs:
 - name: sim/aircraft/overflow/acf_warn2EQ
   type: int
   description: bitchin betty 2... for fighters
-- name: sim/aircraft/overflow/acf_num_thrustpoints
-  type: int
-  description: number props can be different than number of engines - * This can crash
-    Xplane, use at your own risk.  Not writeable in v10.
 - name: sim/aircraft/overflow/acf_cus_rnd_use
   type: int[50]
 - name: sim/aircraft/overflow/acf_cus_rnd_lo_val
@@ -1484,25 +1104,6 @@ datarefs:
 - name: sim/airfoils/afl_cm
   type: float[56][2][2][721]
   description: "???"
-- name: sim/atc/user_aircraft_transmitting
-  type: int
-  description: Is the Users/P0 aircraft currently transmitting on the radio?
-- name: sim/atc/com1_tuned_facility
-  type: int
-  description: The ATC facility type that the user's aircraft is tuned to. 0=None,
-    1=Del, 2=Gnd, 3=Twr, 4=Tracon, 5=Ctr
-- name: sim/atc/com2_tuned_facility
-  type: int
-  description: The ATC facility type that the user's aircraft is tuned to. 0=None,
-    1=Del, 2=Gnd, 3=Twr, 4=Tracon, 5=Ctr
-- name: sim/atc/com1_active
-  type: int
-  description: Is the user's COM1 radio tuned to a freq that's actively being transmitted
-    on by a pilot or ATC?
-- name: sim/atc/com2_active
-  type: int
-  description: Is the user's COM1 radio tuned to a freq that's actively being transmitted
-    on by a pilot or ATC?
 - name: sim/atc/atis_enabled
   type: int
   description: Is the ATIS system enabled? If not, no ATIS text or audio will appear
@@ -1510,15 +1111,6 @@ datarefs:
 - name: sim/cockpit/autopilot/autopilot_mode
   type: int
   description: The autopilot master mode (off=0, flight director=1, on=2)
-- name: sim/cockpit/autopilot/airspeed_mode
-  type: int
-  description: Airspeed mode for the autopilot. DEPRECATED
-- name: sim/cockpit/autopilot/heading_mode
-  type: int
-  description: Lateral navigation mode (GPS, heading, L-Nav approach). DEPRECATED
-- name: sim/cockpit/autopilot/altitude_mode
-  type: int
-  description: Vertical navigation (alt hold, VVI hold, V-Nav approach). DEPRECATED
 - name: sim/cockpit/autopilot/backcourse_on
   type: int
   description: Back course selection
@@ -1596,9 +1188,6 @@ datarefs:
 - name: sim/cockpit/electrical/battery_array_on
   type: int[8]
   description: Is the battery selected on
-- name: sim/cockpit/electrical/battery_EQ
-  type: int
-  description: Does this cockpit have a battery switch
 - name: sim/cockpit/electrical/avionics_on
   type: int
   description: Is there power to the avionics
@@ -1644,10 +1233,6 @@ datarefs:
 - name: sim/cockpit/electrical/taxi_light_on
   type: int
   description: Taxi Lights
-- name: sim/cockpit/electrical/cockpit_lights_on
-  type: int
-  description: Are cockpit lights on.  (NOTE - previous docs were wrong, this is always
-    read-only)
 - name: sim/cockpit/electrical/cockpit_lights
   type: float
   description: Cockpit light level
@@ -1714,15 +1299,6 @@ datarefs:
 - name: sim/cockpit/g430/g430_nav_com_sel
   type: int[2]
   description: enter com=0, enter_nav=1
-- name: sim/cockpit/gps/course
-  type: float
-  description: The currently programmed GPS course (true degrees)
-- name: sim/cockpit/gps/destination_type
-  type: int
-  description: The current type of navaid we're flying to
-- name: sim/cockpit/gps/destination_index
-  type: int
-  description: The index of the navaid we're flying to
 - name: sim/cockpit/gyros/the_vac_ind_deg
   type: float
   description: The indicated pitch on the panel for the first vacuum instrument
@@ -1853,23 +1429,10 @@ datarefs:
 - name: sim/cockpit/gyros/gyr_free_slaved
   type: int[6]
   description: free or slaved to magnetometer, the enums are ahrs1,ahrs2,elec1,elec2,vac1,vac2
-- name: sim/cockpit/gyros/gyr_flag
-  type: int[6]
-  description: DG/HSI instrument for this gyro must show flag because gyro is not
-    spinning, or magnetometer failure, or adjustment in progress
 - name: sim/cockpit/gyros/gyr_cage_ratio
   type: float[6]
   description: attitude indicator for this gyro is caged. 0 for fully free, 1 for
     fully caged.
-- name: sim/cockpit/misc/outer_marker_lit
-  type: int
-  description: Is the outer marker beacon lit right now
-- name: sim/cockpit/misc/middle_marker_lit
-  type: int
-  description: Is the middle marker beacon lit right now
-- name: sim/cockpit/misc/inner_marker_lit
-  type: int
-  description: Is the inner marker beacon lit right now
 - name: sim/cockpit/misc/over_outer_marker
   type: int
   description: Are we over the outer marker beacon
@@ -2042,10 +1605,6 @@ datarefs:
 - name: sim/cockpit/radios/gps2_dir_degt
   type: float
   description: The relative bearing to the GPS 2 destination.
-- name: sim/cockpit/radios/dme_dir_degt
-  type: float
-  description: The relative bearing to whatever becaon the standalone DME is programmed
-    for.
 - name: sim/cockpit/radios/nav1_hdef_dot
   type: float
   description: The deflection from the aircraft to the tuned in course in 'dots' on
@@ -2134,12 +1693,6 @@ datarefs:
 - name: sim/cockpit/radios/gps2_fromto2
   type: int
   description: Whether we are heading to or from (or over) our nav2 beacon - copilot.
-- name: sim/cockpit/radios/nav1_CDI
-  type: int
-  description: Are we receiving an expected glide slope for nav1
-- name: sim/cockpit/radios/nav2_CDI
-  type: int
-  description: Are we receiving an expected glide slope for nav2
 - name: sim/cockpit/radios/nav1_dme_dist_m
   type: float
   description: Our distance in nautical miles from the beacon tuned in on nav1.  override_navneedles
@@ -2277,12 +1830,6 @@ datarefs:
 - name: sim/cockpit/radios/transponder_code
   type: int
   description: Our transponder code.
-- name: sim/cockpit/radios/transponder_id
-  type: int
-  description: Whether we are squawking ident right now.
-- name: sim/cockpit/radios/transponder_light
-  type: int
-  description: Whether the transponder is lit
 - name: sim/cockpit/radios/transponder_brightness
   type: float
   description: Transponder light brightness ratio from 0 to 1
@@ -2337,9 +1884,6 @@ datarefs:
 - name: sim/cockpit/radios/marker_audio_working
   type: int
   description: Suppresses Marker Audio
-- name: sim/cockpit/radios/nav_type
-  type: int[6]
-  description: Type of NAVAID that is tuned in.
 - name: sim/cockpit/radios/ap_src
   type: int
   description: autopilot source 0 is pilot, 1 is copilot
@@ -2563,21 +2107,6 @@ datarefs:
 - name: sim/cockpit/warnings/annunciator_test_timeout
   type: float
   description: Time annunciator test will end (use annunciator_test_pressed instead)
-- name: sim/cockpit/warnings/annunciator_test_pressed
-  type: int
-  description: True if the annunciator test button is pressed now.
-- name: sim/cockpit/warnings/autopilot_test_beeping
-  type: int
-  description: The autopilot is beeping as part of its self-test
-- name: sim/cockpit/warnings/autopilot_test_modes_lit
-  type: int
-  description: The autopilot mode lights are on as part of its self test
-- name: sim/cockpit/warnings/autopilot_test_trim_lit
-  type: int
-  description: The autopilot trim lights are on as part of its self test
-- name: sim/cockpit/warnings/autopilot_test_ap_lit
-  type: int
-  description: The autopilot engaged lights are on as part of their self test
 - name: sim/cockpit/warnings/annunciators/master_caution
   type: int
   description: Master caution light on/off
@@ -2741,9 +2270,6 @@ datarefs:
 - name: sim/cockpit/warnings/annunciators/no_inverters
   type: int
   description: no inverters are on
-- name: sim/cockpit/warnings/annunciators/glideslope
-  type: int
-  description: glideslope deviation
 - name: sim/cockpit/warnings/annunciators/fuel_pressure
   type: int
   description: fuel pressure low
@@ -2795,14 +2321,6 @@ datarefs:
 - name: sim/cockpit/weapons/plane_target_index
   type: int
   description: Index of plane that is being targeted
-- name: sim/cockpit/weapons/chaff_now
-  type: int
-  description: Number of rounds left in the sum of all chaff weapons on aircraft.
-    Missing in 11.00-11.05.  Writable in v10 and earlier.
-- name: sim/cockpit/weapons/flare_now
-  type: int
-  description: Number of rounds left in all flare weapons on the aircraft.  Missing
-    in 11.00-11.05.  Writable in v10 and earlier.
 - name: sim/cockpit/weapons/wpn_sel_console
   type: int
   description: INDIVIDUAL weapon selected
@@ -4128,24 +3646,6 @@ datarefs:
 - name: sim/flightmodel/controls/wing4r_elv2def
   type: float
   description: Deflection Wing 4 Right Elevator 2
-- name: sim/flightmodel/cyclic/cyclic_ailn_blad_alph
-  type: float[8]
-  description: Blade alpha
-- name: sim/flightmodel/cyclic/cyclic_ailn_disc_tilt
-  type: float[8]
-  description: Disc tilt
-- name: sim/flightmodel/cyclic/cyclic_elev_blad_alph
-  type: float[8]
-  description: Blade alpha
-- name: sim/flightmodel/cyclic/cyclic_elev_disc_tilt
-  type: float[8]
-  description: Disc tilt
-- name: sim/flightmodel/cyclic/cyclic_elev_command
-  type: float[8]
-  description: "???"
-- name: sim/flightmodel/cyclic/cyclic_ailn_command
-  type: float[8]
-  description: "???"
 - name: sim/flightmodel/cyclic/sidecant
   type: float[8]
   description: "???"
@@ -4222,10 +3722,6 @@ datarefs:
 - name: sim/flightmodel/engine/ENGN_prop
   type: float[8]
   description: Commanded Prop Speed (per engine)
-- name: sim/flightmodel/engine/ENGN_sigma
-  type: float[8]
-  description: Sigma (per engine) - YOU SHOULD NEVER WRITE TO THIS DATAREF!  Read
-    only in v11.00
 - name: sim/flightmodel/engine/ENGN_thro
   type: float[8]
   description: Throttle (per engine) as set by user, 0 = idle, 1 = max
@@ -4279,29 +3775,12 @@ datarefs:
 - name: sim/flightmodel/engine/POINT_drag_TRQ
   type: float[8]
   description: "???"
-- name: sim/flightmodel/engine/POINT_driv_TRQ
-  type: float[8]
-  description: Torque for this prop after transmissions
-- name: sim/flightmodel/engine/POINT_max_TRQ
-  type: float[8]
-  description: Maximum torque this prop will get after transmissions
 - name: sim/flightmodel/engine/POINT_cone_rad
   type: float[8]
-  description: "???"
-- name: sim/flightmodel/engine/POINT_side_wash
-  type: float[8]
-  description: "???"
-- name: sim/flightmodel/engine/POINT_XYZ
-  type: float[8][3]
   description: "???"
 - name: sim/flightmodel/engine/POINT_pitch_deg_use
   type: float[8]
   description: Pitch as we use, after all effects.   Use override_prop_pitch to change.
-- name: sim/flightmodel/engine/POINT_prop_ang_deg
-  type: float[8]
-  description: This is the angle of the prop or engine-fan as it rotates. You will
-    see this value circulate 0 to 360 degrees over and over as the engine runs and
-    the prop or fan turns.  Override with /prop_disc/override per engine!
 - name: sim/flightmodel/engine/burner_enabled
   type: int
   description: Burner is on or off
@@ -4314,10 +3793,6 @@ datarefs:
 - name: sim/flightmodel/engine/descent_speed_ratio
   type: float[8]
   description: descent-speed ratio of the aircraft in units of propwash-speed
-- name: sim/flightmodel/engine/vortex_ring_state
-  type: float[8][10]
-  description: wash-multiplier - vortex ring state - which are the airflows through
-    the rotor disc normal flow is 0.5 (50%) VRS flow is 1.0 (100%)
 - name: sim/flightmodel/failures/frm_ice
   type: float
   description: Ratio of icing on wings/airframe - left wing
@@ -4370,12 +3845,6 @@ datarefs:
   type: int
   description: "???"
 - name: sim/flightmodel/failures/over_vle
-  type: int
-  description: "???"
-- name: sim/flightmodel/failures/onground_any
-  type: int
-  description: User Aircraft is on the ground when this is set to 1
-- name: sim/flightmodel/failures/onground_all
   type: int
   description: "???"
 - name: sim/flightmodel/failures/smoking
@@ -4454,15 +3923,6 @@ datarefs:
 - name: sim/flightmodel/forces/N_gear
   type: float
   description: The yaw moment due to gear forces positive = yaw right/clockwise.
-- name: sim/flightmodel/forces/L_mass
-  type: float
-  description: The roll moment due to asymmetric loading - positive = right roll.
-- name: sim/flightmodel/forces/M_mass
-  type: float
-  description: The pitch moment due to asymmetric loading - positive = pitch up.
-- name: sim/flightmodel/forces/N_mass
-  type: float
-  description: The yaw moment due to asymmetric loading - positive = yaw right/clockwise.
 - name: sim/flightmodel/forces/L_total
   type: float
   description: The roll moment total.  Override with override_force - positive = right
@@ -4499,33 +3959,6 @@ datarefs:
   type: float
   description: Extra plugin-provided yaw moment - ADD to this dataref to apply extra
     force - positive = yaw right/clockwise.
-- name: sim/flightmodel/forces/g_nrml
-  type: float
-  description: Total g-forces on the plane as a multiple, downward
-- name: sim/flightmodel/forces/g_axil
-  type: float
-  description: Total g-forces on the plane as a multiple, along the plane
-- name: sim/flightmodel/forces/g_side
-  type: float
-  description: Total g-forces on the plane as a multiple, sideways
-- name: sim/flightmodel/forces/vx_air_on_acf
-  type: float
-  description: Velocity of air relative to airplane
-- name: sim/flightmodel/forces/vy_air_on_acf
-  type: float
-  description: Velocity of air relative to airplane
-- name: sim/flightmodel/forces/vz_air_on_acf
-  type: float
-  description: Velocity of air relative to airplane
-- name: sim/flightmodel/forces/vx_acf_axis
-  type: float
-  description: Velocity of aircraft in its own coordinate system
-- name: sim/flightmodel/forces/vy_acf_axis
-  type: float
-  description: Velocity of aircraft in its own coordinate system
-- name: sim/flightmodel/forces/vz_acf_axis
-  type: float
-  description: Velocity of aircraft in its own coordinate system
 - name: sim/flightmodel/forces/Q_rotor_rad
   type: float[8]
   description: "???"
@@ -4541,12 +3974,6 @@ datarefs:
 - name: sim/flightmodel/forces/side_path_axis
   type: float
   description: "???"
-- name: sim/flightmodel/jetwash/DVinc
-  type: float[8]
-  description: DVinc
-- name: sim/flightmodel/jetwash/ringDVinc
-  type: float[8][10]
-  description: ringDVinc
 - name: sim/flightmodel/misc/ett_size
   type: float
   description: "??? Slung/jettisonable load size (this should read JETT size but has
@@ -4557,12 +3984,6 @@ datarefs:
 - name: sim/flightmodel/misc/jett_len
   type: float
   description: "??? slung jettisonable load length (length of cable??!)"
-- name: sim/flightmodel/misc/g_total
-  type: float
-  description: "???"
-- name: sim/flightmodel/misc/nosewheel_speed
-  type: float
-  description: "[GEAR]"
 - name: sim/flightmodel/misc/wing_tilt_ptch
   type: float
   description: "???"
@@ -4587,12 +4008,6 @@ datarefs:
 - name: sim/flightmodel/misc/h_ind_copilot2
   type: float
   description: Indicated barometric altitude, quite probably in feet actually.
-- name: sim/flightmodel/misc/machno
-  type: float
-  description: "???"
-- name: sim/flightmodel/misc/Qstatic
-  type: float
-  description: Ambient Q
 - name: sim/flightmodel/misc/turnrate_roll
   type: float
   description: "???"
@@ -4623,18 +4038,9 @@ datarefs:
 - name: sim/flightmodel/misc/lift_fan_total_power
   type: float
   description: "???"
-- name: sim/flightmodel/misc/stab_ptch_test
-  type: int
-  description: Computed stability derivative - pitch
-- name: sim/flightmodel/misc/stab_hdng_test
-  type: int
-  description: Computed Stability drivative - heading
 - name: sim/flightmodel/misc/cgz_ref_to_default
   type: float
   description: Center of Gravity
-- name: sim/flightmodel/misc/Q_centroid_MULT
-  type: float[73][4]
-  description: "???"
 - name: sim/flightmodel/misc/C_m
   type: float
   description: "???"
@@ -4665,15 +4071,6 @@ datarefs:
 - name: sim/flightmodel/misc/act_frc_rbrk_lb
   type: float
   description: 'Force feedback: total pounds on pedals by ACF due to right brake'
-- name: sim/flightmodel/misc/slung_load_x
-  type: float
-  description: Global location of slung load, meters, x coordinate
-- name: sim/flightmodel/misc/slung_load_y
-  type: float
-  description: Global location of slung load, meters, y coordinate
-- name: sim/flightmodel/misc/slung_load_z
-  type: float
-  description: Global location of slung load, meters, z coordinate
 - name: sim/flightmodel/ground/surface_texture_type
   type: int
   description: tbd - writable only with override_groundplane
@@ -4686,82 +4083,6 @@ datarefs:
 - name: sim/flightmodel/ground/plugin_ground_terrain_velocity
   type: float[3]
   description: speed of deck moving under us (this is a velocity vector)
-- name: sim/flightmodel/movingparts/gear1def
-  type: float
-  description: landing gear1 def
-- name: sim/flightmodel/movingparts/gear2def
-  type: float
-  description: landing gear2 def
-- name: sim/flightmodel/movingparts/gear3def
-  type: float
-  description: landing gear3 def
-- name: sim/flightmodel/movingparts/gear4def
-  type: float
-  description: landing gear4 def
-- name: sim/flightmodel/movingparts/gear5def
-  type: float
-  description: landing gear5 def
-- name: sim/flightmodel/parts/v_el
-  type: float[73][10][4]
-  description: 73x10x4 speed is DIFFERENT FOR EACH BLADE!
-- name: sim/flightmodel/parts/alpha_el
-  type: float[73][10][4]
-  description: 73x10x4 alpha is DIFFERENT FOR EACH BLADE!
-- name: sim/flightmodel/parts/del_dir
-  type: float[2920]
-  description: 73x10x4 corkscrew path is DIFFERENT FOR EACH BLADE!
-- name: sim/flightmodel/parts/cl_el_raw
-  type: float[56][10][4]
-  description: 56x10x4 [WING]
-- name: sim/flightmodel/parts/CL_grndeffect
-  type: float[56]
-  description: 73 [WING]
-- name: sim/flightmodel/parts/CD_grndeffect
-  type: float[56]
-  description: 73 [WING]
-- name: sim/flightmodel/parts/wash_grndeffect
-  type: float[56]
-  description: 56 [WING]
-- name: sim/flightmodel/parts/Q_centroid_loc
-  type: float[73][4]
-  description: 73x4 centroid is TOTALLY DIFFERENT FOR EACH BLADE on helos and gyros!
-- name: sim/flightmodel/parts/Q_centroid_MULT
-  type: float[73][4]
-  description: 73x4 centroid is TOTALLY DIFFERENT FOR EACH BLADE on helos and gyros!
-- name: sim/flightmodel/parts/tire_drag_dis
-  type: float[10]
-  description: '73'
-- name: sim/flightmodel/parts/tire_speed_term
-  type: float[10]
-  description: '73'
-- name: sim/flightmodel/parts/tire_speed_now
-  type: float[10]
-  description: '73'
-- name: sim/flightmodel/parts/tire_prop_rot
-  type: float[10]
-  description: '73'
-- name: sim/flightmodel/parts/tire_x_no_deflection
-  type: float[10]
-  description: "[GEAR] x location of the Nth gear's wheel relative to the CG, airplane
-    coordinates.  This doesn't take into account strut compression.  Writable in v8/9,
-    read-only in v10."
-- name: sim/flightmodel/parts/tire_y_no_deflection
-  type: float[10]
-  description: "[GEAR] y location of the Nth gear's wheel relative to the CG, airplane
-    coordinates.  This doesn't take into account strut compression.  Writable in v8/9,
-    read-only in v10."
-- name: sim/flightmodel/parts/tire_z_no_deflection
-  type: float[10]
-  description: "[GEAR] z location of the Nth gear's wheel relative to the CG, airplane
-    coordinates.  This doesn't take into account strut compression.  Writable in v8/9,
-    read-only in v10."
-- name: sim/flightmodel/parts/tire_vrt_def_veh
-  type: float[10]
-  description: "[GEAR] This is amount the Nth gear is deflected upwards due to vehicle
-    weight on struts."
-- name: sim/flightmodel/parts/tire_vrt_frc_veh
-  type: float[10]
-  description: '73'
 - name: sim/flightmodel/parts/tire_steer_cmd
   type: float[10]
   description: Steering command being sent to this gear, degrees positive right.  This
@@ -4771,41 +4092,6 @@ datarefs:
   type: float[10]
   description: Steering command actually enacted by the gear, degrees positive right.
     Writable in 1030.  Override via override_wheel_steer
-- name: sim/flightmodel/parts/nrml_force
-  type: float[56]
-  description: 73 [WING] for data output, for the entire flying surface
-- name: sim/flightmodel/parts/axil_force
-  type: float[56]
-  description: 73 [WING] for data output, for the entire flying surface
-- name: sim/flightmodel/parts/flap_def
-  type: float[56]
-  description: 73 [WING] with flap setting, and then variation with pitch and roll
-    input, on a 4 wing plane, with flaps on every wing, some going up and down with
-    pitch input, we better find the flap def on each surface!
-- name: sim/flightmodel/parts/flap2_def
-  type: float[56]
-  description: 56 [WING] with flap setting, and then variation with pitch and roll
-    input, on a 4 wing plane, with flaps on every wing, some going up and down with
-    pitch input, we better find the flap def on each surface!
-- name: sim/flightmodel/parts/elev_cont_def
-  type: float[56]
-  description: 73 [WING] different for each part since def may be positive on a canard
-    and negative on an aft wing... ON THE SAME PLANE AT THE SAME TIME!
-- name: sim/flightmodel/parts/elev_trim_def
-  type: float[56]
-  description: 73 [WING] different for each part since def may be positive on a canard
-    and negative on an aft wing... ON THE SAME PLANE AT THE SAME TIME!
-- name: sim/flightmodel/parts/rudd_cont_def
-  type: float[56]
-  description: 73 [WING] different for each part since def may be positive on top
-    vstab and neg on the bottom one.... ON THE SAME PLANE AT THE SAME TIME!
-- name: sim/flightmodel/parts/rudd2_cont_def
-  type: float[56]
-  description: 56 [WING] different for each part since def may be positive on top
-    vstab and neg on the bottom one.... ON THE SAME PLANE AT THE SAME TIME!
-- name: sim/flightmodel/parts/elem_inc
-  type: float[73][10]
-  description: 73x10
 - name: sim/flightmodel/position/local_x
   type: double
   description: The location of the plane in OpenGL coordinates
@@ -4815,22 +4101,6 @@ datarefs:
 - name: sim/flightmodel/position/local_z
   type: double
   description: The location of the plane in OpenGL coordinates
-- name: sim/flightmodel/position/lat_ref
-  type: float
-  description: The latitude of the point 0,0,0 in OpenGL coordinates (Writing NOT
-    recommended!!)
-- name: sim/flightmodel/position/lon_ref
-  type: float
-  description: The longitude of the point 0,0,0 in OpenGL coordinates.
-- name: sim/flightmodel/position/latitude
-  type: double
-  description: The latitude of the aircraft
-- name: sim/flightmodel/position/longitude
-  type: double
-  description: The longitude of the aircraft
-- name: sim/flightmodel/position/elevation
-  type: double
-  description: The elevation above MSL of the aircraft
 - name: sim/flightmodel/position/theta
   type: float
   description: The pitch relative to the plane normal to the Y axis in degrees - OpenGL
@@ -4842,25 +4112,6 @@ datarefs:
   type: float
   description: The true heading of the aircraft in degrees from the Z axis - OpenGL
     coordinates
-- name: sim/flightmodel/position/magpsi
-  type: float
-  description: DO NOT USE THIS
-- name: sim/flightmodel/position/true_theta
-  type: float
-  description: The pitch of the aircraft relative to the earth precisely below the
-    aircraft
-- name: sim/flightmodel/position/true_phi
-  type: float
-  description: The roll of the aircraft relative to the earth precisely below the
-    aircraft
-- name: sim/flightmodel/position/true_psi
-  type: float
-  description: The heading of the aircraft relative to the earth precisely below the
-    aircraft - true degrees north, always
-- name: sim/flightmodel/position/mag_psi
-  type: float
-  description: The real magnetic heading of the aircraft - the old magpsi dataref
-    was FUBAR
 - name: sim/flightmodel/position/local_vx
   type: float
   description: The velocity in local OGL coordinates
@@ -4879,21 +4130,6 @@ datarefs:
 - name: sim/flightmodel/position/local_az
   type: float
   description: The acceleration in local OGL coordinates
-- name: sim/flightmodel/position/alpha
-  type: float
-  description: The pitch relative to the flown path (angle of attack)
-- name: sim/flightmodel/position/beta
-  type: float
-  description: The heading relative to the flown path (yaw)
-- name: sim/flightmodel/position/vpath
-  type: float
-  description: The pitch the aircraft actually flies.  (vpath+alpha=theta)
-- name: sim/flightmodel/position/hpath
-  type: float
-  description: The heading the aircraft actually flies.  (hpath+beta=psi)
-- name: sim/flightmodel/position/groundspeed
-  type: float
-  description: The ground speed of the aircraft
 - name: sim/flightmodel/position/indicated_airspeed
   type: float
   description: Air speed indicated - this takes into account air density and wind
@@ -4902,21 +4138,6 @@ datarefs:
   type: float
   description: Air speed indicated - this takes into account air density and wind
     direction
-- name: sim/flightmodel/position/true_airspeed
-  type: float
-  description: Air speed true - this does not take into account air density at altitude!
-- name: sim/flightmodel/position/magnetic_variation
-  type: float
-  description: The local magnetic variation
-- name: sim/flightmodel/position/M
-  type: float
-  description: The angular momentum of the aircraft (relative to flight axis).
-- name: sim/flightmodel/position/N
-  type: float
-  description: The angular momentum of the aircraft (relative to flight axis)
-- name: sim/flightmodel/position/L
-  type: float
-  description: The angular momentum of the aircraft (relative to flight axis)
 - name: sim/flightmodel/position/P
   type: float
   description: The roll rotation rates (relative to the flight)
@@ -4926,15 +4147,6 @@ datarefs:
 - name: sim/flightmodel/position/R
   type: float
   description: The yaw rotation rates (relative to the flight)
-- name: sim/flightmodel/position/P_dot
-  type: float
-  description: The roll angular acceleration (relative to the flight)
-- name: sim/flightmodel/position/Q_dot
-  type: float
-  description: The pitch angular acceleration (relative to the flight)
-- name: sim/flightmodel/position/R_dot
-  type: float
-  description: The yaw angular acceleration rates (relative to the flight)
 - name: sim/flightmodel/position/Prad
   type: float
   description: The roll rotation rates (relative to the flight)
@@ -4948,30 +4160,15 @@ datarefs:
   type: float[4]
   description: A quaternion representing the rotation from local OpenGL coordinates
     to the aircraft's coordinates.
-- name: sim/flightmodel/position/vh_ind
-  type: float
-  description: VVI (vertical velocity in meters per second)
 - name: sim/flightmodel/position/vh_ind_fpm
   type: float
   description: VVI (vertical velocity in feet per second)
 - name: sim/flightmodel/position/vh_ind_fpm2
   type: float
   description: VVI (vertical velocity in feet per second)
-- name: sim/flightmodel/position/y_agl
-  type: float
-  description: AGL
-- name: sim/flightmodel/transmissions/xmsn_press
-  type: float
-  description: transmission pressure
-- name: sim/flightmodel/transmissions/xmsn_temp
-  type: float
-  description: transmission temperature
 - name: sim/flightmodel/weight/m_fixed
   type: float
   description: Payload Weight
-- name: sim/flightmodel/weight/m_total
-  type: float
-  description: Total Weight
 - name: sim/flightmodel/weight/m_fuel
   type: float[9]
   description: Fuel Tank Weight - for 9 tanks
@@ -4987,275 +4184,6 @@ datarefs:
 - name: sim/flightmodel/weight/m_jettison
   type: float
   description: Jettison
-- name: sim/flightmodel/weight/m_fuel_total
-  type: float
-  description: Fuel Total Weight
-- name: sim/graphics/animation/draw_object_x
-  type: float
-  description: X position in cartesian space of currently drawn object
-- name: sim/graphics/animation/draw_object_y
-  type: float
-  description: Y position in cartesian space of currently drawn object
-- name: sim/graphics/animation/draw_object_z
-  type: float
-  description: Z position in cartesian space of currently drawn object
-- name: sim/graphics/animation/draw_object_psi
-  type: float
-  description: rotation in cartesian space of currently drawn object
-- name: sim/graphics/animation/draw_light_level
-  type: float
-  description: This is the default _LIT light level that the object is being drawn
-    at, before ATTR_light_level is applied.
-- name: sim/graphics/animation/airport_beacon_rotation
-  type: float
-  description: 'angle this beacon is rotating (0-360). Civillian beacons rotate at
-    11-13 RPM, giving 22-26 flashes/min for an airport and 33-39/min flashes for a
-    heliport. '
-- name: sim/graphics/animation/airport_beacon_rotation_military
-  type: float
-  description: 'angle this military airport beacon is rotating (0-360). Military beacons
-    rotate at 8-10 RPM, giving off 16-20 flashes/min where the double white counts
-    as one flash. '
-- name: sim/graphics/animation/windsock_psi
-  type: float
-  description: windsock heading
-- name: sim/graphics/animation/windsock_the
-  type: float
-  description: windsock pitch
-- name: sim/graphics/animation/windsock_phi
-  type: float
-  description: windsock roll
-- name: sim/graphics/animation/crane_psi
-  type: float
-  description: crane heading
-- name: sim/graphics/animation/buoy_height
-  type: float
-  description: how high above MSL 0 is this buoy riding?
-- name: sim/graphics/animation/ping_pong_2
-  type: float
-  description: "-1 to 1"
-- name: sim/graphics/animation/sin_wave_2
-  type: float
-  description: "-1 to 1"
-- name: sim/graphics/animation/obj_wigwag_brightness
-  type: float
-  description: Brightness of the wig-wag lights - stays in sync with sim/graphics/animation/lights/wigwag
-- name: sim/graphics/animation/carrier_blast_def_lf
-  type: float
-  description: Ratio of deployment of carrier blast door (left front)
-- name: sim/graphics/animation/carrier_blast_def_rf
-  type: float
-  description: Ratio of deployment of carrier blast door (right front)
-- name: sim/graphics/animation/carrier_blast_def_lr
-  type: float
-  description: Ratio of deployment of carrier blast door (left rear)
-- name: sim/graphics/animation/carrier_blast_def_rr
-  type: float
-  description: Ratio of deployment of carrier blast door (right rear)
-- name: sim/graphics/animation/level_crossing_gate
-  type: float
-  description: Ratio of the position of all level crossing gates, 0 is up, 1 is down
-- name: sim/graphics/animation/birds/wing_flap_deg
-  type: float
-  description: degree of wing flap for the currently drawn bird
-- name: sim/graphics/animation/birds/feet_retract_deg
-  type: float
-  description: angle the bird's feet are retracted for the flock of birds.
-- name: sim/graphics/animation/deer/deer_run_cycle
-  type: float
-  description: ratio for deer running
-- name: sim/graphics/animation/deer/deer_turn_cycle
-  type: float
-  description: ratio for deer turning
-- name: sim/graphics/animation/lights/flasher
-  type: float[9]
-  description: A flashing light, on only at night, matches v7
-- name: sim/graphics/animation/lights/pulse
-  type: float[9]
-  description: A red pulsing light, on only at night, matches v7
-- name: sim/graphics/animation/lights/strobe_v7
-  type: float[9]
-  description: A white strobe light, on only at night, matches v7
-- name: sim/graphics/animation/lights/traffic_light
-  type: float[9]
-  description: A 3-color traffic light, matches v7
-- name: sim/graphics/animation/lights/normal
-  type: float[9]
-  description: A normal on-at-night light, matches v7
-- name: sim/graphics/animation/lights/airport_beacon
-  type: float[9]
-  description: An airport beacon light, RGBA is a homogenous normal vector
-- name: sim/graphics/animation/lights/airport_beacon_flash
-  type: float[9]
-  description: An airport beacon light, RGBA is a homogenous normal vector
-- name: sim/graphics/animation/lights/vasi_papi
-  type: float[9]
-  description: VASI light, RG = rescaling of brightness
-- name: sim/graphics/animation/lights/vasi_papi_tint
-  type: float[9]
-  description: VASI light, RG = rescaling of brightness
-- name: sim/graphics/animation/lights/vasi3
-  type: float[9]
-  description: VASI light, RG = rescaling of brightness, B= beam+, A=beam-
-- name: sim/graphics/animation/lights/rabbit
-  type: float[9]
-  description: RG = rescaling, B = flash frequency
-- name: sim/graphics/animation/lights/rabbit_sp
-  type: float[9]
-  description: RGB = ignored, A = frequency
-- name: sim/graphics/animation/lights/strobe
-  type: float[9]
-  description: RG = rescaling, B = flash frequency, A= phase
-- name: sim/graphics/animation/lights/strobe_sp
-  type: float[9]
-  description: RGB = ignored, A = frequency
-- name: sim/graphics/animation/lights/wigwag
-  type: float[9]
-  description: RG = rescaling, B = flash frequency, A= phase
-- name: sim/graphics/animation/lights/wigwag_sp
-  type: float[9]
-  description: RGB = ignored, A = phase, dx = frequency
-- name: sim/graphics/animation/lights/carrier_waveoff
-  type: float[9]
-  description: A light that turns on when the carrier app is waved off
-- name: sim/graphics/animation/lights/fresnel_vertical
-  type: float[9]
-  description: A vertical fresnel.  RG = long range, BA = vert range
-- name: sim/graphics/animation/lights/fresnel_horizontal
-  type: float[9]
-  description: A horizontal fresnel.  RG = long range, BA = vert range
-- name: sim/graphics/animation/lights/airplane_landing_light
-  type: float[9]
-  description: Airplane landing light.   RGB = dir, A = light number
-- name: sim/graphics/animation/lights/airplane_landing_light_flash
-  type: float[9]
-  description: Airplane landing light.   RGB = dir, A = light number
-- name: sim/graphics/animation/lights/airplane_landing_light_spill
-  type: float[9]
-  description: Airplane landing light.   RGB = dir, A = light number
-- name: sim/graphics/animation/lights/airplane_generic_light
-  type: float[9]
-  description: Airplane generic light.   RGB = dir, A = light number
-- name: sim/graphics/animation/lights/airplane_generic_light_flash
-  type: float[9]
-  description: Airplane generic light.   RGB = dir, A = light number
-- name: sim/graphics/animation/lights/airplane_generic_light_spill
-  type: float[9]
-  description: Airplane generic light.   RGB = dir, A = light number
-- name: sim/graphics/animation/lights/airplane_taxi_light
-  type: float[9]
-  description: AIrplane taxi light.   RGB = dir, A = reserved, use 0
-- name: sim/graphics/animation/lights/airplane_taxi_light_flash
-  type: float[9]
-  description: AIrplane taxi light.   RGB = dir, A = reserved, use 0
-- name: sim/graphics/animation/lights/airplane_taxi_light_spill
-  type: float[9]
-  description: AIrplane taxi light.   RGB = dir, A = reserved, use 0
-- name: sim/graphics/animation/lights/airplane_spot_light
-  type: float[9]
-  description: AIrplane spot light.   RGB = dir, A = reserved, use 0
-- name: sim/graphics/animation/lights/airplane_spot_light_flash
-  type: float[9]
-  description: AIrplane spot light.   RGB = dir, A = reserved, use 0
-- name: sim/graphics/animation/lights/airplane_spot_light_spill
-  type: float[9]
-  description: AIrplane spot light.   RGB = dir, A = reserved, use 0
-- name: sim/graphics/animation/lights/airplane_beacon_light
-  type: float[9]
-  description: Airplane beacon light.   RGB = ignore, A = light number
-- name: sim/graphics/animation/lights/airplane_navigation_light
-  type: float[9]
-  description: Airplane navigation light.   RGB = ignore, A = reserved, use 0
-- name: sim/graphics/animation/lights/airplane_strobe_light
-  type: float[9]
-  description: Airplane strobe light.   RGB = ignore, A = light number
-- name: sim/graphics/animation/lights/airplane_beacon_light_dir
-  type: float[9]
-  description: Airplane beacon light.   RGB = direction, A = light number
-- name: sim/graphics/animation/lights/airplane_navigation_light_dir
-  type: float[9]
-  description: Airplane navigation light.   RGB = ignored, A = reserved, use 0
-- name: sim/graphics/animation/lights/airplane_strobe_light_dir
-  type: float[9]
-  description: Airplane strobe light.   RGB = direction, A = light number
-- name: sim/graphics/animation/lights/airplane_beacon_light_spill
-  type: float[9]
-  description: Airplane beacon light.   RGB = direction, A = light number
-- name: sim/graphics/animation/lights/airplane_navigation_light_spill
-  type: float[9]
-  description: Airplane navigation light.   RGB = ignored, A = reserved, use 0
-- name: sim/graphics/animation/lights/airplane_strobe_light_spill
-  type: float[9]
-  description: Airplane strobe light.   RGB = direction, A = light number
-- name: sim/graphics/animation/lights/airplane_panel_spill
-  type: float[9]
-  description: Internal panel floods, A = index
-- name: sim/graphics/animation/lights/airplane_inst_spill
-  type: float[9]
-  description: Internal instrument post lights, A = index
-- name: sim/graphics/animation/lights/airplane_beacon_light_rotate
-  type: float[9]
-  description: Airplane beacon light for rotating beacon billboard.
-- name: sim/graphics/animation/lights/airplane_beacon_light_rotate_spill
-  type: float[9]
-  description: Airplane beacon light for rotating beacon spill.
-- name: sim/graphics/animation/ground_traffic/tire_steer_deg
-  type: float
-  description: TODO
-- name: sim/graphics/animation/ground_traffic/tire_rotation_angle_deg
-  type: float[5]
-  description: TODO
-- name: sim/graphics/animation/ground_traffic/wiper_angle_deg
-  type: float[2]
-  description: TODO
-- name: sim/graphics/animation/ground_traffic/towbar_heading_deg
-  type: float
-  description: TODO
-- name: sim/graphics/animation/ground_traffic/towbar_pitch_deg
-  type: float
-  description: TODO
-- name: sim/graphics/animation/ground_traffic/belt_loader_height_meters
-  type: float
-  description: TODO
-- name: sim/graphics/animation/ground_traffic/door_open
-  type: float[2]
-  description: TODO
-- name: sim/graphics/colors/background_rgb
-  type: float[3]
-  description: Background color behind a modal window
-- name: sim/graphics/colors/menu_dark_rgb
-  type: float[3]
-  description: Dark tinging for menus
-- name: sim/graphics/colors/menu_hilite_rgb
-  type: float[3]
-  description: Menu color of a selected item
-- name: sim/graphics/colors/menu_lite_rgb
-  type: float[3]
-  description: Light tinging for menus
-- name: sim/graphics/colors/menu_text_rgb
-  type: float[3]
-  description: Menu Item Text Color
-- name: sim/graphics/colors/menu_text_disabled_rgb
-  type: float[3]
-  description: Menu Item Text Color When Disabled
-- name: sim/graphics/colors/subtitle_text_rgb
-  type: float[3]
-  description: Subtitle text colors
-- name: sim/graphics/colors/tab_front_rgb
-  type: float[3]
-  description: Color of text on tabs that are forward
-- name: sim/graphics/colors/tab_back_rgb
-  type: float[3]
-  description: Color of text on tabs that are in the bkgnd
-- name: sim/graphics/colors/caption_text_rgb
-  type: float[3]
-  description: Caption text (for on a main window)
-- name: sim/graphics/colors/list_text_rgb
-  type: float[3]
-  description: Text Color for scrolling lists
-- name: sim/graphics/colors/glass_text_rgb
-  type: float[3]
-  description: Text color for on a 'glass' screen
 - name: sim/graphics/colors/plane_path1_3d_rgb
   type: float[3]
   description: Color for 3-d plane path
@@ -5268,27 +4196,6 @@ datarefs:
 - name: sim/graphics/misc/show_instrument_descriptions
   type: int
   description: Show instrument descriptions on the panel?
-- name: sim/graphics/misc/cockpit_light_level_r
-  type: float
-  description: The red level for the cockpit 'night' tinting, from 0 to 1
-- name: sim/graphics/misc/cockpit_light_level_g
-  type: float
-  description: The green level for the cockpit 'night' tinting, from 0 to 1
-- name: sim/graphics/misc/cockpit_light_level_b
-  type: float
-  description: The blue level for the cockpit 'night' tinting, from 0 to 1
-- name: sim/graphics/misc/outside_light_level_r
-  type: float
-  description: The red level for the world, from 0 to 1
-- name: sim/graphics/misc/outside_light_level_g
-  type: float
-  description: The green level for the world, from 0 to 1
-- name: sim/graphics/misc/outside_light_level_b
-  type: float
-  description: The blue level for the world, from 0 to 1
-- name: sim/graphics/misc/light_attenuation
-  type: float
-  description: Amount that artificial light is dimmed due to the sun's magnitude
 - name: sim/graphics/misc/use_proportional_fonts
   type: int
   description: Set this to 1 to enable proportional fonts when available.
@@ -5311,36 +4218,12 @@ datarefs:
 - name: sim/graphics/misc/kill_runway_snow
   type: int
   description: Kill blowing snow effect on runways.
-- name: sim/graphics/misc/default_scroll_pos
-  type: float
-  description: Default position for a scrolling plane panel
 - name: sim/graphics/misc/current_scroll_pos
   type: float
   description: Current position of that panel
-- name: sim/graphics/misc/default_scroll_pos_x
-  type: float
-  description: Default position for a scrolling plane panel
 - name: sim/graphics/misc/current_scroll_pos_x
   type: float
   description: Current position of that panel
-- name: sim/graphics/scenery/current_planet
-  type: int
-  description: What planet are we on?  (Earth = 0, mars = 1)
-- name: sim/graphics/scenery/percent_lights_on
-  type: float
-  description: what percentage of city lites are on as night hits
-- name: sim/graphics/scenery/sun_pitch_degrees
-  type: float
-  description: sun pitch from flat in OGL coordinates
-- name: sim/graphics/scenery/sun_heading_degrees
-  type: float
-  description: sun heading from true north in OGL coordinates
-- name: sim/graphics/scenery/moon_pitch_degrees
-  type: float
-  description: moon pitch from flat in OGL coordinates
-- name: sim/graphics/scenery/moon_heading_degrees
-  type: float
-  description: moon heading from true north in OGL coordinates
 - name: sim/graphics/scenery/airport_light_level
   type: float
   description: Level of airport light illumination, 0 = off, 1 = max brightness
@@ -5348,12 +4231,6 @@ datarefs:
   type: int
   description: Are the airport lites on?  set override_airport_lites to 1t o write
     this.
-- name: sim/graphics/scenery/async_scenery_load_in_progress
-  type: int
-  description: True when some kind of asynchronous scenery load or unload is in progress.
-- name: sim/graphics/settings/rendering_res
-  type: int
-  description: Texture Rendering Level
 - name: sim/graphics/settings/dim_gload
   type: int
   description: dim under high g-load?
@@ -5364,65 +4241,6 @@ datarefs:
   type: int
   description: FOV is non proportional, use if sim/graphics/view/vertical_field_of_view_deg
     needs to be written to.
-- name: sim/graphics/settings/HDR_on
-  type: int
-  description: True if HDR rendering is enabled.
-- name: sim/graphics/settings/scattering_on
-  type: int
-  description: True if atmospheric scattering is enabled.
-- name: sim/graphics/view/view_type
-  type: int
-  description: The current camera view
-- name: sim/graphics/view/panel_render_type
-  type: int
-  description: How to draw the panel?  0=2-d panel, 1=3-d, non-lit, 2=3-d, lit
-- name: sim/graphics/view/panel_render_new_blending
-  type: int
-  description: True if modern correct RGBA blending is being used to draw panels;
-    false if the legacy alpha-max equation is being used.
-- name: sim/graphics/view/world_render_type
-  type: int
-  description: What kind of 3-d rendering pass are we on? 0=normal,1=reflections in
-    water
-- name: sim/graphics/view/plane_render_type
-  type: int
-  description: What kind of rendering is being done during the xplm_Phase_Airplanes
-    callback.  solid = 1, blended/alpha = 2 (0 = N/A, outside draw callback)
-- name: sim/graphics/view/draw_call_type
-  type: int
-  description: Stereo status of the draw callback. 0 = not in draw callback, 1 = mono,
-    2 = direct stereo (only use XPLMDrawObjects), 3 = left eye, 4 = right eye
-- name: sim/graphics/view/view_is_external
-  type: int
-  description: Is the view in the cockpit or outside?  Affects sound!
-- name: sim/graphics/view/view_x
-  type: float
-  description: The location of the camera, X coordinate (OpenGL)
-- name: sim/graphics/view/view_y
-  type: float
-  description: The location of the camera, Y coordinate (OpenGL)
-- name: sim/graphics/view/view_z
-  type: float
-  description: The location of the camera, Z coordinate (OpenGL)
-- name: sim/graphics/view/view_pitch
-  type: float
-  description: The camera's pitch
-- name: sim/graphics/view/view_roll
-  type: float
-  description: The camera's roll
-- name: sim/graphics/view/view_heading
-  type: float
-  description: the camera's heading, CW frmo true north
-- name: sim/graphics/view/cockpit_pitch
-  type: float
-  description: The cockpit's pitch
-- name: sim/graphics/view/cockpit_roll
-  type: float
-  description: The cockpit's heading (the dataref name is wrong - this is really true
-    heading)
-- name: sim/graphics/view/cockpit_heading
-  type: float
-  description: the cockpit's roll (the dataref is name wrong - this is really roll)
 - name: sim/graphics/view/field_of_view_deg
   type: float
   description: horizontal field of view in degrees
@@ -5448,15 +4266,6 @@ datarefs:
 - name: sim/graphics/view/window_height
   type: int
   description: Size of rendering window
-- name: sim/graphics/view/visibility_effective_m
-  type: float
-  description: ">= 0"
-- name: sim/graphics/view/visibility_terrain_m
-  type: float
-  description: ">= 0"
-- name: sim/graphics/view/visibility_framerate_ratio
-  type: float
-  description: "- 1.0]"
 - name: sim/graphics/view/visibility_math_level
   type: int
   description: This used to indicate what level of 3-d force visualization was shown
@@ -5464,70 +4273,6 @@ datarefs:
 - name: sim/graphics/view/cinema_verite
   type: int
   description: True if cinema verite camera is on.
-- name: sim/graphics/view/panel_total_pnl_l
-  type: float
-  description: This is the location of the left edge of the panel, in the coordinate
-    system used during panel drawing.
-- name: sim/graphics/view/panel_total_pnl_b
-  type: float
-  description: This is the location of the bottom edge of the panel, in the coordinate
-    system used during panel drawing.
-- name: sim/graphics/view/panel_total_pnl_r
-  type: float
-  description: This is the location of the right edge of the panel, in the coordinate
-    system used during panel drawing.
-- name: sim/graphics/view/panel_total_pnl_t
-  type: float
-  description: This is the location of the top edge of the panel, in the coordinate
-    system used during panel drawing.
-- name: sim/graphics/view/panel_visible_pnl_l
-  type: float
-  description: This is the location of the left edge of the screen, in the coordinate
-    system used during panel drawing.
-- name: sim/graphics/view/panel_visible_pnl_b
-  type: float
-  description: This is the location of the bottom edge of the screen, in the coordinate
-    system used during panel drawing.
-- name: sim/graphics/view/panel_visible_pnl_r
-  type: float
-  description: This is the location of the right edge of the screen, in the coordinate
-    system used during panel drawing.
-- name: sim/graphics/view/panel_visible_pnl_t
-  type: float
-  description: This is the location of the top edge of the screen, in the coordinate
-    system used during plugin window drawing.
-- name: sim/graphics/view/panel_total_win_l
-  type: float
-  description: This is the location of the left edge of the panel, in the coordinate
-    system used during plugin window drawing.
-- name: sim/graphics/view/panel_total_win_b
-  type: float
-  description: This is the location of the bottom edge of the panel, in the coordinate
-    system used during plugin window drawing.
-- name: sim/graphics/view/panel_total_win_r
-  type: float
-  description: This is the location of the right edge of the panel, in the coordinate
-    system used during plugin window drawing.
-- name: sim/graphics/view/panel_total_win_t
-  type: float
-  description: This is the location of the top edge of the panel, in the coordinate
-    system used during plugin window drawing.
-- name: sim/graphics/view/panel_visible_win_l
-  type: float
-  description: This is the location of the left edge of the screen, in the coordinate
-    system used during plugin window drawing.
-- name: sim/graphics/view/panel_visible_win_b
-  type: float
-  description: This is the location of the bottom edge of the screen, in the coordinate
-    system used during plugin window drawing.
-- name: sim/graphics/view/panel_visible_win_r
-  type: float
-  description: This is the location of the right edge of the screen, in the coordinate
-    system used during plugin window drawing.
-- name: sim/graphics/view/panel_visible_win_t
-  type: float
-  description: This is the location of the top edge of the screen, in the coordinate
-    system used during plugin window drawing.
 - name: sim/graphics/view/pilots_head_x
   type: float
   description: Position of pilot's head relative to CG, X
@@ -5546,30 +4291,6 @@ datarefs:
 - name: sim/graphics/view/pilots_head_phi
   type: float
   description: Position of the pilot's head roll'
-- name: sim/graphics/view/click_3d_x
-  type: float
-  description: coordinates of the panel click in 3-d
-- name: sim/graphics/view/click_3d_y
-  type: float
-  description: as texture coords (E.g. 0-1)
-- name: sim/graphics/view/click_3d_x_pixels
-  type: float
-  description: coordinates of the panel click in 3-d
-- name: sim/graphics/view/click_3d_y_pixels
-  type: float
-  description: as texture coords (E.g. 0-1)
-- name: sim/graphics/view/local_map_l
-  type: float
-  description: Bounds of the local map window during callbacks - left
-- name: sim/graphics/view/local_map_b
-  type: float
-  description: Bounds of the local map window during callbacks - bottom
-- name: sim/graphics/view/local_map_r
-  type: float
-  description: Bounds of the local map window during callbacks - right
-- name: sim/graphics/view/local_map_t
-  type: float
-  description: Bounds of the local map window during callbacks - top
 - name: sim/graphics/view/dome_number_of_passes
   type: int
   description: This is the number of passes to render for a multi-dome setup.  This
@@ -5580,49 +4301,9 @@ datarefs:
 - name: sim/graphics/view/dome_offset_pitch
   type: float[16]
   description: The vertical offset for this pass, in degrees
-- name: sim/graphics/view/eq_trackir
-  type: int
-  description: Does the user have trackIR hardware enabled
 - name: sim/graphics/view/hide_yoke
   type: int
   description: Is the yoke visible in the 3-d cockpit?
-- name: sim/graphics/view/projection_matrix
-  type: float[16]
-  description: The current projection matrix - valid only during draw callbacks
-- name: sim/graphics/view/projection_matrix_3d
-  type: float[16]
-  description: The current projection matrix during 3-d rendering - it keeps its value
-    during 2-d rendering so youc can figure out how to apply text labels to 3-d stuff.
-- name: sim/graphics/view/world_matrix
-  type: float[16]
-  description: The current modelview matrix to draw in standard "OGL" coordinates
-    - valid only during draw callbacks
-- name: sim/graphics/view/acf_matrix
-  type: float[16]
-  description: A modelview matrix to draw in the user's aircraft coordinates - valid
-    only during draw callbacks
-- name: sim/graphics/view/modelview_matrix
-  type: float[16]
-  description: Current modelview matrix during window callbacks.  use to map boxels
-    to device pixels for scissors.
-- name: sim/graphics/view/viewport
-  type: int[4]
-  description: Current OpenGL viewport in device window coordinates.  Note thiat this
-    is left, bottom, right top, NOT left, bottom, width, height!!
-- name: sim/graphics/view/is_reverse_float_z
-  type: int
-  description: True if current rendering is reverse-float-Z with clip control set
-    ot 0..1.  False for conventional GL rendering.
-- name: sim/joystick/has_joystick
-  type: int
-  description: Do we have a joystick?
-- name: sim/joystick/mouse_is_joystick
-  type: int
-  description: Is the mouse acting as a joystick?
-- name: sim/joystick/mouse_can_be_joystick
-  type: int
-  description: Can the mouse be used to fly?  False if there is any LEGIT hardware
-    plugged in.
 - name: sim/joystick/yoke_pitch_ratio
   type: float
   description: The deflection of the joystick axis controlling pitch. Use override_joystick
@@ -5655,15 +4336,6 @@ datarefs:
 - name: sim/joystick/artstab_heading_ratio
   type: float
   description: The artificial stability input modifications for yaw. Use override_artstab
-- name: sim/joystick/servo_pitch_ratio
-  type: float
-  description: Servo input for pitch
-- name: sim/joystick/servo_roll_ratio
-  type: float
-  description: Servo input for roll
-- name: sim/joystick/servo_heading_ratio
-  type: float
-  description: Servo input for yaw
 - name: sim/joystick/FC_hdng
   type: float
   description: Flight Control Heading (sum of yoke plus artificial stability)
@@ -5725,10 +4397,6 @@ datarefs:
   type: int[500]
   description: Reverse this axis? [Was 15 before 850][Was 24 before 860][was 32 before
     900]
-- name: sim/joystick/joystick_axis_values
-  type: float[500]
-  description: The deflection of this joystick [Was 15 before 850][Was 24 before 860][was
-    32 before 900]
 - name: sim/joystick/joystick_axis_minimum
   type: float[500]
   description: Min raw value ever seen [Was 15 before 850][Was 24 before 860][was
@@ -5737,16 +4405,6 @@ datarefs:
   type: float[500]
   description: Max raw value ever seen [Was 15 before 850][Was 24 before 860][was
     32 before 900]
-- name: sim/joystick/joystick_button_values
-  type: int[3200]
-  description: Is this button pressed? [Was 64 before 850][was 160 before 900]
-- name: sim/joystick/joy_mapped_axis_avail
-  type: int[67]
-  description: True if there is joystick hardware of some kind providing this axis
-    right now.
-- name: sim/joystick/joy_mapped_axis_value
-  type: float[67]
-  description: Fully processed ratio for each axis - either -1 to 1 or 0 to 1.
 - name: sim/joystick/eq_ped_nobrk
   type: int
   description: 'Hardware settings: Pedal nobrk (writable since 930 to auto-set user
@@ -6347,16 +5005,6 @@ datarefs:
 - name: sim/multiplayer/position/plane9_yolk_yaw
   type: float
   description: Plane 9 Commanded yaw (Legacy for compatibility - use sim/multiplayer/controls/yoke_heading_ratio)
-- name: sim/multiplayer/position/plane1_lat
-  type: double
-  description: 'Plane 1 Lat lon and elevation.  NOTE: your plugin must set the plane''s'
-- name: sim/multiplayer/position/plane1_lon
-  type: double
-  description: position by writing x, y and z.  Also if another plugin is updating
-    plane
-- name: sim/multiplayer/position/plane1_el
-  type: double
-  description: position then these will not be accurate unless the plane updates them.
 - name: sim/multiplayer/position/plane1_v_x
   type: float
   description: Plane 1 cartesian velocities.  These may not be accurate if another
@@ -6368,16 +5016,6 @@ datarefs:
 - name: sim/multiplayer/position/plane1_v_z
   type: float
   description: manipulate the plane.
-- name: sim/multiplayer/position/plane2_lat
-  type: double
-  description: 'Plane 2 Lat lon and elevation.  NOTE: your plugin must set the plane''s'
-- name: sim/multiplayer/position/plane2_lon
-  type: double
-  description: position by writing x, y and z.  Also if another plugin is updating
-    plane
-- name: sim/multiplayer/position/plane2_el
-  type: double
-  description: position then these will not be accurate unless the plane updates them.
 - name: sim/multiplayer/position/plane2_v_x
   type: float
   description: Plane 2 cartesian velocities.  These may not be accurate if another
@@ -6389,16 +5027,6 @@ datarefs:
 - name: sim/multiplayer/position/plane2_v_z
   type: float
   description: manipulate the plane.
-- name: sim/multiplayer/position/plane3_lat
-  type: double
-  description: 'Plane 3 Lat lon and elevation.  NOTE: your plugin must set the plane''s'
-- name: sim/multiplayer/position/plane3_lon
-  type: double
-  description: position by writing x, y and z.  Also if another plugin is updating
-    plane
-- name: sim/multiplayer/position/plane3_el
-  type: double
-  description: position then these will not be accurate unless the plane updates them.
 - name: sim/multiplayer/position/plane3_v_x
   type: float
   description: Plane 3 cartesian velocities.  These may not be accurate if another
@@ -6410,16 +5038,6 @@ datarefs:
 - name: sim/multiplayer/position/plane3_v_z
   type: float
   description: manipulate the plane.
-- name: sim/multiplayer/position/plane4_lat
-  type: double
-  description: 'Plane 4 Lat lon and elevation.  NOTE: your plugin must set the plane''s'
-- name: sim/multiplayer/position/plane4_lon
-  type: double
-  description: position by writing x, y and z.  Also if another plugin is updating
-    plane
-- name: sim/multiplayer/position/plane4_el
-  type: double
-  description: position then these will not be accurate unless the plane updates them.
 - name: sim/multiplayer/position/plane4_v_x
   type: float
   description: Plane 4 cartesian velocities.  These may not be accurate if another
@@ -6431,16 +5049,6 @@ datarefs:
 - name: sim/multiplayer/position/plane4_v_z
   type: float
   description: manipulate the plane.
-- name: sim/multiplayer/position/plane5_lat
-  type: double
-  description: 'Plane 5 Lat lon and elevation.  NOTE: your plugin must set the plane''s'
-- name: sim/multiplayer/position/plane5_lon
-  type: double
-  description: position by writing x, y and z.  Also if another plugin is updating
-    plane
-- name: sim/multiplayer/position/plane5_el
-  type: double
-  description: position then these will not be accurate unless the plane updates them.
 - name: sim/multiplayer/position/plane5_v_x
   type: float
   description: Plane 5 cartesian velocities.  These may not be accurate if another
@@ -6452,16 +5060,6 @@ datarefs:
 - name: sim/multiplayer/position/plane5_v_z
   type: float
   description: manipulate the plane.
-- name: sim/multiplayer/position/plane6_lat
-  type: double
-  description: 'Plane 6 Lat lon and elevation.  NOTE: your plugin must set the plane''s'
-- name: sim/multiplayer/position/plane6_lon
-  type: double
-  description: position by writing x, y and z.  Also if another plugin is updating
-    plane
-- name: sim/multiplayer/position/plane6_el
-  type: double
-  description: position then these will not be accurate unless the plane updates them.
 - name: sim/multiplayer/position/plane6_v_x
   type: float
   description: Plane 6 cartesian velocities.  These may not be accurate if another
@@ -6473,16 +5071,6 @@ datarefs:
 - name: sim/multiplayer/position/plane6_v_z
   type: float
   description: manipulate the plane.
-- name: sim/multiplayer/position/plane7_lat
-  type: double
-  description: 'Plane 7 Lat lon and elevation.  NOTE: your plugin must set the plane''s'
-- name: sim/multiplayer/position/plane7_lon
-  type: double
-  description: position by writing x, y and z.  Also if another plugin is updating
-    plane
-- name: sim/multiplayer/position/plane7_el
-  type: double
-  description: position then these will not be accurate unless the plane updates them.
 - name: sim/multiplayer/position/plane7_v_x
   type: float
   description: Plane 7 cartesian velocities.  These may not be accurate if another
@@ -6494,16 +5082,6 @@ datarefs:
 - name: sim/multiplayer/position/plane7_v_z
   type: float
   description: manipulate the plane.
-- name: sim/multiplayer/position/plane8_lat
-  type: double
-  description: 'Plane 8 Lat lon and elevation.  NOTE: your plugin must set the plane''s'
-- name: sim/multiplayer/position/plane8_lon
-  type: double
-  description: position by writing x, y and z.  Also if another plugin is updating
-    plane
-- name: sim/multiplayer/position/plane8_el
-  type: double
-  description: position then these will not be accurate unless the plane updates them.
 - name: sim/multiplayer/position/plane8_v_x
   type: float
   description: Plane 8 cartesian velocities.  These may not be accurate if another
@@ -6515,16 +5093,6 @@ datarefs:
 - name: sim/multiplayer/position/plane8_v_z
   type: float
   description: manipulate the plane.
-- name: sim/multiplayer/position/plane9_lat
-  type: double
-  description: 'Plane 9 Lat lon and elevation.  NOTE: your plugin must set the plane''s'
-- name: sim/multiplayer/position/plane9_lon
-  type: double
-  description: position by writing x, y and z.  Also if another plugin is updating
-    plane
-- name: sim/multiplayer/position/plane9_el
-  type: double
-  description: position then these will not be accurate unless the plane updates them.
 - name: sim/multiplayer/position/plane9_v_x
   type: float
   description: Plane 9 cartesian velocities.  These may not be accurate if another
@@ -7551,9 +6119,6 @@ datarefs:
 - name: sim/multiplayer/position/plane19_v_z
   type: float
   description: manipulate the plane.
-- name: sim/multiplayer/combat/team_status
-  type: int[20]
-  description: Is the aircraft friend or foe? (0 = neutral, 1 = friend, 2 = enemy)
 - name: sim/network/dataout/network_data_rate
   type: int
   description: Rate to send data over UDP at
@@ -7578,65 +6143,12 @@ datarefs:
 - name: sim/network/dataout/dump_parts_vstabs
   type: int
   description: Dump vertical stabilizer prop data to screen
-- name: sim/network/dataout/is_external_visual
-  type: int
-  description: Is this machine running as an external visual for another X-Plane machine.
-- name: sim/network/dataout/is_multiplayer_session
-  type: int
-  description: Is this machine part of an x-plane built-in multiplayer session?
-- name: sim/network/dataout/multiplayer_ip
-  type: int[19]
-  description: IP addresses of multiplayer players (or 0 if not in used in v10)
-- name: sim/network/dataout/external_visual_ip
-  type: int[20]
-  description: IP addresses of external visuals (or 0 if not in use in v10).  Dim
-    8 in v9.
-- name: sim/network/dataout/track_external_visual
-  type: int[20]
-  description: True if this remote visual tracks the master's view changes
-- name: sim/network/misc/opentransport_inited
-  type: int
-  description: Has x-plane already inited Open Transport?  YOU SHOULD NEVER USE THIS
-    DATAREF!!!
-- name: sim/network/misc/network_time_sec
-  type: float
-  description: The current elapsed time synched across the network
-- name: sim/physics/earth_mu
-  type: float
-  description: The earth's mass-gravity constant
-- name: sim/physics/earth_radius_m
-  type: float
-  description: Earth's radius
-- name: sim/physics/earth_temp_c
-  type: float
-  description: Average sea level temp, current planet
-- name: sim/physics/earth_pressure_p
-  type: float
-  description: average pressure at sea level, current planet
-- name: sim/physics/rho_sea_level
-  type: float
-  description: rho at sea level, current planet
-- name: sim/physics/g_sealevel
-  type: float
-  description: gravitational acceleration of earth AT SEA LEVEL
-- name: sim/physics/rho_water
-  type: float
-  description: rho of water
 - name: sim/physics/metric_temp
   type: int
   description: Are we showing metric temperature indications
 - name: sim/physics/metric_press
   type: int
   description: Are we showing metric pressure indications
-- name: sim/operation/failures/hydraulic_pressure_ratio
-  type: float
-  description: Hydraulic pressure ratio
-- name: sim/operation/failures/hydraulic_pressure_ratio2
-  type: float
-  description: Hydraulic pressure ratio
-- name: sim/operation/failures/oil_power_thrust_ratio
-  type: float[8]
-  description: Oil power or thrust ratio
 - name: sim/operation/failures/enable_random_falures
   type: int
   description: Enable random failures based on mean time between failures
@@ -7649,9 +6161,6 @@ datarefs:
 - name: sim/operation/failures/ram_air_turbine_on
   type: int
   description: Ram air turbine is on?
-- name: sim/operation/failures/failures
-  type: int[564]
-  description: 564 separate failure codes [was 137]
 - name: sim/operation/failures/rel_conlock
   type: int
   description: Controls locked
@@ -9295,10 +7804,6 @@ datarefs:
 - name: sim/operation/failures/rel_apu_fire
   type: int
   description: APU catastrophic failure with fire
-- name: sim/operation/g430/G430_is_vloc
-  type: int[2]
-  description: If true, vertical guidance is a glide slope - otherwise it is a GPS
-    vertical guidance indicator.  Comes from the physical units!
 - name: sim/operation/misc/debug_network
   type: int
   description: Enable logging of network data
@@ -9306,10 +7811,6 @@ datarefs:
   type: float
   description: The frame rate period. Use the reciprocal to get the frame rate (e.g.
     1/mnw.prd).  Writable via override_timestep in 11.10
-- name: sim/operation/misc/time_ratio
-  type: float
-  description: 'This is how close XP time matches real time. Ideal ratio is 1.  NOTE:
-    in 930 and later time ratio is always 1.0.'
 - name: sim/operation/override/override_joystick
   type: int
   description: Override control of the joystick deflections (overrides stick, yoke,
@@ -9488,10 +7989,6 @@ datarefs:
 - name: sim/operation/prefs/warn_overspeed_gear
   type: int
   description: Warn if we exceed max gear deployed speed
-- name: sim/operation/prefs/reset_on_crash
-  type: int
-  description: On crash, do we reset the AC to the nearest airport? - gone in v11,
-    read only dref returns false for compatibility.
 - name: sim/operation/prefs/warn_nonobvious_stuff
   type: int
   description: Show text warning for otherwise hard to see things like carb-icing?
@@ -9504,22 +8001,6 @@ datarefs:
 - name: sim/operation/prefs/ai_flies_aircraft
   type: int
   description: Controls whether the AI controls the user's plane
-- name: sim/operation/prefs/using_experimental_fm
-  type: int
-  description: True if the user has enabled the experimental flight model.
-- name: sim/operation/prefs/misc/language
-  type: int
-  description: Current language
-- name: sim/operation/prefs/misc/has_lua_alloc
-  type: int
-  description: Returns true if the sim provides a low-mem lua allocator via inter-plugin
-    messaging.
-- name: sim/operation/sound/has_sound
-  type: int
-  description: Does this machine have sound hardware that X-Plane understands?
-- name: sim/operation/sound/has_speech_synth
-  type: int
-  description: Does this machine have speech synth capabilities?
 - name: sim/operation/sound/sound_on
   type: int
   description: Is sound on (set by user)
@@ -9575,30 +8056,6 @@ datarefs:
   type: float
   description: Volume level for the avionics fan, ratio from 0 (silent) to 1 (max
     loudness)
-- name: sim/operation/sound/inside_ratio
-  type: float[64]
-  description: 1 if we are in this space, 0 if outside, and a fraction as we transition
-    through the borer region
-- name: sim/operation/sound/inside_any
-  type: int
-  description: True if the camera is inside ANY of the defined sound volumes for the
-    aircraft.
-- name: sim/operation/sound/users_canopy_open_ratio
-  type: float
-  description: 'Canopy position: 0 = closed, 1 = open - these ALWAYS reflect the USER''s
-    plane (even when used on an AI) so they are appropriate for SOUND MIXING.'
-- name: sim/operation/sound/users_door_open_ratio
-  type: float[10]
-  description: How open is the door, 0 = closed, 1 = open - these ALWAYS reflect the
-    USER's plane (even when used on an AI) so they are appropriate for SOUND MIXING.
-- name: sim/operation/windows/system_window
-  type: int
-  description: This is X-Plane's system native window as an int (either an HWND or
-    WindowRef pre 102)
-- name: sim/operation/windows/system_window_64
-  type: int[2]
-  description: This is X-Plane's system native window as an array of two ints - low
-    32 bits first (either an HWND or WindowRef)
 - name: sim/test/test_float
   type: float
   description: this test dataref is used internally for testing our models
@@ -9614,9 +8071,6 @@ datarefs:
 - name: sim/time/timer_elapsed_time_sec
   type: float
   description: Total time elapsed on the timer
-- name: sim/time/local_time_sec
-  type: float
-  description: Local time  (seconds since midnight??)
 - name: sim/time/zulu_time_sec
   type: float
   description: Zulu time  (seconds since midnight??)
@@ -9626,21 +8080,10 @@ datarefs:
 - name: sim/time/use_system_time
   type: int
   description: Use system date and time for local time
-- name: sim/time/paused
-  type: int
-  description: Is the sim paused?  Use cmd keys to change this.
 - name: sim/time/sim_speed
   type: int
   description: This is the multiplier for real-time...1 = realtime, 2 = 2x, 0 = paused,
     etc.
-- name: sim/time/sim_speed_actual
-  type: float
-  description: The actual time-speed increase the sim has achieved - takes into account
-    fps limiting.
-- name: sim/time/sim_speed_actual_ogl
-  type: float
-  description: The actual time-speed increase the sim has achieved - takes into account
-    fps limiting and time dilation if fps<19.
 - name: sim/time/ground_speed
   type: int
   description: This is the multiplier on ground speed, for faster travel via double-distance
@@ -9651,50 +8094,10 @@ datarefs:
 - name: sim/time/hobbs_time
   type: float
   description: elapsed time on the Hobbs meter
-- name: sim/time/is_in_replay
-  type: int
-  description: true if we are in replay mode, false if we are flying
-- name: sim/time/framerate_period
-  type: float
-  description: Smoothed time to draw each full sim frame in seconds.  This is 1.0
-    / FPS.
-- name: sim/time/gpu_time_per_frame_sec_approx
-  type: float
-  description: This is an approximate estimate of GPU time spent per each frame in
-    seconds.  Note that it can be RADICALLY wrong if anything is done wrong by plugins
-    or the driver is weird.  It's for entertainment value only!!!
-- name: sim/version/sim_build_string
-  type: byte[256]
-  description: This string contains the date and time that this x-plane was built.
-- name: sim/version/xplm_build_string
-  type: byte[256]
-  description: This string contains the date and time that the XPLM DLL was built.
-- name: sim/version/xplanee_internal_version
-  type: int
-  description: This is the internal build number - it is a unique integer that always
-    increases and is unique with each beta.  For example, 10.51b5 might be 105105.  There
-    is no guarantee that the build numbe (last 2 digits) are in sync with the official
-    beta number.
-- name: sim/version/xplane_internal_version
-  type: int
-  description: This is the internal build number - it is a unique integer that always
-    increases and is unique with each beta.  For example, 10.51b5 might be 105105.  There
-    is no guarantee that the build numbe (last 2 digits) are in sync with the official
-    beta number.
-- name: sim/weapons/weapon_count
-  type: int
-  description: This is the number of weapons available via datarefs.
 - name: sim/weapons/type
   type: int[25]
   description: "(V10 style!) For the geometry we scan right into the acf structure
     unused array-spaces."
-- name: sim/weapons/free_flyer
-  type: int[25]
-  description: "(V10 style!) Weapon can go fly free..."
-- name: sim/weapons/action_mode
-  type: int[25]
-  description: "(V10 style!) 0 = In carriage/still in the gun/reloaded, 1 = firing,
-    and 2 = destroyed"
 - name: sim/weapons/x_wpn_att
   type: float[25]
   description: This allows us to use our drawing, smoothing, editing, s-t, normal-vector,
@@ -9877,15 +8280,6 @@ datarefs:
 - name: sim/weapons/Rrad
   type: float[25]
   description: "(placeholder)"
-- name: sim/weapons/the
-  type: float[25]
-  description: Angle relative to the aircraft
-- name: sim/weapons/psi
-  type: float[25]
-  description: Angle relative to the aircraft
-- name: sim/weapons/phi
-  type: float[25]
-  description: Angle relative to the aircraft
 - name: sim/weapons/next_bull_time
   type: float[25]
   description: For guns, this is the next fire time
@@ -9928,16 +8322,6 @@ datarefs:
 - name: sim/weapons/armed
   type: int[25]
   description: 0 = safe (will NOT explode), 1 = armed (WILL explode)
-- name: sim/weapons/firing
-  type: int[25]
-  description: 0 = not firing, 1 = firing (This is the launcher that the wpn is attached
-    to, for actual wpn status, also check action_mode and/or next_bull_time)
-- name: sim/weapons/shell/is_attached
-  type: int
-  description: TODO
-- name: sim/weapons/shell/thrust_rat
-  type: float
-  description: TODO
 - name: sim/weather/cloud_type[0]
   type: int
   description: enumeration
@@ -9989,9 +8373,6 @@ datarefs:
 - name: sim/weather/barometer_sealevel_inhg
   type: float
   description: "+- ...."
-- name: sim/weather/has_real_weather_bool
-  type: int
-  description: Whether a real weather file has been located.
 - name: sim/weather/use_real_weather_bool
   type: int
   description: Whether a real weather file is in use.
@@ -9999,22 +8380,6 @@ datarefs:
   type: int
   description: If true, the sim will attempt to download real weather files when real
     weather is enabled.
-- name: sim/weather/sigma
-  type: float
-  description: The atmospheric density as a ratio compared to sea level.
-- name: sim/weather/rho
-  type: float
-  description: The density of the air in kg/cubic meters.
-- name: sim/weather/barometer_current_inhg
-  type: float
-  description: This is the barometric pressure at the point the current flight is
-    at.
-- name: sim/weather/gravity_mss
-  type: float
-  description: This is the acceleration of gravity for the current planet.
-- name: sim/weather/speed_sound_ms
-  type: float
-  description: This is the speed of sound in meters/second at the plane's location.
 - name: sim/weather/wind_altitude_msl_m[0]
   type: float
   description: ">= 0"
@@ -10093,15 +8458,6 @@ datarefs:
 - name: sim/weather/dewpoi_sealevel_c
   type: float
   description: The dew point at sea level.
-- name: sim/weather/relative_humidity_sealevel_percent
-  type: float
-  description: Relative humidity at sea-level
-- name: sim/weather/temperature_ambient_c
-  type: float
-  description: The air temperature outside the aircraft (at altitude).
-- name: sim/weather/temperature_le_c
-  type: float
-  description: The air temperature at the leading edge of the wings in degrees C.
 - name: sim/weather/thermal_percent
   type: float
   description: The percentage of thermal occurance in the area.
@@ -10118,25 +8474,6 @@ datarefs:
 - name: sim/weather/runway_is_patchy
   type: float
   description: 0 = uniform conditions, 1 = patchy conditions
-- name: sim/weather/wind_direction_degt
-  type: float
-  description: The effective direction of the wind at the plane's location.
-- name: sim/weather/wind_speed_kt
-  type: float
-  description: ">= 0"
-- name: sim/weather/wind_now_x_msc
-  type: float
-  description: Wind direction vector in OpenGL coordinates, X component.
-- name: sim/weather/wind_now_y_msc
-  type: float
-  description: Wind direction vector in OpenGL coordinates, Y component.
-- name: sim/weather/wind_now_z_msc
-  type: float
-  description: Wind direction vector in OpenGL coordinates, Z component.
-- name: sim/weather/precipitation_on_aircraft_ratio
-  type: float
-  description: The amount of rain on the airplane windshield as a ratio from 0 to
-    1.
 - name: sim/world/boat/velocity_msc
   type: float[2]
   description: Velocity of the boat in meters per second in its current direction.  Index
@@ -10213,9 +8550,6 @@ datarefs:
 - name: sim/world/boat/carrier_catshot_end_z_mtr
   type: float
   description: Z position (in model coordinates) of the end of the cat-shot track
-- name: sim/world/boat/carrier_catshot_status
-  type: int
-  description: 0=no cat shot set up,1=cat shot waiting to launch,2=in progress
 - name: sim/world/winch/winch_ramp_up_time_sec
   type: float
   description: This is how long it takes the winch to reach maximum speed for a glider
@@ -10231,42 +8565,6 @@ datarefs:
   description: This is the maximum horsepower the winch can deliver reeling in the
     cable. Cable speed will decay with higher force on the cable to not exceed this
     limit.
-- name: sim/aircraft2/metadata/is_ultralight
-  type: int
-  description: 1 if the vehicle is categorized as an ultralight, 0 if it is not.
-- name: sim/aircraft2/metadata/is_experimental
-  type: int
-  description: 1 if the vehicle is categorized as experimental, 0 if it is not.
-- name: sim/aircraft2/metadata/is_general_aviation
-  type: int
-  description: 1 if the vehicle is categorized as a general aviation aircraft, 0 if
-    it is not.
-- name: sim/aircraft2/metadata/is_airliner
-  type: int
-  description: 1 if the vehicle is categorized as an airliner, 0 if it is not.
-- name: sim/aircraft2/metadata/is_military
-  type: int
-  description: 1 if the vehicle is categorized as a military aircraft, 0 if it is
-    not.
-- name: sim/aircraft2/metadata/is_cargo
-  type: int
-  description: 1 if the vehicle is categorized as a cargo aircraft, 0 if it is not.
-- name: sim/aircraft2/metadata/is_glider
-  type: int
-  description: 1 if the vehicle is categorized as a glider, 0 if it is not.
-- name: sim/aircraft2/metadata/is_seaplane
-  type: int
-  description: 1 if the vehicle is categorized as a seaplane, 0 if it is not.
-- name: sim/aircraft2/metadata/is_helicopter
-  type: int
-  description: 1 if the vehicle is categorized as a helicopter, 0 if it is not.
-- name: sim/aircraft2/metadata/is_vtol
-  type: int
-  description: 1 if the vehicle is categorized as a VTOL, 0 if it is not.
-- name: sim/aircraft2/metadata/is_sci_fi
-  type: int
-  description: 1 if the vehicle is categorized as a science fiction aircraft, 0 if
-    it is not.
 - name: sim/aircraft2/engine/low_idle_ratio
   type: float
   description: This is the idle ratio for the engines at low idle.  1.0 provides default
@@ -10286,253 +8584,12 @@ datarefs:
 - name: sim/aircraft2/engine/flap_retraction_time_sec
   type: float
   description: Time for flaps to go from full extension to full retraction
-- name: sim/aircraft2/engine/exhaust_dirtiness_ratio
-  type: float
-  description: dirtiness of built-in exhaust effects, 1.0 is default, positive numbers
-    are more dirty
-- name: sim/cockpit2/annunciators/master_caution
-  type: int
-  description: 'This goes off any time there is a major problem with the bird: like
-    it is on fire or something    // array of annunciators... kept as array for UDP
-    IO'
-- name: sim/cockpit2/annunciators/master_warning
-  type: int
-  description: This goes off whenever there is some more moderate problem with the
-    bird... maybe lo fuel pressure ot qty
-- name: sim/cockpit2/annunciators/master_accept
-  type: int
-  description: 'Hit this button to CLEAR the master caution and warning: it says that
-    you hear the buzzer and to shut it up already'
-- name: sim/cockpit2/annunciators/autopilot_disconnect
-  type: int
-  description: This goes off for a few moments when the autopilot disconnects.. you
-    wanna KNOW if otto just quit on you!
-- name: sim/cockpit2/annunciators/low_vacuum
-  type: int
-  description: 'The vacuum pressure, which drives the instruments in the old prop
-    planes, is low: the artificial horizon may loose it is orientation!'
-- name: sim/cockpit2/annunciators/low_voltage
-  type: int
-  description: The voltage os too high or low on one of the electrical buses
-- name: sim/cockpit2/annunciators/fuel_quantity
-  type: int
-  description: Fuel qty. no points for guessing if it is too high or too low to trigger
-    this one
-- name: sim/cockpit2/annunciators/hydraulic_pressure
-  type: int
-  description: Hydraulic pressure. should indicate if press is lo or hi
-- name: sim/cockpit2/annunciators/speedbrake
-  type: int
-  description: 'Speedbrake deployed: good to know so you do not forget it..'
-- name: sim/cockpit2/annunciators/GPWS
-  type: int
-  description: 'Ground proximity warning system: PULL UP! PULL UP! my lancair does
-    this during my typical red-baron approaches!'
-- name: sim/cockpit2/annunciators/ice
-  type: int
-  description: Ice detected on the plane.. most people agree this is NOT a good thing.
-- name: sim/cockpit2/annunciators/low_rotor
-  type: int
-  description: 'Rotor rpm on the helo has dropped below normal operating: power availability
-    will be reduced!'
-- name: sim/cockpit2/annunciators/high_rotor
-  type: int
-  description: 'Rotor rpm on the helo has exceeded normal operating: power availability
-    will be reduced, and god knows if the blades will stay ON!'
-- name: sim/cockpit2/annunciators/pitot_heat
-  type: int
-  description: Pitot heat is OFF (YUP! OFF!) turn it on to heat up the pitot tube,
-    which measures air pressure to give you air speed.
-- name: sim/cockpit2/annunciators/transonic
-  type: int
-  description: You are about to break the speed of sound when accelerating, or drop
-    below the speed of sound if decelerating! the handling of the plane will change!
-- name: sim/cockpit2/annunciators/slats
-  type: int
-  description: slats deployed
-- name: sim/cockpit2/annunciators/flight_director
-  type: int
-  description: flight director failure
-- name: sim/cockpit2/annunciators/autopilot
-  type: int
-  description: autopilot failure
-- name: sim/cockpit2/annunciators/yaw_damper
-  type: int
-  description: yaw damper failure
-- name: sim/cockpit2/annunciators/fuel_pressure_low
-  type: int[8]
-  description: fuel pressure low - per engine
-- name: sim/cockpit2/annunciators/oil_pressure_low
-  type: int[8]
-  description: fuel pressure low - per engine
-- name: sim/cockpit2/annunciators/oil_temperature_high
-  type: int[8]
-  description: oil temperature high - per engine
-- name: sim/cockpit2/annunciators/generator_off
-  type: int[8]
-  description: generator off - per engine
-- name: sim/cockpit2/annunciators/chip_detected
-  type: int[8]
-  description: chip detected - per engine
-- name: sim/cockpit2/annunciators/engine_fires
-  type: int[8]
-  description: engine fire - per engine
-- name: sim/cockpit2/annunciators/igniter_on
-  type: int[8]
-  description: igniter on - per engine
-- name: sim/cockpit2/annunciators/reverser_on
-  type: int[8]
-  description: reverser on - per engine
-- name: sim/cockpit2/annunciators/beta
-  type: int[8]
-  description: propeller in beta mode - per engine, double as NTS test light in fixed
-    turboprops
-- name: sim/cockpit2/annunciators/burner_on
-  type: int[8]
-  description: burner on - per engine
-- name: sim/cockpit2/annunciators/inverter_off
-  type: int[2]
-  description: inverter off - per 2 inverters
-- name: sim/cockpit2/annunciators/N1_low
-  type: int[8]
-  description: N1 of engine is too low for AC - per engine
-- name: sim/cockpit2/annunciators/N1_high
-  type: int[8]
-  description: N1 too high - per engine
-- name: sim/cockpit2/annunciators/reverser_not_ready
-  type: int[8]
-  description: reversers not ready
-- name: sim/cockpit2/annunciators/ice_vane_extend
-  type: int[8]
-  description: ice vain extended (per engine)
-- name: sim/cockpit2/annunciators/ice_vane_fail
-  type: int[8]
-  description: ice vain failed (per engine)
-- name: sim/cockpit2/annunciators/bleed_air_off
-  type: int[8]
-  description: bleed air off (per engine)
-- name: sim/cockpit2/annunciators/bleed_air_fail
-  type: int[8]
-  description: bleed air failed (per engine)
-- name: sim/cockpit2/annunciators/auto_feather_arm
-  type: int[8]
-  description: auto feather armed (per engine)
-- name: sim/cockpit2/annunciators/fuel_transfer
-  type: int[9]
-  description: fuel transfer on (per tank)
-- name: sim/cockpit2/annunciators/hvac
-  type: int
-  description: duct overheated
-- name: sim/cockpit2/annunciators/battery_charge_hi
-  type: int
-  description: battery is charging too rapidly - may overheat
-- name: sim/cockpit2/annunciators/cabin_altitude_12500
-  type: int
-  description: cabin altitude at or above 12500
-- name: sim/cockpit2/annunciators/autopilot_trim_fail
-  type: int
-  description: autopilot trim failure
-- name: sim/cockpit2/annunciators/electric_trim_off
-  type: int
-  description: electric trim is off
-- name: sim/cockpit2/annunciators/crossfeed_on
-  type: int
-  description: crossfeed on
-- name: sim/cockpit2/annunciators/landing_taxi_lite
-  type: int
-  description: landing or taxiway light on but gear up
-- name: sim/cockpit2/annunciators/cabin_door_open
-  type: int
-  description: cabin door is open
-- name: sim/cockpit2/annunciators/external_power_on
-  type: int
-  description: external power is on
-- name: sim/cockpit2/annunciators/passenger_oxy_on
-  type: int
-  description: passenger oxygen on
-- name: sim/cockpit2/annunciators/gear_unsafe
-  type: int
-  description: gear is unsafe
-- name: sim/cockpit2/annunciators/autopilot_trim_down
-  type: int
-  description: autopilot trimming down
-- name: sim/cockpit2/annunciators/autopilot_trim_up
-  type: int
-  description: autopilot trimming up
-- name: sim/cockpit2/annunciators/autopilot_bank_limit
-  type: int
-  description: autopilot bank limit is turned ON, autopilot will keep bank below 12.5
-    degrees of bank
-- name: sim/cockpit2/annunciators/autopilot_soft_ride
-  type: int
-  description: autopilot soft ride is on
-- name: sim/cockpit2/annunciators/no_inverters
-  type: int
-  description: no inverters are on
-- name: sim/cockpit2/annunciators/fuel_pressure
-  type: int
-  description: Fuel pressure is lo, or maybe hi, for this engine    // x8
-- name: sim/cockpit2/annunciators/oil_pressure
-  type: int
-  description: Oil pressure is lo, or maybe hi, for this engine    // x8
-- name: sim/cockpit2/annunciators/oil_temperature
-  type: int
-  description: Oil temperature hi for this engine    // x8
-- name: sim/cockpit2/annunciators/generator
-  type: int
-  description: The generator has failed! the plane cannot charge up. this may happen
-    at lo rpm and go away as the engine revs. happens with my plane    // x8
-- name: sim/cockpit2/annunciators/chip_detect
-  type: int
-  description: We detected chips of metal in the engine somewhere. most people agree
-    this is not good.    // x8
-- name: sim/cockpit2/annunciators/engine_fire
-  type: int
-  description: The engine is on FIRE! this adds to excitement    // x8
-- name: sim/cockpit2/annunciators/reverser_deployed
-  type: int
-  description: Thrust-reverse deployed!    // x8
-- name: sim/cockpit2/annunciators/prop_beta
-  type: int
-  description: Propeller in beta mode    // x8
-- name: sim/cockpit2/annunciators/afterburner
-  type: int
-  description: Afterburners on!    // x8
-- name: sim/cockpit2/annunciators/inverter
-  type: int
-  description: The inverter has failed! the plane cannot convert ac from the generators
-    to dc for the instruments.     // x2
-- name: sim/cockpit2/annunciators/stall_warning
-  type: int
-  description: Stall warning going off, yes or no.
-- name: sim/cockpit2/annunciators/stall_warning_ratio
-  type: float
-  description: For aircraft with variable stall warnings, 0 = no stall, 1 = full stall
-- name: sim/cockpit2/annunciators/gear_warning
-  type: int
-  description: Gear warning going off, yes or no.
-- name: sim/cockpit2/annunciators/gear_warning_aural
-  type: int
-  description: Gear aural warning going off, yes or no.
-- name: sim/cockpit2/annunciators/no_smoking
-  type: int
-  description: No smoking alert on, yes or no.
-- name: sim/cockpit2/annunciators/fasten_seatbelt
-  type: int
-  description: Seatbelt sign on, yes or no.
-- name: sim/cockpit2/annunciators/windshear_warning
-  type: int
-  description: True if there's a windshear warning active
 - name: sim/cockpit2/annunciators/plugin_master_warning
   type: int
   description: Writeable without override. Write 1 to trigger master warning.
 - name: sim/cockpit2/annunciators/plugin_master_caution
   type: int
   description: Writeable without override. Write 1 to trigger master caution.
-- name: sim/cockpit2/autopilot/autopilot2_avail
-  type: int
-  description: Autopilot sources are hardwired to respective side, and two autopilots
-    are available
 - name: sim/cockpit2/autopilot/master_flight_director
   type: int
   description: 'If aputopilot2_avail is true, this selects the master FD: 0 = pilot,
@@ -10545,9 +8602,6 @@ datarefs:
   type: int
   description: 'Auto-throttle: 0=servos declutched (arm, hold), 1=airspeed hold, 2=N1
     target hold, 3=retard, 4=reserved for future use'
-- name: sim/cockpit2/autopilot/autothrottle_on
-  type: int
-  description: Auto-throttle really working?  Takes into account failures, esys, etc.
 - name: sim/cockpit2/autopilot/electric_trim_on
   type: int
   description: Electric pitch trim on - if off, autopilot flies with pitch servo only,
@@ -10558,17 +8612,6 @@ datarefs:
 - name: sim/cockpit2/autopilot/otto_fail_warn
   type: int
   description: fail warn all lights on
-- name: sim/cockpit2/autopilot/otto_ready
-  type: int
-  description: whether the autopilot is ready, but not actually turned on. This is
-    true when the autopilot has powered, has no failures, and is ready to be engaged
-    but not engaged yet.
-- name: sim/cockpit2/autopilot/heading_mode
-  type: int
-  description: Autopilot heading mode.
-- name: sim/cockpit2/autopilot/altitude_mode
-  type: int
-  description: Autopilot altitude mode.
 - name: sim/cockpit2/autopilot/bank_angle_mode
   type: int
   description: Maximum bank angle mode, 0->6. Higher number is steeper allowable bank.
@@ -10584,64 +8627,12 @@ datarefs:
   type: int
   description: Autopilot 3 mode, 0 is off, 1 has no meaning, 2 is on with autopilot
     servos.  Good for the AP swich.
-- name: sim/cockpit2/autopilot/autopilot_on
-  type: int
-  description: Is the autopilot really on? Takes into account electrical system, failures,
-    etc.;
-- name: sim/cockpit2/autopilot/autopilot2_on
-  type: int
-  description: Is the autopilot 2 really on? Takes into account electrical system,
-    failures, etc.;
-- name: sim/cockpit2/autopilot/autopilot3_on
-  type: int
-  description: Is the autopilot 3 really on? Takes into account electrical system,
-    failures, etc.;
-- name: sim/cockpit2/autopilot/autopilot_on_or_cws
-  type: int
-  description: Is the autopilot really on? Like servos_on, but stays on even the servos
-    are temporarily off for CWS.
-- name: sim/cockpit2/autopilot/autopilot2_on_or_cws
-  type: int
-  description: Is the autopilot 2 really on? Like servos_on, but stays on even the
-    servos are temporarily off for CWS.
-- name: sim/cockpit2/autopilot/autopilot3_on_or_cws
-  type: int
-  description: Is the autopilot 2 really on? Like servos_on, but stays on even the
-    servos are temporarily off for CWS.
-- name: sim/cockpit2/autopilot/servos_on
-  type: int
-  description: Are the servos on?  Takes into account FD mode and control-wheel-steering,
-    failures, etc.
-- name: sim/cockpit2/autopilot/servos2_on
-  type: int
-  description: Are the servos on?  Takes into account FD2 mode and control-wheel-steering,
-    failures, etc.
-- name: sim/cockpit2/autopilot/servos3_on
-  type: int
-  description: Are the servos on?  Takes into account AP3 mode and control-wheel-steering,
-    failures, etc.
 - name: sim/cockpit2/autopilot/airspeed_is_mach
   type: int
   description: Autopilot airspeed is Mach number rather than knots.
 - name: sim/cockpit2/autopilot/alt_vvi_is_showing_vvi
   type: int
   description: Is the combined alt/vvi selector showing VVI?
-- name: sim/cockpit2/autopilot/vnav_armed
-  type: int
-  description: Vnav is armed, 0 or 1 - this is different from the "FMS" button - it
-    is used ONLY for a physical G1000 connected by ethernet.
-- name: sim/cockpit2/autopilot/altitude_hold_armed
-  type: int
-  description: Altitude is armed, 0 or 1.
-- name: sim/cockpit2/autopilot/hnav_armed
-  type: int
-  description: Localizer is armed, 0 or 1.
-- name: sim/cockpit2/autopilot/glideslope_armed
-  type: int
-  description: Glideslope is armed, 0 or 1.
-- name: sim/cockpit2/autopilot/backcourse_on
-  type: int
-  description: Back course is armed, 0 or 1.
 - name: sim/cockpit2/autopilot/airspeed_dial_kts_mach
   type: float
   description: Airspeed hold value, knots or Mach depending on km_is_mach.
@@ -10671,12 +8662,6 @@ datarefs:
 - name: sim/cockpit2/autopilot/altitude_dial_ft
   type: float
   description: VVI commanded in FPM.
-- name: sim/cockpit2/autopilot/altitude_hold_ft
-  type: float
-  description: Altitude hold commanded in feet indicated.
-- name: sim/cockpit2/autopilot/altitude_vnav_ft
-  type: float
-  description: Target altitude hold in VNAV mode.
 - name: sim/cockpit2/autopilot/barometer_setting_in_hg_alt_preselector
   type: float
   description: baro setting of the altitude preselector
@@ -10702,90 +8687,14 @@ datarefs:
 - name: sim/cockpit2/autopilot/turn_rate_deg_sec
   type: float
   description: Turn rate commanded in degrees per second, positive right
-- name: sim/cockpit2/autopilot/flight_director_pitch_deg
-  type: float
-  description: Flight director pitch deflection in degrees, pos up.
-- name: sim/cockpit2/autopilot/flight_director_roll_deg
-  type: float
-  description: Flight director roll deflection in degrees, pos right.
-- name: sim/cockpit2/autopilot/flight_director2_pitch_deg
-  type: float
-  description: Flight director 2 pitch deflection in degrees, pos up.
-- name: sim/cockpit2/autopilot/flight_director2_roll_deg
-  type: float
-  description: Flight director 2 roll deflection in degrees, pos right.
 - name: sim/cockpit2/autopilot/TOGA_pitch_deg
   type: float
   description: Nose-up pitch to hold when TOGA operations are in effect.  Set this
     back when your aircraft unloads!
-- name: sim/cockpit2/autopilot/roll_status
-  type: int
-  description: Autopilot Roll-Hold Status. 0=off,2=captured
-- name: sim/cockpit2/autopilot/rate_status
-  type: int
-  description: 'Autopilot turn rate hold status: 0=off, 2=captured'
-- name: sim/cockpit2/autopilot/heading_status
-  type: int
-  description: Autopilot Heading Select Status. 0=off,2=captured
-- name: sim/cockpit2/autopilot/heading_hold_status
-  type: int
-  description: Autopilot Heading Hold Status. 0=off,2=captured
-- name: sim/cockpit2/autopilot/track_status
-  type: int
-  description: 'Autopilot Track Select Status: 0=off,2=captured'
-- name: sim/cockpit2/autopilot/nav_status
-  type: int
-  description: Autopilot Nav Status. 0=off,1=armed,2=captured
-- name: sim/cockpit2/autopilot/gpss_status
-  type: int
-  description: Autopilot GPSS Status. 0=off, 2=active
-- name: sim/cockpit2/autopilot/rollout_status
-  type: int
-  description: Autopilot Rollout Status. 0=off,1=armed,2=captured
-- name: sim/cockpit2/autopilot/flare_status
-  type: int
-  description: Autopilot Flare Status. 0=off,1=armed,2=captured
-- name: sim/cockpit2/autopilot/backcourse_status
-  type: int
-  description: Autopilot Back-course Status. 0=off,1=armed,2=captured
-- name: sim/cockpit2/autopilot/TOGA_lateral_status
-  type: int
-  description: 'Autopilot Lateral TOGA mode: 0=off,2=captured'
-- name: sim/cockpit2/autopilot/pitch_status
-  type: int
-  description: Autopilot Pitch-Hold Status. 0=off,2=captured
-- name: sim/cockpit2/autopilot/vvi_status
-  type: int
-  description: Autopilot VVI Status. 0=off,2=captured
-- name: sim/cockpit2/autopilot/fpa_status
-  type: int
-  description: Autopilot FPA Status. 0=off,2=captured
-- name: sim/cockpit2/autopilot/speed_status
-  type: int
-  description: Autopilot Speed-hold (via pitch) status. 0=off,2=captured
-- name: sim/cockpit2/autopilot/altitude_hold_status
-  type: int
-  description: Autopilot Altitude hold status. 0=off,1=armed,2=captured
-- name: sim/cockpit2/autopilot/glideslope_status
-  type: int
-  description: Autopilot glideslope status. 0=off,1=armed,2=captured
-- name: sim/cockpit2/autopilot/vnav_status
-  type: int
-  description: Autopilot VNAV status. 0=off,1=armed,2=captured - for a physical hardware
-    g1000 connected by Ethernet only!!!
 - name: sim/cockpit2/autopilot/fms_vnav
   type: int
   description: Enables the FMS to take over vertical control of the autopilot.   This
     matches the command "sim/autopilot/FMS"."
-- name: sim/cockpit2/autopilot/TOGA_status
-  type: int
-  description: Autopilot TOGA vertical (go-around) status. 0=off,1=armed,2=captured
-- name: sim/cockpit2/autopilot/approach_status
-  type: int
-  description: Autopilot approach status.  0=off,1=armed,2=captured
-- name: sim/cockpit2/autopilot/dead_reckoning
-  type: int
-  description: Whether the autopilot is using dead-reckoning to fly over a VOR station
 - name: sim/cockpit2/camera/camera_offset_pitch
   type: float
   description: In-cockpit camera angular offset relative to airplane orientation (Pitch)
@@ -10798,57 +8707,6 @@ datarefs:
 - name: sim/cockpit2/camera/camera_field_of_view
   type: float
   description: In-cockpit camera field of view
-- name: sim/cockpit2/clock_timer/elapsed_time_hours
-  type: int
-  description: Elapsed time on the timer, hours
-- name: sim/cockpit2/clock_timer/elapsed_time_minutes
-  type: int
-  description: Elapsed time on the timer, minutes
-- name: sim/cockpit2/clock_timer/elapsed_time_seconds
-  type: int
-  description: Elapsed time on the timer, seconds
-- name: sim/cockpit2/clock_timer/zulu_time_hours
-  type: int
-  description: Zulu time, hours
-- name: sim/cockpit2/clock_timer/zulu_time_minutes
-  type: int
-  description: Zulu time, minutes
-- name: sim/cockpit2/clock_timer/zulu_time_seconds
-  type: int
-  description: Zulu time, seconds
-- name: sim/cockpit2/clock_timer/local_time_hours
-  type: int
-  description: Local time, hours
-- name: sim/cockpit2/clock_timer/local_time_minutes
-  type: int
-  description: Local time, minutes
-- name: sim/cockpit2/clock_timer/local_time_seconds
-  type: int
-  description: Local time, seconds
-- name: sim/cockpit2/clock_timer/hobbs_time_hours
-  type: int
-  description: Hobbs meter time, hours
-- name: sim/cockpit2/clock_timer/hobbs_time_minutes
-  type: int
-  description: Hobbs meter time, minutes
-- name: sim/cockpit2/clock_timer/hobbs_time_seconds
-  type: int
-  description: Hobbs meter time, seconds
-- name: sim/cockpit2/clock_timer/timer_running
-  type: int
-  description: True if timer is running
-- name: sim/cockpit2/clock_timer/timer_is_GMT
-  type: int
-  description: True if time shown is GMT
-- name: sim/cockpit2/clock_timer/date_is_showing
-  type: int
-  description: True if date is showing (date button pressed recently)
-- name: sim/cockpit2/clock_timer/current_day
-  type: int
-  description: Numeric day of month
-- name: sim/cockpit2/clock_timer/current_month
-  type: int
-  description: Numeric month of the year
 - name: sim/cockpit2/clock_timer/timer_mode
   type: int
   description: TODO
@@ -10950,9 +8808,6 @@ datarefs:
 - name: sim/cockpit2/controls/water_rudder_handle_ratio
   type: float
   description: Deployment of the water rudder, 0 is none, 1 is max
-- name: sim/cockpit2/controls/flap_handle_deploy_ratio
-  type: float
-  description: This is how far the indicator of flap deployment has moved in the cockpit.
 - name: sim/cockpit2/EFIS/map_mode
   type: int
   description: Map mode. 0=approach, 1=vor,2=map,3=nav,4=plan
@@ -11007,22 +8862,9 @@ datarefs:
 - name: sim/cockpit2/electrical/battery_on
   type: int[8]
   description: Battery turned on, 0 or 1.
-- name: sim/cockpit2/electrical/battery_amps
-  type: float[8]
-  description: Battery amperage, in (surprisingly) amps.
-- name: sim/cockpit2/electrical/battery_voltage_actual_volts
-  type: float[8]
-  description: Actual battery voltage in, umm, volts?
-- name: sim/cockpit2/electrical/battery_voltage_indicated_volts
-  type: float[8]
-  description: Indicated battery voltage in, umm, volts? ...The indication may be
-    different than the actual voltage!
 - name: sim/cockpit2/electrical/generator_on
   type: int[8]
   description: Generator turned on, 0 or 1.
-- name: sim/cockpit2/electrical/generator_amps
-  type: float[8]
-  description: Generator amperage.
 - name: sim/cockpit2/electrical/APU_generator_on
   type: int
   description: APU generator is turned on, 0 or 1.
@@ -11032,69 +8874,14 @@ datarefs:
 - name: sim/cockpit2/electrical/APU_starter_switch
   type: int
   description: APU power switch, 0 is off, 1 is on, 2 is start-er-up!
-- name: sim/cockpit2/electrical/APU_N1_percent
-  type: float
-  description: N1 of the APU
-- name: sim/cockpit2/electrical/APU_EGT_c
-  type: float
-  description: EGT of the APU
-- name: sim/cockpit2/electrical/APU_door
-  type: float
-  description: APU door open ratio
-- name: sim/cockpit2/electrical/APU_running
-  type: int
-  description: APU actually running, 0 or 1.
 - name: sim/cockpit2/electrical/cross_tie
   type: int
   description: Switch to connect the two busses together - power from one feeds the
     other.  0 or 1.
-- name: sim/cockpit2/electrical/dc_voltmeter_selection
-  type: int
-  description: Volt-meter selection (0=external,1=ctr,2=lft,3=rgt,4=tpl,5=bat - use
-    cmnds to set!
-- name: sim/cockpit2/electrical/dc_voltmeter_value
-  type: float
-  description: volt-meter value
-- name: sim/cockpit2/electrical/bus_volts
-  type: float[6]
-  description: Bus voltage for given bus - dim 4 until 1030
-- name: sim/cockpit2/electrical/bus_load_amps
-  type: float[6]
-  description: Bus load in amps per bus - dim 4 until 1030
 - name: sim/cockpit2/electrical/plugin_bus_load_amps
   type: float[6]
   description: Add additional load to this dataref to create additional custom bus
     loads.
-- name: sim/cockpit2/electrical/panel_brightness_ratio
-  type: float[4]
-  description: This is the actual panel brightness, taking into account failures
-- name: sim/cockpit2/electrical/panel_brightness_ratio_auto
-  type: float[4]
-  description: This is the actual panel brightness, taking into account failures
-- name: sim/cockpit2/electrical/panel_brightness_ratio_manual
-  type: float[4]
-  description: This is the actual panel brightness, taking into account failures
-- name: sim/cockpit2/electrical/instrument_brightness_ratio
-  type: float[32]
-  description: Actual instrument brightness, taking into account failures - was [16]
-    until 11.10
-- name: sim/cockpit2/electrical/instrument_brightness_ratio_auto
-  type: float[32]
-  description: Actual instrument brightness, taking into account failures - was [16]
-    until 11.10
-- name: sim/cockpit2/electrical/instrument_brightness_ratio_manual
-  type: float[32]
-  description: Actual instrument brightness, taking into account failures - was [16]
-    until 11.10
-- name: sim/cockpit2/electrical/HUD_brightness_ratio
-  type: float
-  description: Actual HUD brightness, taking into account failures
-- name: sim/cockpit2/electrical/HUD_brightness_ratio_auto
-  type: float
-  description: Actual HUD brightness, taking into account failures
-- name: sim/cockpit2/electrical/HUD_brightness_ratio_manual
-  type: float
-  description: Actual HUD brightness, taking into account failures
 - name: sim/cockpit2/engine/actuators/cyclic_elevator_deg
   type: float[8]
   description: This is the longitudinal cyclic COMMAND, in degrees. Positive forwards
@@ -11184,9 +8971,6 @@ datarefs:
 - name: sim/cockpit2/engine/actuators/ignition_key
   type: int[8]
   description: 0 = off, 1 = left, 2 = right, 3 = both, 4 = starting
-- name: sim/cockpit2/engine/actuators/starter_hit
-  type: int[8]
-  description: True while the starter motor is engaged
 - name: sim/cockpit2/engine/actuators/fadec_on
   type: int[8]
   description: Fadec, ok or off.
@@ -11244,73 +9028,6 @@ datarefs:
 - name: sim/cockpit2/engine/actuators/EPR_target_bug
   type: float[8]
   description: EPR bug (target for thrust reference), %
-- name: sim/cockpit2/engine/indicators/N1_percent
-  type: float[8]
-  description: N1, %.
-- name: sim/cockpit2/engine/indicators/N2_percent
-  type: float[8]
-  description: N2, %.
-- name: sim/cockpit2/engine/indicators/MPR_in_hg
-  type: float[8]
-  description: Manifold pressure, inches HG.
-- name: sim/cockpit2/engine/indicators/EPR_ratio
-  type: float[8]
-  description: EPR, ratio.
-- name: sim/cockpit2/engine/indicators/torque_n_mtr
-  type: float[8]
-  description: Torque, NM.
-- name: sim/cockpit2/engine/indicators/fuel_flow_kg_sec
-  type: float[8]
-  description: total fuel flow, kilograms per second.
-- name: sim/cockpit2/engine/indicators/fuel_flow_dry_kg_sec
-  type: float[8]
-  description: dry fuel flow, kilograms per second.
-- name: sim/cockpit2/engine/indicators/ITT_deg_C
-  type: float[8]
-  description: ITT, deg.  Dataref label is wrong, units vary by plane.
-- name: sim/cockpit2/engine/indicators/EGT_deg_C
-  type: float[8]
-  description: EGT, deg.  Dataref label is wrong, units vary by plane.
-- name: sim/cockpit2/engine/indicators/CHT_deg_C
-  type: float[8]
-  description: CHT, deg.  Dataref label is wrong, units vary by plane.
-- name: sim/cockpit2/engine/indicators/fuel_pressure_psi
-  type: float[8]
-  description: Fuel pressure, psi.
-- name: sim/cockpit2/engine/indicators/oil_pressure_psi
-  type: float[8]
-  description: Oil pressure, psi.
-- name: sim/cockpit2/engine/indicators/oil_temperature_deg_C
-  type: float[8]
-  description: Oil temp, deg.    Dataref label is wrong, units vary by plane.
-- name: sim/cockpit2/engine/indicators/oil_quantity_ratio
-  type: float[8]
-  description: Oil quantity, 0.0 to 1.0.
-- name: sim/cockpit2/engine/indicators/power_watts
-  type: float[8]
-  description: Actual engine power output.
-- name: sim/cockpit2/engine/indicators/thrust_n
-  type: float[8]
-  description: Total engine thrust in Newtons
-- name: sim/cockpit2/engine/indicators/thrust_dry_n
-  type: float[8]
-  description: Dry engine thrust in Newtons
-- name: sim/cockpit2/engine/indicators/engine_speed_rpm
-  type: float[8]
-  description: Engine speed, radians per second
-- name: sim/cockpit2/engine/indicators/prop_speed_rpm
-  type: float[8]
-  description: Prop speed, radians per second                                                                                                                                                                                                         boolean
-- name: sim/cockpit2/engine/indicators/carburetor_temperature_C
-  type: float[8]
-  description: Carburator temperature in degrees C
-- name: sim/cockpit2/engine/indicators/igniter_sparking
-  type: int[8]
-  description: Whether igniters are sparking, either because the pilot or system logic
-    turned them on, power is available and they are not failed
-- name: sim/cockpit2/engine/indicators/igniter_volt
-  type: float[8]
-  description: Voltage we have to charge the ignition, useful for sound effects
 - name: sim/cockpit2/fuel/fuel_tank_selector_left
   type: int
   description: This is the left-engine fuel-tank selector.
@@ -11329,12 +9046,6 @@ datarefs:
 - name: sim/cockpit2/fuel/fuel_tank_pump_on
   type: int[9]
   description: True if the pump for this tank is on.
-- name: sim/cockpit2/fuel/showing_aux
-  type: int
-  description: True if user is holding down the aux-tank button.
-- name: sim/cockpit2/fuel/fuel_quantity
-  type: float[9]
-  description: Indicated fuel level per tank
 - name: sim/cockpit2/fuel/fuel_totalizer_init_kg
   type: float
   description: Total fuel on board the fuel totalizer was initialized with
@@ -11351,14 +9062,6 @@ datarefs:
   type: float
   description: Automatically transfer from AUXes to FEEDers in auto mode when feeder
     has more than X kg left to full
-- name: sim/cockpit2/fuel/fuel_level_indicated_left
-  type: float
-  description: Indicated fuel level left, shows total or only nacelle tanks depending
-    if user is holding down the aux-tank button.
-- name: sim/cockpit2/fuel/fuel_level_indicated_right
-  type: float
-  description: Indicated fuel level right, shows total or only nacelle tanks depending
-    if user is holding down the aux-tank button.
 - name: sim/cockpit2/fuel/firewall_closed_left
   type: int
   description: Firewall valve closed, left
@@ -11370,14 +9073,6 @@ datarefs:
   description: 0=Off 1=Auto 2=On - If fuel pressure on one side is low, due to fuel
     pump failure for example, cross-feed is opened to allow one pump to supply pressure
     to both engines.
-- name: sim/cockpit2/fuel/no_transfer_left
-  type: int
-  description: Warning light, will illuminate when transfer from aux to feeder is
-    requested, but aux tank is empty
-- name: sim/cockpit2/fuel/no_transfer_right
-  type: int
-  description: Warning light, will illuminate when transfer from aux to feeder is
-    requested, but aux tank is empty
 - name: sim/cockpit2/fuel/transfer_test
   type: int
   description: Transfer test switch. 0 = normal, -1 = test left, +1 = test right
@@ -11416,12 +9111,6 @@ datarefs:
 - name: sim/cockpit2/gauges/actuators/airspeed_bug_deg
   type: float
   description: ASI bug location on the dial, in degrees, 0 straight up, positive clockwise.
-- name: sim/cockpit2/gauges/indicators/slip_deg
-  type: float
-  description: Slip indication, in degrees of ball deflection from centered.
-- name: sim/cockpit2/gauges/indicators/compass_heading_deg_mag
-  type: float
-  description: Indicated heading of the wet compass, in degrees.
 - name: sim/cockpit2/gauges/indicators/airspeed_acceleration_kts_sec_pilot
   type: float
   description: acceleration of airspeed (ASI trend)
@@ -11437,211 +9126,6 @@ datarefs:
 - name: sim/cockpit2/gauges/indicators/airspeed_kts_stby
   type: float
   description: 'Indicated airspeed in knots, standby instrument. Writeable with override_IAS '
-- name: sim/cockpit2/gauges/indicators/calibrated_airspeed_kts_pilot
-  type: float
-  description: Calibrated airspeed in knots, pilot.
-- name: sim/cockpit2/gauges/indicators/calibrated_airspeed_kts_copilot
-  type: float
-  description: Calibrated airspeed in knots, copilot.
-- name: sim/cockpit2/gauges/indicators/calibrated_airspeed_kts_stby
-  type: float
-  description: 'Calibrated airspeed in knots, standby instrument '
-- name: sim/cockpit2/gauges/indicators/altitude_ft_pilot
-  type: float
-  description: Indicated height, MSL, in feet, primary system, based on pilots barometric
-    pressure input.
-- name: sim/cockpit2/gauges/indicators/altitude_ft_copilot
-  type: float
-  description: Indicated height, MSL, in feet, primary system, based on co-pilots
-    barometric pressure input.
-- name: sim/cockpit2/gauges/indicators/altitude_ft_stby
-  type: float
-  description: Indicated height, MSL, in feet, primary system, based on standby instrument
-    barometric pressure input.
-- name: sim/cockpit2/gauges/indicators/vvi_fpm_pilot
-  type: float
-  description: Indicated vertical speed in feet per minute, pilot system.
-- name: sim/cockpit2/gauges/indicators/vvi_fpm_copilot
-  type: float
-  description: Indicated vertical speed in feet per minute, copilot system.
-- name: sim/cockpit2/gauges/indicators/turn_rate_roll_deg_pilot
-  type: float
-  description: Indicated rate-of-turn, in degrees deflection, for newer roll-augmented
-    turn-indicators.  Pilot side.
-- name: sim/cockpit2/gauges/indicators/true_airspeed_kts_pilot
-  type: float
-  description: True airspeed in knots, for pilot pitot/static, calculated by ADC,
-    requires pitot, static, oat sensor and ADC all to work correctly to give correct
-    value
-- name: sim/cockpit2/gauges/indicators/true_airspeed_kts_copilot
-  type: float
-  description: True airspeed in knots, for copilot pitot/static, calculated by ADC,
-    requires pitot, static, oat sensor and ADC all to work correctly to give correct
-    value
-- name: sim/cockpit2/gauges/indicators/mach_pilot
-  type: float
-  description: number
-- name: sim/cockpit2/gauges/indicators/mach_copilot
-  type: float
-  description: number
-- name: sim/cockpit2/gauges/indicators/turn_rate_roll_deg_copilot
-  type: float
-  description: Indicated rate-of-turn, in degrees deflection, for newer roll-augmented
-    turn-indicators.  Copilot side.
-- name: sim/cockpit2/gauges/indicators/turn_rate_heading_deg_pilot
-  type: float
-  description: Indicated rate-of-turn, in degrees deflection, for old-style turn-indicators.  Pilot
-    side.
-- name: sim/cockpit2/gauges/indicators/turn_rate_heading_deg_copilot
-  type: float
-  description: Indicated rate-of-turn, in degrees deflection, for old-style turn-indicators.  Copilot
-    side.
-- name: sim/cockpit2/gauges/indicators/heading_AHARS_deg_mag_pilot
-  type: float
-  description: 'Indicated magnetic heading, in degrees.  Source: AHARS.  Side: Pilot'
-- name: sim/cockpit2/gauges/indicators/heading_AHARS_deg_mag_copilot
-  type: float
-  description: 'Indicated magnetic heading, in degrees.  Source: AHARS.  Side: Copilot'
-- name: sim/cockpit2/gauges/indicators/heading_electric_deg_mag_pilot
-  type: float
-  description: 'Indicated magnetic heading, in degrees.  Source: electric gyro.  Side:
-    Pilot'
-- name: sim/cockpit2/gauges/indicators/heading_electric_deg_mag_copilot
-  type: float
-  description: 'Indicated magnetic heading, in degrees.  Source: electric gyro.  Side:
-    Copilot'
-- name: sim/cockpit2/gauges/indicators/heading_vacuum_deg_mag_pilot
-  type: float
-  description: 'Indicated magnetic heading, in degrees.  Source: vacuum gyro.  Side:
-    Pilot'
-- name: sim/cockpit2/gauges/indicators/heading_vacuum_deg_mag_copilot
-  type: float
-  description: 'Indicated magnetic heading, in degrees.  Source: vacuum gyro.  Side:
-    Copilot'
-- name: sim/cockpit2/gauges/indicators/pitch_AHARS_deg_pilot
-  type: float
-  description: 'Indicated pitch, in degrees, positive up.  Source: AHARS.  Side: Pilot'
-- name: sim/cockpit2/gauges/indicators/pitch_AHARS_deg_copilot
-  type: float
-  description: 'Indicated pitch, in degrees, positive up.  Source: AHARS.  Side: Copilot'
-- name: sim/cockpit2/gauges/indicators/pitch_electric_deg_pilot
-  type: float
-  description: 'Indicated pitch, in degrees, positive up.  Source: electric gyro.  Side:
-    Pilot'
-- name: sim/cockpit2/gauges/indicators/pitch_electric_deg_copilot
-  type: float
-  description: 'Indicated pitch, in degrees, positive up.  Source: electric gyro.  Side:
-    Copilot'
-- name: sim/cockpit2/gauges/indicators/pitch_vacuum_deg_pilot
-  type: float
-  description: 'Indicated pitch, in degrees, positive up.  Source: vacuum gyro.  Side:
-    Pilot'
-- name: sim/cockpit2/gauges/indicators/pitch_vacuum_deg_copilot
-  type: float
-  description: 'Indicated pitch, in degrees, positive up.  Source: vacuum gyro.  Side:
-    Copilot'
-- name: sim/cockpit2/gauges/indicators/radio_altimeter_height_ft_pilot
-  type: float
-  description: Radio-altimeter indicated height in feet, pilot-side
-- name: sim/cockpit2/gauges/indicators/radio_altimeter_height_ft_copilot
-  type: float
-  description: Radio-altimeter indicated height in feet, copilot-side
-- name: sim/cockpit2/gauges/indicators/radio_altimeter_dh_lit_pilot
-  type: int
-  description: Radio-altimeter decision warning light, pilot-side
-- name: sim/cockpit2/gauges/indicators/radio_altimeter_dh_lit_copilot
-  type: int
-  description: Radio-altimeter decision warning light, copilot-side
-- name: sim/cockpit2/gauges/indicators/baro_altimeter_mda_lit_pilot
-  type: int
-  description: Baro-altimeter decision warning light, pilot-side
-- name: sim/cockpit2/gauges/indicators/baro_altimeter_mda_lit_copilot
-  type: int
-  description: Baro-altimeter decision warning light, copilot-side
-- name: sim/cockpit2/gauges/indicators/baro_altimeter_alert_lit_pilot
-  type: int
-  description: Baro-altimeter altitude alert light, as per autopilot altitude warn
-    configuration, pilot. 0 = off, 1 = lit, 2 = blinking
-- name: sim/cockpit2/gauges/indicators/baro_altimeter_alert_lit_copilot
-  type: int
-  description: Baro-altimeter altitude alert light, as per autopilot altitude warn
-    configuration, copilot. 0 = off, 1 = lit, 2 = blinking
-- name: sim/cockpit2/gauges/indicators/roll_AHARS_deg_pilot
-  type: float
-  description: 'Indicated roll, in degrees, positive right.  Source: AHARS.  Side:
-    Pilot'
-- name: sim/cockpit2/gauges/indicators/roll_AHARS_deg_copilot
-  type: float
-  description: 'Indicated roll, in degrees, positive right.  Source: AHARS.  Side:
-    Copilot'
-- name: sim/cockpit2/gauges/indicators/roll_electric_deg_pilot
-  type: float
-  description: 'Indicated roll, in degrees, positive right.  Source: electric gyro.  Side:
-    Pilot'
-- name: sim/cockpit2/gauges/indicators/roll_electric_deg_copilot
-  type: float
-  description: 'Indicated roll, in degrees, positive right.  Source: electric gyro.  Side:
-    Copilot'
-- name: sim/cockpit2/gauges/indicators/roll_vacuum_deg_pilot
-  type: float
-  description: 'Indicated roll, in degrees, positive right.  Source: vacuum gyro.  Side:
-    Pilot'
-- name: sim/cockpit2/gauges/indicators/roll_vacuum_deg_copilot
-  type: float
-  description: Indicated roll, in degrees, positive right.
-- name: sim/cockpit2/gauges/indicators/wind_heading_deg_mag
-  type: float
-  description: Wind direction currently acting on the plane, in degrees magnetic.
-- name: sim/cockpit2/gauges/indicators/wind_speed_kts
-  type: float
-  description: Wind speed currently acting on the plane, in knots true.
-- name: sim/cockpit2/gauges/indicators/suction_1_ratio
-  type: float
-  description: Vacuum system 1 suction as ratio of max available in plane.
-- name: sim/cockpit2/gauges/indicators/suction_2_ratio
-  type: float
-  description: Vacuum system 2 suction as ratio of max available in plane.
-- name: sim/cockpit2/gauges/indicators/total_energy_fpm
-  type: float
-  description: Total energy in feet/minute
-- name: sim/cockpit2/gauges/indicators/water_ratio
-  type: float
-  description: Ratio of releasable water still in the tank, 0..1.
-- name: sim/cockpit2/gauges/indicators/sideslip_degrees
-  type: float
-  description: Sideslip in degrees
-- name: sim/cockpit2/gauges/indicators/prop_sync_degrees
-  type: float
-  description: Degrees difference between two prop.  Can be used for prop sync display.
-- name: sim/cockpit2/gauges/indicators/CG_indicator
-  type: float
-- name: sim/cockpit2/gauges/indicators/ground_track_mag_pilot
-  type: float
-  description: The ground track of the aircraft in degrees magnetic
-- name: sim/cockpit2/gauges/indicators/ground_track_mag_copilot
-  type: float
-  description: The ground track of the aircraft in degrees magnetic
-- name: sim/cockpit2/gauges/indicators/max_mach_number_in_kias
-  type: float
-  description: For planes with a max mach number, this is the max mach number converted
-    to KIAS for the current plane altitude, etc. - useful for adaptive needles and
-    limit markers on tapes
-- name: sim/cockpit2/gauges/indicators/max_mach_number_or_speed_kias
-  type: float
-  description: For planes with a max mach number, this is the lesser of the max mach
-    number converted to KIAS for the current plane altitude and V-never-exceed.
-- name: sim/cockpit2/hydraulics/indicators/hydraulic_pressure_1
-  type: float
-  description: Hydraulic system 1 pressure, units set by Plane-Maker.
-- name: sim/cockpit2/hydraulics/indicators/hydraulic_pressure_2
-  type: float
-  description: Hydraulic system 2 pressure, units set by Plane-Maker.
-- name: sim/cockpit2/hydraulics/indicators/hydraulic_fluid_ratio_1
-  type: float
-  description: Hydraulic fluid quantity, ratio of max, system 1
-- name: sim/cockpit2/hydraulics/indicators/hydraulic_fluid_ratio_2
-  type: float
-  description: Hydraulic fluid quantity, ratio of max, system 2
 - name: sim/cockpit2/ice/ice_all_on
   type: int
   description: De-ice switch, 0 or 1.
@@ -11816,15 +9300,6 @@ datarefs:
   description: Electric fan (vent blower) setting, consuming 0.1 of rel_HVAVC amps
     when running. 0 = Auto (Runs whenever air_cond_on or heater_on is on), 1 = Low,
     2 = High
-- name: sim/cockpit2/pressurization/indicators/cabin_altitude_ft
-  type: float
-  description: Cabin altitude actually occurring, feet.
-- name: sim/cockpit2/pressurization/indicators/cabin_vvi_fpm
-  type: float
-  description: Cabin VVI actually occurring, fpm.
-- name: sim/cockpit2/pressurization/indicators/pressure_diffential_psi
-  type: float
-  description: Cabin differential pressure, psi.
 - name: sim/cockpit2/pressurization/indicators/outflow_valve
   type: float
   description: Pressurization outflow valve ratio. 0 for fully closed, 1 for fully
@@ -11870,18 +9345,6 @@ datarefs:
   description: Right pressurization pack, off or on. The right pack is supplied from
     the right side of the plane or through the right isolation valve and only available
     for airplanes made for 11.35 or newer
-- name: sim/cockpit2/bleedair/indicators/bleed_available_left
-  type: float
-  description: 'Bleed air available in the left duct, which can come from left engines
-    or through the left isolation valve. '
-- name: sim/cockpit2/bleedair/indicators/bleed_available_center
-  type: float
-  description: Bleed air available in the center duct, which can come from a center
-    engine, APU, GPU, or, via the isolation valves, the left and/or right ducts.
-- name: sim/cockpit2/bleedair/indicators/bleed_available_right
-  type: float
-  description: 'Bleed air available in the right duct, which can come from right engines
-    or through the right isolation valve. '
 - name: sim/cockpit2/bleedair/indicators/engine_loss_from_bleed_air_ratio
   type: float[8]
   description: Bleed air being sapped from the engine, stealing efficiency from the
@@ -11914,10 +9377,6 @@ datarefs:
   description: pressure altitude felt by the pilot's body. Will be lower than cabin
     pressure altitude when on oxygen. This is what triggers the hypoxia black-out
     effect. Writeable with override_oxygen_system
-- name: sim/cockpit2/oxygen/indicators/pass_oxygenator_working
-  type: int
-  description: passenger chemical oxygen generator on and supplying passengers' O2
-    masks. Note that the dataref to drop the masks manually is sim/operation/failures/rel_pass_o2_on
 - name: sim/cockpit2/oxygen/indicators/pass_oxygenator_min_rem
   type: float
   description: the chemical oxygen generator can still supply the passenger oxygen
@@ -12334,343 +9793,6 @@ datarefs:
 - name: sim/cockpit2/radios/actuators/marker_sens
   type: int
   description: 0 = Hi Sens, 1 = Low sens
-- name: sim/cockpit2/radios/indicators/nav1_bearing_deg_mag
-  type: float
-  description: Indicated bearing to the nav1 navaid
-- name: sim/cockpit2/radios/indicators/nav2_bearing_deg_mag
-  type: float
-  description: Indicated bearing to the nav2 navaid
-- name: sim/cockpit2/radios/indicators/nav_bearing_deg_mag
-  type: float[12]
-  description: Indicated bearing to the nav N navaid
-- name: sim/cockpit2/radios/indicators/adf1_bearing_deg_mag
-  type: float
-  description: Indicated bearing to the adf1 navaid
-- name: sim/cockpit2/radios/indicators/adf2_bearing_deg_mag
-  type: float
-  description: Indicated bearing to the adf2 navaid
-- name: sim/cockpit2/radios/indicators/gps_bearing_deg_mag
-  type: float
-  description: Indicated bearing to the selected GPS 1 destination
-- name: sim/cockpit2/radios/indicators/gps2_bearing_deg_mag
-  type: float
-  description: Indicated bearing to the selected GPS 2 destination
-- name: sim/cockpit2/radios/indicators/nav1_relative_bearing_deg
-  type: float
-  description: Indicated relative bearing to the nav1 navaid
-- name: sim/cockpit2/radios/indicators/nav2_relative_bearing_deg
-  type: float
-  description: Indicated relative bearing to the nav2 navaid
-- name: sim/cockpit2/radios/indicators/nav_relative_bearing_deg
-  type: float[12]
-  description: Indicated relative bearing to the nav N navaid
-- name: sim/cockpit2/radios/indicators/adf1_relative_bearing_deg
-  type: float
-  description: Indicated relative bearing to the adf1 navaid
-- name: sim/cockpit2/radios/indicators/adf2_relative_bearing_deg
-  type: float
-  description: Indicated relative bearing to the adf2 navaid
-- name: sim/cockpit2/radios/indicators/gps_relative_bearing_deg
-  type: float
-  description: Indicated relative bearing to the selected GPS 1 destination
-- name: sim/cockpit2/radios/indicators/gps2_relative_bearing_deg
-  type: float
-  description: Indicated relative bearing to the selected GPS 2 destination
-- name: sim/cockpit2/radios/indicators/nav1_flag_from_to_pilot
-  type: int
-  description: Nav-To-From indication, nav1, pilot, 0 is flag, 1 is to, 2 is from.
-- name: sim/cockpit2/radios/indicators/nav2_flag_from_to_pilot
-  type: int
-  description: Nav-To-From indication, nav2, pilot, 0 is flag, 1 is to, 2 is from.
-- name: sim/cockpit2/radios/indicators/nav_flag_from_to_pilot
-  type: int[12]
-  description: Nav-To-From indication, navN, pilot, 0 is flag, 1 is to, 2 is from.
-- name: sim/cockpit2/radios/indicators/nav1_flag_from_to_copilot
-  type: int
-  description: Nav-To-From indication, nav1, copilot, 0 is flag, 1 is to, 2 is from.
-- name: sim/cockpit2/radios/indicators/nav2_flag_from_to_copilot
-  type: int
-  description: Nav-To-From indication, nav2, copilot, 0 is flag, 1 is to, 2 is from.
-- name: sim/cockpit2/radios/indicators/nav_flag_from_to_copilot
-  type: int[12]
-  description: Nav-To-From indication, navN, copilot, 0 is flag, 1 is to, 2 is from.
-- name: sim/cockpit2/radios/indicators/nav1_flag_glideslope
-  type: int
-  description: Glide slope flag, nav1 - EFIS style flag that shows when glideslope
-    is expected, but not received
-- name: sim/cockpit2/radios/indicators/nav2_flag_glideslope
-  type: int
-  description: Glide slope flag, nav2 - EFIS style flag that shows when glideslope
-    is expected, but not received
-- name: sim/cockpit2/radios/indicators/nav_flag_glideslope
-  type: int[12]
-  description: Glide slope flag, nav N - EFIS style flag that shows when glideslope
-    is expected, but not received
-- name: sim/cockpit2/radios/indicators/nav1_flag_glideslope_mech
-  type: int
-  description: Glide slope flag, nav1 - mechanical instrument flag that shows whenever
-    no glideslope signal is received
-- name: sim/cockpit2/radios/indicators/nav2_flag_glideslope_mech
-  type: int
-  description: Glide slope flag, nav2 - mechanical instrument flag that shows whenever
-    no glideslope signal is received
-- name: sim/cockpit2/radios/indicators/nav_flag_glideslope_mech
-  type: int[12]
-  description: Glide slope flag, nav N - mechanical instrument flag that shows whenever
-    no glideslope signal is received
-- name: sim/cockpit2/radios/indicators/nav1_display_horizontal
-  type: int
-  description: Is there some kind of horizontal signal on nav1
-- name: sim/cockpit2/radios/indicators/nav2_display_horizontal
-  type: int
-  description: Is there some kind of horizontal signal on nav2
-- name: sim/cockpit2/radios/indicators/nav_display_horizontal
-  type: int[12]
-  description: Is there some kind of horizontal signal on nav N
-- name: sim/cockpit2/radios/indicators/nav1_display_vertical
-  type: int
-  description: Is there some kind of vertical signal on nav1
-- name: sim/cockpit2/radios/indicators/nav2_display_vertical
-  type: int
-  description: Is there some kind of vertical signal on nav2
-- name: sim/cockpit2/radios/indicators/nav_display_vertical
-  type: int[12]
-  description: Is there some kind of vertical signal on nav N
-- name: sim/cockpit2/radios/indicators/nav1_hdef_dots_pilot
-  type: float
-  description: CDI lateral deflection in dots, nav1, pilot
-- name: sim/cockpit2/radios/indicators/nav2_hdef_dots_pilot
-  type: float
-  description: CDI lateral deflection in dots, nav2, pilot
-- name: sim/cockpit2/radios/indicators/nav_hdef_dots_pilot
-  type: float[12]
-  description: CDI lateral deflection in dots, navN, pilot
-- name: sim/cockpit2/radios/indicators/gps_hdef_dots_pilot
-  type: float
-  description: CDI lateral deflection in dots, gps 1, pilot
-- name: sim/cockpit2/radios/indicators/gps2_hdef_dots_pilot
-  type: float
-  description: CDI lateral deflection in dots, gps 2, pilot
-- name: sim/cockpit2/radios/indicators/nav1_hdef_dots_copilot
-  type: float
-  description: CDI lateral deflection in dots, nav1, copilot
-- name: sim/cockpit2/radios/indicators/nav2_hdef_dots_copilot
-  type: float
-  description: CDI lateral deflection in dots, nav2, copilot
-- name: sim/cockpit2/radios/indicators/nav_hdef_dots_copilot
-  type: float[12]
-  description: CDI lateral deflection in dots, navN, copilot
-- name: sim/cockpit2/radios/indicators/gps_hdef_dots_copilot
-  type: float
-  description: CDI lateral deflection in dots, gps, copilot
-- name: sim/cockpit2/radios/indicators/gps2_hdef_dots_copilot
-  type: float
-  description: CDI lateral deflection in dots, gps 2, copilot
-- name: sim/cockpit2/radios/indicators/nav1_vdef_dots_pilot
-  type: float
-  description: CDI vertical deflection in dots, nav1, pilot
-- name: sim/cockpit2/radios/indicators/nav2_vdef_dots_pilot
-  type: float
-  description: CDI vertical deflection in dots, nav2, pilot
-- name: sim/cockpit2/radios/indicators/nav_vdef_dots_pilot
-  type: float[12]
-  description: CDI vertical deflection in dots, navN, pilot
-- name: sim/cockpit2/radios/indicators/nav1_vdef_dots_copilot
-  type: float
-  description: CDI vertical deflection in dots, nav1, copilot
-- name: sim/cockpit2/radios/indicators/nav2_vdef_dots_copilot
-  type: float
-  description: CDI vertical deflection in dots, nav2, copilot
-- name: sim/cockpit2/radios/indicators/nav_vdef_dots_copilot
-  type: float[12]
-  description: CDI vertical deflection in dots, navN, copilot
-- name: sim/cockpit2/radios/indicators/nav1_has_dme
-  type: int
-  description: Is there a DME signal from nav1's DME?
-- name: sim/cockpit2/radios/indicators/nav2_has_dme
-  type: int
-  description: Is there a DME signal from nav2's DME?
-- name: sim/cockpit2/radios/indicators/nav_has_dme
-  type: int[12]
-  description: Is there a DME signal from navN's DME?
-- name: sim/cockpit2/radios/indicators/adf1_has_dme
-  type: int
-  description: Is there a DME signal from ADF1's DME?
-- name: sim/cockpit2/radios/indicators/adf2_has_dme
-  type: int
-  description: Is there a DME signal from ADF2's DME?
-- name: sim/cockpit2/radios/indicators/gps_has_dme
-  type: int
-  description: Is there a DME signal from GPS 1?
-- name: sim/cockpit2/radios/indicators/gps2_has_dme
-  type: int
-  description: Is there a DME signal from GPS 2?
-- name: sim/cockpit2/radios/indicators/dme_has_dme
-  type: int
-  description: Is there a DME signal from standalone DME?
-- name: sim/cockpit2/radios/indicators/nav1_dme_distance_nm
-  type: float
-  description: nav1 DME distance in nautical miles.
-- name: sim/cockpit2/radios/indicators/nav2_dme_distance_nm
-  type: float
-  description: nav2 DME distance in nautical miles.
-- name: sim/cockpit2/radios/indicators/nav_dme_distance_nm
-  type: float[12]
-  description: navN DME distance in nautical miles.
-- name: sim/cockpit2/radios/indicators/adf1_dme_distance_nm
-  type: float
-  description: adf1 DME distance in nautical miles.
-- name: sim/cockpit2/radios/indicators/adf2_dme_distance_nm
-  type: float
-  description: adf2 DME distance in nautical miles.
-- name: sim/cockpit2/radios/indicators/gps_dme_distance_nm
-  type: float
-  description: gps 1 DME distance in nautical miles.
-- name: sim/cockpit2/radios/indicators/gps2_dme_distance_nm
-  type: float
-  description: gps 2 DME distance in nautical miles.
-- name: sim/cockpit2/radios/indicators/dme_dme_distance_nm
-  type: float
-  description: standalone dme DME distance in nautical miles.
-- name: sim/cockpit2/radios/indicators/nav1_dme_speed_kts
-  type: float
-  description: nav1 DME speed in knots.
-- name: sim/cockpit2/radios/indicators/nav2_dme_speed_kts
-  type: float
-  description: nav2 DME speed in knots.
-- name: sim/cockpit2/radios/indicators/nav_dme_speed_kts
-  type: float[12]
-  description: navN DME speed in knots.
-- name: sim/cockpit2/radios/indicators/adf1_dme_speed_kts
-  type: float
-  description: adf1 DME speed in knots.
-- name: sim/cockpit2/radios/indicators/adf2_dme_speed_kts
-  type: float
-  description: adf2 DME speed in knots.
-- name: sim/cockpit2/radios/indicators/gps_dme_speed_kts
-  type: float
-  description: gps 1 DME speed in knots.
-- name: sim/cockpit2/radios/indicators/gps2_dme_speed_kts
-  type: float
-  description: gps 2 DME speed in knots.
-- name: sim/cockpit2/radios/indicators/dme_dme_speed_kts
-  type: float
-  description: standalone dme DME speed in knots.
-- name: sim/cockpit2/radios/indicators/nav1_dme_time_min
-  type: float
-  description: nav1 DME time in minutes.
-- name: sim/cockpit2/radios/indicators/nav2_dme_time_min
-  type: float
-  description: nav2 DME time in minutes.
-- name: sim/cockpit2/radios/indicators/nav_dme_time_min
-  type: float[12]
-  description: navN DME time in minutes.
-- name: sim/cockpit2/radios/indicators/adf1_dme_time_min
-  type: float
-  description: adf1 DME time in minutes.
-- name: sim/cockpit2/radios/indicators/adf2_dme_time_min
-  type: float
-  description: adf2 DME time in minutes.
-- name: sim/cockpit2/radios/indicators/gps_dme_time_min
-  type: float
-  description: gps 1 DME time in minutes.
-- name: sim/cockpit2/radios/indicators/gps2_dme_time_min
-  type: float
-  description: gps 2 DME time in minutes.
-- name: sim/cockpit2/radios/indicators/dme_dme_time_min
-  type: float
-  description: standalone dme DME time in minutes.
-- name: sim/cockpit2/radios/indicators/nav1_nav_id
-  type: byte[150]
-  description: current selected navID - nav radio 1
-- name: sim/cockpit2/radios/indicators/nav2_nav_id
-  type: byte[150]
-  description: current selected navID - nav radio 2
-- name: sim/cockpit2/radios/indicators/adf1_nav_id
-  type: byte[150]
-  description: current selected navID - ADF 1
-- name: sim/cockpit2/radios/indicators/adf2_nav_id
-  type: byte[150]
-  description: current selected navID - ADF 2
-- name: sim/cockpit2/radios/indicators/gps_nav_id
-  type: byte[150]
-  description: current selected navID - GPS 1
-- name: sim/cockpit2/radios/indicators/gps2_nav_id
-  type: byte[150]
-  description: current selected navID - GPS 2
-- name: sim/cockpit2/radios/indicators/dme_nav_id
-  type: byte[150]
-  description: current selected navID - DME
-- name: sim/cockpit2/radios/indicators/nav3_nav_id
-  type: byte[150]
-  description: current selected navID - nav radio 3
-- name: sim/cockpit2/radios/indicators/nav4_nav_id
-  type: byte[150]
-  description: current selected navID - nav radio 4
-- name: sim/cockpit2/radios/indicators/nav5_nav_id
-  type: byte[150]
-  description: current selected navID - nav radio 5
-- name: sim/cockpit2/radios/indicators/nav6_nav_id
-  type: byte[150]
-  description: current selected navID - nav radio 6
-- name: sim/cockpit2/radios/indicators/nav7_nav_id
-  type: byte[150]
-  description: current selected navID - nav radio 7
-- name: sim/cockpit2/radios/indicators/nav8_nav_id
-  type: byte[150]
-  description: current selected navID - nav radio 8
-- name: sim/cockpit2/radios/indicators/nav9_nav_id
-  type: byte[150]
-  description: current selected navID - nav radio 9
-- name: sim/cockpit2/radios/indicators/nav10_nav_id
-  type: byte[150]
-  description: current selected navID - nav radio 10
-- name: sim/cockpit2/radios/indicators/nav11_nav_id
-  type: byte[150]
-  description: current selected navID - nav radio 11. WAAS/EGNOS receiver
-- name: sim/cockpit2/radios/indicators/nav12_nav_id
-  type: byte[150]
-  description: current selected navID - nav radio 12. WAAS/EGNOS receiver
-- name: sim/cockpit2/radios/indicators/nav1_dme_id
-  type: byte[150]
-  description: current selected dme ID - nav radio 1
-- name: sim/cockpit2/radios/indicators/nav2_dme_id
-  type: byte[150]
-  description: current selected dme ID - nav radio 2
-- name: sim/cockpit2/radios/indicators/nav3_dme_id
-  type: byte[150]
-  description: current selected dme ID - nav radio 3
-- name: sim/cockpit2/radios/indicators/nav4_dme_id
-  type: byte[150]
-  description: current selected dme ID - nav radio 4
-- name: sim/cockpit2/radios/indicators/nav5_dme_id
-  type: byte[150]
-  description: current selected dme ID - nav radio 5
-- name: sim/cockpit2/radios/indicators/nav6_dme_id
-  type: byte[150]
-  description: current selected dme ID - nav radio 6
-- name: sim/cockpit2/radios/indicators/nav7_dme_id
-  type: byte[150]
-  description: current selected dme ID - nav radio 7
-- name: sim/cockpit2/radios/indicators/nav8_dme_id
-  type: byte[150]
-  description: current selected dme ID - nav radio 8
-- name: sim/cockpit2/radios/indicators/nav9_dme_id
-  type: byte[150]
-  description: current selected dme ID - nav radio 9
-- name: sim/cockpit2/radios/indicators/nav10_dme_id
-  type: byte[150]
-  description: current selected dme ID - nav radio 10
-- name: sim/cockpit2/radios/indicators/nav1_type
-  type: int
-  description: Type of navaid that's currently tuned in and being received - nav1
-- name: sim/cockpit2/radios/indicators/nav2_type
-  type: int
-  description: Type of navaid that's currently tuned in and being received - nav2
-- name: sim/cockpit2/radios/indicators/nav_type
-  type: int[12]
-  description: Type of navaid that's currently tuned in and being received - any nav
-    receiver
 - name: sim/cockpit2/radios/indicators/over_outer_marker
   type: int
   description: Over the marker, 0 or 1.  This stays on when over the marker
@@ -12680,18 +9802,6 @@ datarefs:
 - name: sim/cockpit2/radios/indicators/over_inner_marker
   type: int
   description: Over the marker, 0 or 1.  This stays on when over the marker
-- name: sim/cockpit2/radios/indicators/outer_marker_signal_ratio
-  type: float
-  description: Received signal strength of the marker. 0 when not receiving, 1 when
-    at max strength
-- name: sim/cockpit2/radios/indicators/middle_marker_signal_ratio
-  type: float
-  description: Received signal strength of the marker. 0 when not receiving, 1 when
-    at max strength
-- name: sim/cockpit2/radios/indicators/inner_marker_signal_ratio
-  type: float
-  description: Received signal strength of the marker. 0 when not receiving, 1 when
-    at max strength
 - name: sim/cockpit2/radios/indicators/outer_marker_lit
   type: int
   description: Marker light actually lit, 0 or 1.  This flashes as we go over.
@@ -12701,412 +9811,6 @@ datarefs:
 - name: sim/cockpit2/radios/indicators/inner_marker_lit
   type: int
   description: Marker light actually lit, 0 or 1.
-- name: sim/cockpit2/radios/indicators/morse_id_tone_nav1
-  type: int
-  description: The morse-code id output for the tuned radio. Only if the audio is
-    being monitored. 0 for silent. 1 for dot. 2 for dash.
-- name: sim/cockpit2/radios/indicators/morse_id_tone_nav2
-  type: int
-  description: The morse-code id output for the tuned radio. Only if the audio is
-    being monitored. 0 for silent. 1 for dot. 2 for dash.
-- name: sim/cockpit2/radios/indicators/morse_id_tone_adf1
-  type: int
-  description: The morse-code id output for the tuned radio. Only if the audio is
-    being monitored. 0 for silent. 1 for dot. 2 for dash.
-- name: sim/cockpit2/radios/indicators/morse_id_tone_adf2
-  type: int
-  description: The morse-code id output for the tuned radio. Only if the audio is
-    being monitored. 0 for silent. 1 for dot. 2 for dash.
-- name: sim/cockpit2/radios/indicators/morse_id_tone_dme
-  type: int
-  description: The morse-code id output for the tuned radio. Only if the audio is
-    being monitored. 0 for silent. 1 for dot. 2 for dash.
-- name: sim/cockpit2/radios/indicators/morse_id_tone_dme1
-  type: int
-  description: The morse-code id output for the tuned radio. Only if the audio is
-    being monitored. 0 for silent. 1 for dot. 2 for dash.
-- name: sim/cockpit2/radios/indicators/morse_id_tone_dme2
-  type: int
-  description: The morse-code id output for the tuned radio. Only if the audio is
-    being monitored. 0 for silent. 1 for dot. 2 for dash.
-- name: sim/cockpit2/radios/indicators/hsi_bearing_deg_mag_pilot
-  type: float
-  description: Indicated bearing to the pilot's HSI-selected navaid
-- name: sim/cockpit2/radios/indicators/hsi_bearing_deg_mag_copilot
-  type: float
-  description: Indicated bearing to the copilot's HSI-selected navaid
-- name: sim/cockpit2/radios/indicators/hsi_relative_bearing_deg_pilot
-  type: float
-  description: Indicated relative bearing to the pilot's HSI-selected navaid
-- name: sim/cockpit2/radios/indicators/hsi_relative_bearing_deg_copilot
-  type: float
-  description: Indicated relative bearing to the copilot's HSI-selected navaid
-- name: sim/cockpit2/radios/indicators/hsi_flag_from_to_pilot
-  type: int
-  description: Nav-To-From indication, nav1, pilot, 0 is flag, 1 is to, 2 is from.
-- name: sim/cockpit2/radios/indicators/hsi_flag_from_to_copilot
-  type: int
-  description: Nav-To-From indication, nav1, copilot, 0 is flag, 1 is to, 2 is from.
-- name: sim/cockpit2/radios/indicators/hsi_hdef_dots_pilot
-  type: float
-  description: CDI lateral deflection in dots, nav1, pilot
-- name: sim/cockpit2/radios/indicators/hsi_hdef_dots_copilot
-  type: float
-  description: CDI lateral deflection in dots, nav1, copilot
-- name: sim/cockpit2/radios/indicators/hsi_vdef_dots_pilot
-  type: float
-  description: CDI vertical deflection in dots, nav1, pilot
-- name: sim/cockpit2/radios/indicators/hsi_vdef_dots_copilot
-  type: float
-  description: CDI vertical deflection in dots, nav1, copilot
-- name: sim/cockpit2/radios/indicators/hsi_has_dme_pilot
-  type: int
-  description: Is there a DME signal from nav1's DME?
-- name: sim/cockpit2/radios/indicators/hsi_has_dme_copilot
-  type: int
-  description: Is there a DME signal from nav1's DME?
-- name: sim/cockpit2/radios/indicators/hsi_dme_distance_nm_pilot
-  type: float
-  description: nav1 DME distance in nautical miles, pilot HSI
-- name: sim/cockpit2/radios/indicators/hsi_dme_distance_nm_copilot
-  type: float
-  description: nav1 DME distance in nautical miles. copilot HSI
-- name: sim/cockpit2/radios/indicators/hsi_dme_speed_kts_pilot
-  type: float
-  description: nav1 DME speed in knots. pilot HSI
-- name: sim/cockpit2/radios/indicators/hsi_dme_speed_kts_copilot
-  type: float
-  description: nav1 DME speed in knots. copilot HSI
-- name: sim/cockpit2/radios/indicators/hsi_dme_time_min_pilot
-  type: float
-  description: nav1 DME time in minutes. pilot HSI
-- name: sim/cockpit2/radios/indicators/hsi_dme_time_min_copilot
-  type: float
-  description: nav1 DME time in minutes. copilot HSI
-- name: sim/cockpit2/radios/indicators/hsi_flag_glideslope_pilot
-  type: int
-  description: Glide slope flag, pilot side HSI - EFIS style flag that shows when
-    glideslope is expected, but not received
-- name: sim/cockpit2/radios/indicators/hsi_flag_glideslope_copilot
-  type: int
-  description: Glide slope flag, copilot side HSI - EFIS style flag that shows when
-    glideslope is expected, but not received
-- name: sim/cockpit2/radios/indicators/hsi_flag_glideslope_pilot_mech
-  type: int
-  description: Glide slope flag, pilot side HSI - mechanical instrument flag that
-    shows whenever no glideslope signal is received
-- name: sim/cockpit2/radios/indicators/hsi_flag_glideslope_copilot_mech
-  type: int
-  description: Glide slope flag, copilot side HSI - mechanical instrument flag that
-    shows whenever no glideslope signal is received
-- name: sim/cockpit2/radios/indicators/hsi_display_horizontal_pilot
-  type: int
-  description: Is there some kind of horizontal signal on pilot side HSI
-- name: sim/cockpit2/radios/indicators/hsi_display_horizontal_copilot
-  type: int
-  description: Is there some kind of horizontal signal on copilot side HSI
-- name: sim/cockpit2/radios/indicators/hsi_display_vertical_pilot
-  type: int
-  description: Is there some kind of vertical signal on pilot side HSI
-- name: sim/cockpit2/radios/indicators/hsi_display_vertical_copilot
-  type: int
-  description: Is there some kind of vertical signal on copilot side HSI
-- name: sim/cockpit2/radios/indicators/transponder_id
-  type: int
-  description: Whether we are squawking ident right now.
-- name: sim/cockpit2/radios/indicators/transponder_brightness
-  type: float
-  description: Transponder light brightness ratio from 0 to 1
-- name: sim/cockpit2/radios/indicators/nav1_relative_heading_vacuum_deg_pilot
-  type: float
-  description: This is the relative heading of the nav1 OBS to the vacuum driven gyro
-    for the pilot.
-- name: sim/cockpit2/radios/indicators/nav1_relative_heading_vacuum_deg_copilot
-  type: float
-  description: This is the relative heading of the nav1 OBS to the vacuum driven gyro
-    for the copilot.
-- name: sim/cockpit2/radios/indicators/nav1_relative_heading_electric_deg_pilot
-  type: float
-  description: This is the relative heading of the nav1 OBS to the electric gyro for
-    the pilot.
-- name: sim/cockpit2/radios/indicators/nav1_relative_heading_electric_deg_copilot
-  type: float
-  description: This is the relative heading of the nav1 OBS to the electric gyro for
-    the copilot.
-- name: sim/cockpit2/radios/indicators/nav1_relative_heading_AHARS_deg_pilot
-  type: float
-  description: This is the relative heading of the nav1 OBS to AHARS gyro for the
-    pilot.
-- name: sim/cockpit2/radios/indicators/nav1_relative_heading_AHARS_deg_copilot
-  type: float
-  description: This is the relative heading of the nav1 OBS to AHARS for the copilot.
-- name: sim/cockpit2/radios/indicators/nav2_relative_heading_vacuum_deg_pilot
-  type: float
-  description: This is the relative heading of the nav2 OBS to the vacuum driven gyro
-    for the pilot.
-- name: sim/cockpit2/radios/indicators/nav2_relative_heading_vacuum_deg_copilot
-  type: float
-  description: This is the relative heading of the nav2 OBS to the vacuum driven gyro
-    for the copilot.
-- name: sim/cockpit2/radios/indicators/nav2_relative_heading_electric_deg_pilot
-  type: float
-  description: This is the relative heading of the nav2 OBS to the electric gyro for
-    the pilot.
-- name: sim/cockpit2/radios/indicators/nav2_relative_heading_electric_deg_copilot
-  type: float
-  description: This is the relative heading of the nav2 OBS to the electric gyro for
-    the copilot.
-- name: sim/cockpit2/radios/indicators/nav2_relative_heading_AHARS_deg_pilot
-  type: float
-  description: This is the relative heading of the nav2 OBS to AHARS gyro for the
-    pilot.
-- name: sim/cockpit2/radios/indicators/nav2_relative_heading_AHARS_deg_copilot
-  type: float
-  description: This is the relative heading of the nav2 OBS to AHARS for the copilot.
-- name: sim/cockpit2/radios/indicators/nav_relative_heading_vacuum_deg_pilot
-  type: float[12]
-  description: This is the relative heading of the nav N OBS to the vacuum driven
-    gyro for the pilot.
-- name: sim/cockpit2/radios/indicators/nav_relative_heading_vacuum_deg_copilot
-  type: float[12]
-  description: This is the relative heading of the nav N OBS to the vacuum driven
-    gyro for the copilot.
-- name: sim/cockpit2/radios/indicators/nav_relative_heading_electric_deg_pilot
-  type: float[12]
-  description: This is the relative heading of the nav N OBS to the electric gyro
-    for the pilot.
-- name: sim/cockpit2/radios/indicators/nav_relative_heading_electric_deg_copilot
-  type: float[12]
-  description: This is the relative heading of the nav N OBS to the electric gyro
-    for the copilot.
-- name: sim/cockpit2/radios/indicators/nav_relative_heading_AHARS_deg_pilot
-  type: float[12]
-  description: This is the relative heading of the nav N OBS to AHARS gyro for the
-    pilot.
-- name: sim/cockpit2/radios/indicators/nav_relative_heading_AHARS_deg_copilot
-  type: float[12]
-  description: This is the relative heading of the nav N OBS to AHARS for the copilot.
-- name: sim/cockpit2/radios/indicators/gps_relative_heading_vacuum_deg_pilot
-  type: float
-  description: This is the relative heading of the GPS 1 course to the vacuum driven
-    gyro for the pilot.
-- name: sim/cockpit2/radios/indicators/gps_relative_heading_vacuum_deg_copilot
-  type: float
-  description: This is the relative heading of the GPS 1 course to the vacuum driven
-    gyro for the copilot.
-- name: sim/cockpit2/radios/indicators/gps_relative_heading_electric_deg_pilot
-  type: float
-  description: This is the relative heading of the GPS 1 course to the electric gyro
-    for the pilot.
-- name: sim/cockpit2/radios/indicators/gps_relative_heading_electric_deg_copilot
-  type: float
-  description: This is the relative heading of the GPS 1 course to the electric gyro
-    for the copilot.
-- name: sim/cockpit2/radios/indicators/gps_relative_heading_AHARS_deg_pilot
-  type: float
-  description: This is the relative heading of the GPS 1 course to AHARS gyro for
-    the pilot.
-- name: sim/cockpit2/radios/indicators/gps_relative_heading_AHARS_deg_copilot
-  type: float
-  description: This is the relative heading of the GPS 1 course to AHARS for the copilot.
-- name: sim/cockpit2/radios/indicators/gps2_relative_heading_vacuum_deg_pilot
-  type: float
-  description: This is the relative heading of the GPS 2 course to the vacuum driven
-    gyro for the pilot.
-- name: sim/cockpit2/radios/indicators/gps2_relative_heading_vacuum_deg_copilot
-  type: float
-  description: This is the relative heading of the GPS 2 course to the vacuum driven
-    gyro for the copilot.
-- name: sim/cockpit2/radios/indicators/gps2_relative_heading_electric_deg_pilot
-  type: float
-  description: This is the relative heading of the GPS 2 course to the electric gyro
-    for the pilot.
-- name: sim/cockpit2/radios/indicators/gps2_relative_heading_electric_deg_copilot
-  type: float
-  description: This is the relative heading of the GPS 2 course to the electric gyro
-    for the copilot.
-- name: sim/cockpit2/radios/indicators/gps2_relative_heading_AHARS_deg_pilot
-  type: float
-  description: This is the relative heading of the GPS 2 course to AHARS gyro for
-    the pilot.
-- name: sim/cockpit2/radios/indicators/gps2_relative_heading_AHARS_deg_copilot
-  type: float
-  description: This is the relative heading of the GPS 2 course to AHARS for the copilot.
-- name: sim/cockpit2/radios/indicators/hsi_relative_heading_vacuum_deg_pilot
-  type: float
-  description: This is the relative heading of the nav1 OBS to the vacuum driven gyro
-    for the pilot.
-- name: sim/cockpit2/radios/indicators/hsi_relative_heading_vacuum_deg_copilot
-  type: float
-  description: This is the relative heading of the nav1 OBS to the vacuum driven gyro
-    for the copilot.
-- name: sim/cockpit2/radios/indicators/hsi_relative_heading_electric_deg_pilot
-  type: float
-  description: This is the relative heading of the nav1 OBS to the electric gyro for
-    the pilot.
-- name: sim/cockpit2/radios/indicators/hsi_relative_heading_electric_deg_copilot
-  type: float
-  description: This is the relative heading of the nav1 OBS to the electric gyro for
-    the copilot.
-- name: sim/cockpit2/radios/indicators/hsi_relative_heading_AHARS_deg_pilot
-  type: float
-  description: This is the relative heading of the nav1 OBS to AHARS gyro for the
-    pilot.
-- name: sim/cockpit2/radios/indicators/hsi_relative_heading_AHARS_deg_copilot
-  type: float
-  description: This is the relative heading of the nav1 OBS to AHARS for the copilot.
-- name: sim/cockpit2/radios/indicators/fms_exec_light_pilot
-  type: int
-  description: Is the exec FMS light/warning lit for the pilot
-- name: sim/cockpit2/radios/indicators/fms_exec_light_copilot
-  type: int
-  description: Is the exec FMS light/warning lit for the co-pilot
-- name: sim/cockpit2/radios/indicators/fms_fpta_pilot
-  type: float
-  description: FMS Flight Plan Target Altitude
-- name: sim/cockpit2/radios/indicators/fms_vpa_pilot
-  type: float
-  description: FMS Vertical Path Angle
-- name: sim/cockpit2/radios/indicators/fms_vtk_pilot
-  type: float
-  description: FMS Vertical Track Error
-- name: sim/cockpit2/radios/indicators/fms_distance_to_tod_pilot
-  type: float
-  description: FMS Distance to Top of Descent
-- name: sim/cockpit2/radios/indicators/fms_tod_before_index_pilot
-  type: int
-  description: Index of waypoint in flightplan before which top of descent is located
-- name: sim/cockpit2/radios/indicators/fms_tod_before_distance_pilot
-  type: float
-  description: Distance from top of descent to Nth waypoint (wayoint found via fms_tod_before_index_pilot)
-- name: sim/cockpit2/radios/indicators/fms_cdu1_text_line0
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_text_line1
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_text_line2
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_text_line3
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_text_line4
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_text_line5
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_text_line6
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_text_line7
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_text_line8
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_text_line9
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_text_line10
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_text_line11
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_text_line12
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_text_line13
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_text_line14
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_text_line15
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_style_line0
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_style_line1
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_style_line2
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_style_line3
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_style_line4
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_style_line5
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_style_line6
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_style_line7
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_style_line8
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_style_line9
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_style_line10
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_style_line11
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_style_line12
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_style_line13
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_style_line14
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu1_style_line15
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_text_line0
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_text_line1
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_text_line2
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_text_line3
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_text_line4
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_text_line5
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_text_line6
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_text_line7
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_text_line8
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_text_line9
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_text_line10
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_text_line11
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_text_line12
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_text_line13
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_text_line14
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_text_line15
-  type: byte[96]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_style_line0
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_style_line1
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_style_line2
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_style_line3
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_style_line4
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_style_line5
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_style_line6
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_style_line7
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_style_line8
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_style_line9
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_style_line10
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_style_line11
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_style_line12
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_style_line13
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_style_line14
-  type: byte[24]
-- name: sim/cockpit2/radios/indicators/fms_cdu2_style_line15
-  type: byte[24]
 - name: sim/cockpit2/switches/avionics_power_on
   type: int
   description: Switch, 0 or 1.
@@ -13271,52 +9975,9 @@ datarefs:
 - name: sim/cockpit2/switches/total_energy_audio_on
   type: int
   description: Variometer audio on
-- name: sim/cockpit2/tcas/indicators/relative_bearing_degs
-  type: float[20]
-  description: Relative bearing of each other plane in degrees for TCAS
-- name: sim/cockpit2/tcas/indicators/relative_distance_mtrs
-  type: float[20]
-  description: Distance to each other plane in meters for TCAS
-- name: sim/cockpit2/tcas/indicators/relative_altitude_mtrs
-  type: float[20]
-  description: Relative altitude (positive means above us) for TCAS
-- name: sim/cockpit2/tcas/indicators/tcas_alert
-  type: int
-  description: True if a TCAS alert is currently issued.
-- name: sim/cockpit2/temperature/outside_air_temp_deg
-  type: float
-  description: outside air temperature, pilot selects units
-- name: sim/cockpit2/temperature/outside_air_temp_degc
-  type: float
-  description: outside air temperature, celsius
-- name: sim/cockpit2/temperature/outside_air_temp_degf
-  type: float
-  description: outside air temperature, fahrenheit
-- name: sim/cockpit2/temperature/outside_air_LE_temp_deg
-  type: float
-  description: outside air temperature with leading edge, pilot selects units
-- name: sim/cockpit2/temperature/outside_air_LE_temp_degc
-  type: float
-  description: outside air temperature with leading edge, celsius
-- name: sim/cockpit2/temperature/outside_air_LE_temp_degf
-  type: float
-  description: outside air temperature with leading edge, fahrenheit
-- name: sim/cockpit2/temperature/outside_air_temp_is_metric
-  type: int
-  description: 1 if thermo is metric, 0 if fahrenheit.
-- name: sim/cockpit2/transmissions/indicators/oil_temperature
-  type: float
-  description: Transmission oil temperature.  Units are the same as the max oil temperature
-    in ACF file.
-- name: sim/cockpit2/transmissions/indicators/oil_pressure
-  type: float
-  description: Transmission oil pressure.  Units are the same as the max oil pressure
-    in ACF file.
 - name: sim/cockpit2/weapons/weapon_select_console_index
   type: int
   description: "(V10 style!) Weapon index selected on the weapon console."
-- name: sim/cockpit2/weapons/weapon_select_console_name
-  type: byte[1024]
 - name: sim/cockpit2/weapons/fire_mode
   type: int
   description: Weapon fire-mode, 0=single, 1=pair, 2=ripple, 3=salvo.
@@ -13417,150 +10078,18 @@ datarefs:
   description: Rotor trim, in part of MAX FLIGHT CONTROL DEFLECTION. So, if the rotor
     trim is deflected enough to move the rotor through 30% of its travel, then that
     is a rotor trim of 0.3.
-- name: sim/flightmodel2/controls/water_rudder_deploy_ratio
-  type: float
-  description: Deployment of the water rudder, 0 is none, 1 is max
-- name: sim/flightmodel2/doors/type
-  type: int[20]
-  description: 0=unused (plane does not use this door) 1=standard (opens before gear
-    goes down) 2=attached to strut (cycles with door), 3=closed (opens before gear
-    goes down, then closes again)
-- name: sim/flightmodel2/doors/angle_now_deg
-  type: float[20]
-  description: Current angle about the axis of rotation of this gear door, degrees.
-- name: sim/flightmodel2/engines/location_x_mtr
-  type: float[8]
-  description: Engine location, meters x, y, z, with respect to the default center
-    of gravity.
-- name: sim/flightmodel2/engines/location_y_mtr
-  type: float[8]
-  description: Engine location, meters x, y, z, with respect to the default center
-    of gravity.
-- name: sim/flightmodel2/engines/location_z_mtr
-  type: float[8]
-  description: Engine location, meters x, y, z, with respect to the default center
-    of gravity.
-- name: sim/flightmodel2/engines/throttle_used_ratio
-  type: float[8]
-  description: Throttle that is actually going to the engine, which could be different
-    than the commanded throttle due to FADEC throttle adjustments.
 - name: sim/flightmodel2/engines/has_fuel_flow_before_mixture
   type: int[8]
   description: Engine has fuel making to the mixture control, yes or no.  Writable
     if override_fuel_system is true.
-- name: sim/flightmodel2/engines/has_fuel_flow_after_mixture
-  type: int[8]
-  description: Engine has fuel making to the combustion process, yes or no.
-- name: sim/flightmodel2/engines/engine_is_burning_fuel
-  type: int[8]
-  description: Engine is currently burning fuel, yes or no.
-- name: sim/flightmodel2/engines/engine_fuel_in_intake
-  type: float[8]
-  description: How much fuel has been primed into the intake port (fuel-injected engine)
-    0..1
-- name: sim/flightmodel2/engines/afterburner_on
-  type: int[8]
-  description: Afterburner on, yes or no.
-- name: sim/flightmodel2/engines/afterburner_ratio
-  type: float[8]
-  description: Afterburner engaged ratio, 0.0 to 1.0.
-- name: sim/flightmodel2/engines/engine_rotation_speed_rad_sec
-  type: float[8]
-  description: Rotational speed of the engine, in radians per second.
-- name: sim/flightmodel2/engines/engine_rotation_angle_deg
-  type: float[8]
-  description: This is the angle of the engine as it turns over, running 0 to 360
-    over and over again in normal operation. Engine speed can be different than prop
-    rotation speed in clutched designs. This is radians per second.
-- name: sim/flightmodel2/engines/prop_rotation_speed_rad_sec
-  type: float[8]
-  description: Radians per second rotation speed of the prop.
 - name: sim/flightmodel2/engines/prop_rotation_angle_deg
   type: float[8]
   description: This is the angle of the prop or engine-fan as it rotates. You will
     see this value circulate 0 to 360 degrees over and over as the engine runs and
     the prop or fan turns.  Override witih /prop_disc/override per engine!
-- name: sim/flightmodel2/engines/prop_no_disc_rotation_angle_deg
-  type: float[8]
-  description: This is the angle of the prop or engine-fan as it rotates. You will
-    see this value circulate 0 to 360 degrees over and over as the engine runs and
-    the prop or fan turns. This dataref NEVER shows the speed of the prop disc if
-    it happens to be showing. This always tracks the actual prop.  Override witih
-    /prop_disc/override per engine!
-- name: sim/flightmodel2/engines/prop_pitch_deg
-  type: float[8]
-  description: This is the ACTUAL pitch of the prop in degrees from its flat-pitch
-    setting.
-- name: sim/flightmodel2/engines/prop_cone_angle_rad
-  type: float[8]
-  description: This is the coning angle of the disc, in radians. Typically close to
-    0.0.
-- name: sim/flightmodel2/engines/rotor_vertical_vector_deg
-  type: float[8]
-  description: This engine rotor-disc vertical vector, in degrees, where 0 is straight
-    forwards, 90 is straight up.
-- name: sim/flightmodel2/engines/rotor_vertical_cyclic_deg
-  type: float[8]
-  description: This engine rotor-disc longitudinal cyclic, in degrees, where -10 is
-    10 degrees forwards, 10 is 10 degrees aft.
-- name: sim/flightmodel2/engines/rotor_side_cyclic_deg
-  type: float[8]
-  description: This engine rotor-disc lateral cyclic, in degrees, where -10 is 10
-    degrees left, 10 is 10 degrees right.
-- name: sim/flightmodel2/engines/rotor_cyclic_elevator_tilt_deg
-  type: float[8]
-  description: Longitudinal disc tilt from cyclic deflection.
-- name: sim/flightmodel2/engines/rotor_cyclic_aileron_tilt_deg
-  type: float[8]
-  description: Lateral disc tilt from cyclic deflection.
-- name: sim/flightmodel2/engines/nacelle_vertical_angle_deg
-  type: float[8]
-  description: This engine nacelle vertical vector, in degrees, where 0 is straight
-    forwards, 90 is straight up.
-- name: sim/flightmodel2/engines/thrust_reverser_deploy_ratio
-  type: float[8]
-  description: How far the reverser doors/mechanism have traveled.  0 = fully stowed,
-    1.0 = fully deployed.
 - name: sim/flightmodel2/engines/prop_is_disc
   type: int[8]
   description: Is the prop a disc now?  Override with /prop_disc/override per engine!
-- name: sim/flightmodel2/engines/prop_tip_deflection_degrees
-  type: float[8]
-  description: Degrees of deflection of a line from the crank shaft to the prop tip.
-- name: sim/flightmodel2/engines/fuel_pump_spinning
-  type: float[8]
-  description: Is the electric fuel pump for this engine spinning?  1 = yes, 0 = no.
-- name: sim/flightmodel2/engines/starter_is_running
-  type: int[8]
-  description: Is this starter running at all
-- name: sim/flightmodel2/engines/starter_making_torque
-  type: int[8]
-  description: Is this starter applying torque to the engine
-- name: sim/flightmodel2/engines/is_on_fire
-  type: float[8]
-  description: Engine fire, 0 means none, 1 means max.
-- name: sim/flightmodel2/engines/side_sign
-  type: float[8]
-  description: 'Sign of the side of the ACF for this engine: -1 for left side, 0 for
-    inline, 1 for right side'
-- name: sim/flightmodel2/engines/N1_percent
-  type: float[8]
-  description: N1 speed as percent of max (per engine)
-- name: sim/flightmodel2/engines/N2_percent
-  type: float[8]
-  description: N2 speed as percent of max (per engine)
-- name: sim/flightmodel2/engines/ITT_deg_C
-  type: float[8]
-  description: ITT (per engine) in degrees C
-- name: sim/flightmodel2/engines/EGT_deg_C
-  type: float[8]
-  description: EGT (per engine) in degrees C
-- name: sim/flightmodel2/engines/CHT_deg_C
-  type: float[8]
-  description: CHT (per engine) in degrees C
-- name: sim/flightmodel2/engines/jetwash_mtr_sec
-  type: float[8]
-  description: Speed of propwash/jetwash behind the prop disc/engine exhaust in meters/second
 - name: sim/flightmodel2/engines/prop_disc/override
   type: int[8]
   description: Set to 1 to control the prop disc from a plugin.  Overrides all other
@@ -13637,15 +10166,6 @@ datarefs:
   type: float[8]
   description: A ratio to multiply side alpha when the rotor is extending toward the
     camera.
-- name: sim/flightmodel2/gear/gear_heading_deg
-  type: float[10]
-  description: Current gear heading angle, degrees.
-- name: sim/flightmodel2/gear/gear_pitch_deg
-  type: float[10]
-  description: Current gear pitch angle, degrees.
-- name: sim/flightmodel2/gear/gear_roll_deg
-  type: float[10]
-  description: Current gear roll angle, degrees.
 - name: sim/flightmodel2/gear/tire_steer_command_deg
   type: float[10]
   description: Steering command being sent to this gear, degrees positive right.  This
@@ -13655,60 +10175,6 @@ datarefs:
   type: float[10]
   description: Steering command actually enacted by the gear, degrees positive right.  Writable
     in 1030.  Override via override_wheel_steer
-- name: sim/flightmodel2/gear/tire_vertical_deflection_mtr
-  type: float[10]
-  description: Vertical deflection of this gear, meters.
-- name: sim/flightmodel2/gear/tire_vertical_force_n_mtr
-  type: float[10]
-  description: Vertical force on this gear, newtons.
-- name: sim/flightmodel2/gear/tire_rotation_speed_rad_sec
-  type: float[10]
-  description: Rotational speed of this tire, radians per second.
-- name: sim/flightmodel2/gear/tire_rotation_angle_deg
-  type: float[10]
-  description: Tire rotation in degrees, running 0 to 360 over and over as it rolls.
-- name: sim/flightmodel2/gear/deploy_ratio
-  type: float[10]
-  description: This is how far down the landing gear is.  0=up, 1= down
-- name: sim/flightmodel2/gear/eagle_claw_angle_deg
-  type: float[10]
-  description: Angle of eagle-claw landing gear now, degrees, per gear.
-- name: sim/flightmodel2/gear/tire_skid_ratio
-  type: float[10]
-  description: Ratio of how much this tire is in a skid - 0 = full traction, 1 = completely
-    skidding
-- name: sim/flightmodel2/gear/total_deflection_rate
-  type: float[10]
-  description: Rate at which the tires are deflecting, positive means shocks are contracting
-- name: sim/flightmodel2/gear/on_ground
-  type: int[10]
-  description: Is this wheel on the ground
-- name: sim/flightmodel2/gear/on_grass
-  type: int[10]
-  description: Is this wheel on grass
-- name: sim/flightmodel2/gear/on_noisy
-  type: int[10]
-  description: Is this wheel on some kind of noisy surface like gravel
-- name: sim/flightmodel2/gear/tire_skid_speed_mtr_sec
-  type: float[10]
-  description: This is how fast the skidding part of the tire is dragged across the
-    surface it is skidding on in meters/second.
-- name: sim/flightmodel2/lights/landing_lights_brightness_ratio
-  type: float[16]
-  description: Ratio of the brightness of the landing lights, 0 is off, 1 is max.
-- name: sim/flightmodel2/lights/generic_lights_brightness_ratio
-  type: float[128]
-  description: Ratio of the brightness of the landing lights, 0 is off, 1 is max.  Was
-    dim [64] until 11.10
-- name: sim/flightmodel2/lights/taxi_lights_brightness_ratio
-  type: float[1]
-  description: Ratio of the brightness of the taxi light, 0 is off, 1 is max.
-- name: sim/flightmodel2/lights/spot_lights_brightness_ratio
-  type: float[1]
-  description: Ratio of the brightness of the spot light, 0 is off, 1 is max.
-- name: sim/flightmodel2/lights/nav_lights_brightness_ratio
-  type: float[1]
-  description: Ratio of the brightness of the nav lights, 0 is off, 1 is max.
 - name: sim/flightmodel2/lights/beacon_brightness_ratio
   type: float[4]
   description: Ratio of the brightness of the beacon, 0 is off, 1 is max.  Use override_beacons_and_strobes
@@ -13729,67 +10195,6 @@ datarefs:
 - name: sim/flightmodel2/lights/override_beacons_and_strobes
   type: int
   description: override beacon and strobe control
-- name: sim/flightmodel2/misc/canopy_open_ratio
-  type: float
-  description: 'Canopy position: 0 = closed, 1 = open'
-- name: sim/flightmodel2/misc/door_open_ratio
-  type: float[10]
-  description: How open is the door, 0 = closed, 1 = open
-- name: sim/flightmodel2/misc/tailhook_deploy_ratio
-  type: float
-  description: 'Tailhook position: 0 = up, 1 = down'
-- name: sim/flightmodel2/misc/water_scoop_deploy_ratio
-  type: float
-  description: 'Water scoop position: 0 = up, 1 = down'
-- name: sim/flightmodel2/misc/water_drop_deploy_ratio
-  type: float
-  description: 'Water drop door position: 0 = up, 1=  down'
-- name: sim/flightmodel2/misc/wiper_angle_deg
-  type: float[4]
-  description: current angle of the wiper.  range of motion is set in PlaneMaker.
-- name: sim/flightmodel2/misc/custom_slider_ratio
-  type: float[24]
-  description: Misc. traveling items for your use.  You define the meaning.
-- name: sim/flightmodel2/misc/pressure_outflow_ratio
-  type: float
-  description: How far is the pressure-outflow valve open?  0=closed, 1=open
-- name: sim/flightmodel2/misc/AoA_angle_degrees
-  type: float
-  description: Angle of attack probe.  Positive means aircracft nose is above the
-    flight path in aircraft coordinates.
-- name: sim/flightmodel2/misc/yaw_string_angle
-  type: float
-  description: desc
-- name: sim/flightmodel2/misc/yaw_string_airspeed
-  type: float
-  description: desc
-- name: sim/flightmodel2/misc/gforce_normal
-  type: float
-  description: desc
-- name: sim/flightmodel2/misc/gforce_axil
-  type: float
-  description: desc
-- name: sim/flightmodel2/misc/gforce_side
-  type: float
-  description: desc
-- name: sim/flightmodel2/misc/bouncer_x
-  type: float[14]
-  description: lateral offset in meters from default for this bouncer
-- name: sim/flightmodel2/misc/bouncer_y
-  type: float[14]
-  description: vertical offset in meters from default for this bouncer
-- name: sim/flightmodel2/misc/bouncer_z
-  type: float[14]
-  description: longitudinal offset in meters from default for this bouncer
-- name: sim/flightmodel2/misc/bouncer_vx
-  type: float[14]
-  description: lateral offset in meters from default for this bouncer
-- name: sim/flightmodel2/misc/bouncer_vy
-  type: float[14]
-  description: vertical offset in meters from default for this bouncer
-- name: sim/flightmodel2/misc/bouncer_vz
-  type: float[14]
-  description: longitudinal offset in meters from default for this bouncer
 - name: sim/flightmodel2/misc/auto_start_in_progress
   type: int
   description: True while the auto-start sequence is happening.  Plugins that override
@@ -13800,15 +10205,6 @@ datarefs:
   description: True while the auto-board sequence is happening.  Plugins that override
     the auto-board sequence should set this to 1 during the sequence and clear it
     when done.
-- name: sim/flightmodel2/misc/tailhook_angle_degrees
-  type: float
-  description: Angle of the tailhook
-- name: sim/flightmodel2/misc/tow_in_progress
-  type: int
-  description: 'True while a tow operation is currently taking place. '
-- name: sim/flightmodel2/misc/has_crashed
-  type: int
-  description: True if the aircraft is in a crashed state
 - name: sim/flightmodel2/wing/aileron1_deg
   type: float[32]
   description: 'Deflection of the aileron from set #1 on this wing. Degrees, positive
@@ -13860,59 +10256,4 @@ datarefs:
 - name: sim/flightmodel2/wing/speedbrake2_deg
   type: float[32]
   description: 'Deflection of the speedbrakes from set #2 on this wing.'
-- name: sim/flightmodel2/wing/wing_tip_deflection_deg
-  type: float[32]
-  description: Degrees of deflection of a line from the wing root (extended to the
-    plane centerline) to the tip.
-- name: sim/flightmodel2/wing/wing_condensation_ratio
-  type: float[32]
-  description: Strength of wing condensation for this wing, 0 is none, 1 = max
-- name: sim/flightmodel2/wing/wing_tip_condensation_ratio
-  type: float[32]
-  description: Strength of wing tip vapor trail for this wing, 0 is none, 1 = max
-- name: sim/flightmodel2/wing/elements/element_MAC_mtr
-  type: float[320]
-  description: Width of chord at the MAC.
-- name: sim/flightmodel2/wing/elements/element_surface_area_mtr_sq
-  type: float[320]
-  description: per element surface area
-- name: sim/flightmodel2/wing/elements/element_condensation_ratio
-  type: float[320]
-  description: Per element condensation ratio
-- name: sim/flightmodel2/wing/elements/element_is_stalled
-  type: float[320]
-  description: Per element - is this element stalled?
-- name: sim/graphics/VR/button_axis_x
-  type: float[5]
-  description: 'For OBJs used to draw VR controllers: the X deflection (or axis deflection)
-    of each axis on the controller.'
-- name: sim/graphics/VR/button_axis_y
-  type: float[5]
-  description: 'For OBJs used to draw VR controllers: for 2-d thumb sticks or dpads,
-    this is the second axis.'
-- name: sim/graphics/VR/button_down
-  type: int[64]
-  description: 'For OBJs used to draw VR controllers: button status of each button
-    on the controller.'
-- name: sim/graphics/VR/backlight_level
-  type: float
-  description: 'For OBJs used to draw VR controllers: Level of back lighting on the
-    controller.'
-- name: sim/graphics/VR/seeker_light_level
-  type: float
-  description: 'For OBJs used to draw VR controllers: Level of lighting on the tip
-    of the controller.'
-- name: sim/graphics/VR/touch_spot_light_level
-  type: float
-  description: 'For OBJs used to draw VR controllers: Level of lighting on the D-Pad/joystick
-    part of the controller.'
-- name: sim/graphics/VR/enabled
-  type: int
-  description: True if VR is enabled, false if it is disabled
-- name: sim/graphics/VR/using_3d_mouse
-  type: int
-  description: True if the 3-d VR mouse is in use
-- name: sim/graphics/VR/teleport_on_ground
-  type: int
-  description: True if the user is teleporting outside the aircraft.  In this case
-    the pilot's head position is not reliable - use the regular camera location
+

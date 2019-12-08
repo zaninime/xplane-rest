@@ -10,6 +10,6 @@ const filePath = process.argv[2]
 content = fs.readFileSync(filePath, 'utf-8')
 splittedLines = content.split('\n').map(line => line.split('\t'))
 
-datarefs = splittedLines.map(([name, type, _writable, _unit, description]) => ({ name, type, description }))
+datarefs = splittedLines.filter(l => l[2] === 'y').map(([name, type, _writable, _unit, description]) => ({ name, type, description }))
 
 console.log(JSON.stringify({ datarefs }, null, 4))
