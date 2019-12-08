@@ -1,4 +1,4 @@
-package me.zanini.xplaneapi.http
+package me.zanini.xplanerest.http
 
 import cats.effect.Sync
 import cats.syntax.semigroupk._

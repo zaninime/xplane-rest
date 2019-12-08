@@ -1,11 +1,11 @@
-package me.zanini.xplaneapi
+package me.zanini.xplanerest
 
 import java.net.InetSocketAddress
 
 import cats.effect.{Blocker, ExitCode}
 import cats.syntax.functor._
 import fs2.io.udp.SocketGroup
-import me.zanini.xplaneapi.http.{DatarefDescription, DatarefService}
+import me.zanini.xplanerest.http.{DatarefDescription, DatarefService}
 import monix.eval.{Task, TaskApp}
 import org.http4s.EntityDecoder
 import org.http4s.server.Router

@@ -1,4 +1,4 @@
-package me.zanini.xplaneapi
+package me.zanini.xplanerest
 
 import java.net.InetSocketAddress
 import java.nio.charset.StandardCharsets
