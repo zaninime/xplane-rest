@@ -3,6 +3,7 @@ package me.zanini.xplanerest.http
 import cats.effect.Sync
 import cats.implicits._
 import org.http4s.dsl.Http4sDsl
+import org.http4s.headers.Allow
 import org.http4s.server.Router
 import org.http4s.{HttpRoutes, Request, Response}
 
@@ -12,7 +13,10 @@ class DatarefDirectoryService[F[_]: Sync](
   def router = Router("/" -> routes)
 
   private def routes = HttpRoutes.of[F] {
-    case GET -> Root => Ok("list")
+    case GET -> Root =>
+      import org.http4s.circe.CirceEntityEncoder._
+      Ok(serviceMap.keySet.toList.sorted)
+    case _ -> Root => MethodNotAllowed(Allow(GET))
     case request @ _ -> path =>
       val pathWithoutSlash = path.toString.substring(1)
 
