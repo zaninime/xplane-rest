@@ -2,48 +2,45 @@ package me.zanini.xplanerest.http
 
 import cats.effect.Sync
 import cats.syntax.apply._
-import io.circe.generic.auto._
-import io.circe.syntax._
-import me.zanini.xplanerest.backend.{DatarefCommandHandler, UDPCodec}
-import me.zanini.xplanerest.model.DatarefValue
-import org.http4s.circe._
+import me.zanini.xplanerest.backend.DatarefCommandHandler
+import me.zanini.xplanerest.model.{
+  DatarefDescription,
+  DatarefValue,
+  FloatDatarefDescription,
+  IntDatarefDescription
+}
 import org.http4s.dsl.Http4sDsl
-import org.http4s.{EntityDecoder, HttpRoutes, Response}
+import org.http4s.{HttpRoutes, Response}
+import io.circe.syntax._
+import io.circe.generic.auto._
+import org.http4s.circe.CirceEntityEncoder._
 
-case class DatarefDescription(name: String, `type`: String)
-
-class DatarefService[F[_]: Sync, V: UDPCodec](
-    description: DatarefDescription,
-    commandHandler: DatarefCommandHandler[F])(
-    implicit entityDecoder: EntityDecoder[F, V])
+class DatarefService[F[_]: Sync](description: DatarefDescription[F],
+                                 commandHandler: DatarefCommandHandler[F])
     extends Http4sDsl[F] {
+
+  import description._
+
   def routes: HttpRoutes[F] = HttpRoutes.of[F] {
-    case GET -> Root                 => Ok(description.asJson)
-    case req @ PUT -> Root / "value" => req.decode[V](putEndpoint)
+    case GET -> Root => Ok(DatarefDoc(description.name, valueType).asJson)
+    case req @ PUT -> Root / "value" =>
+      req.decode[description.Value](putEndpoint)
   }
 
-  private def putEndpoint(body: V): F[Response[F]] = {
-    val value = DatarefValue[V](description.name, body)
+  private def putEndpoint(body: description.Value): F[Response[F]] = {
+    val value = DatarefValue(description.name, body)
     commandHandler.store(value) *> NoContent()
+  }
+
+  private def valueType: String = description match {
+    case FloatDatarefDescription(_) => "float"
+    case IntDatarefDescription(_)   => "int"
   }
 }
 
 object DatarefService {
-  def apply[F[_]: Sync](description: DatarefDescription,
-                        commandHandler: DatarefCommandHandler[F])
-    : Either[String, DatarefService[F, Any]] = {
-    import org.http4s.circe.CirceEntityDecoder._
-    import me.zanini.xplanerest.backend.Codecs._
-
-    def makeService[V: UDPCodec](implicit entityDecoder: EntityDecoder[F, V]) =
-      Right(
-        new DatarefService[F, V](description, commandHandler)
-          .asInstanceOf[DatarefService[F, Any]])
-
-    description.`type` match {
-      case "float" => makeService[Float]
-      case "int"   => makeService[Int]
-      case t       => Left(s"No mapping defined for type $t")
-    }
-  }
+  def apply[F[_]: Sync](
+      description: DatarefDescription[F],
+      commandHandler: DatarefCommandHandler[F]): DatarefService[F] =
+    new DatarefService(description, commandHandler)
 }

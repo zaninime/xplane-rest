@@ -4,21 +4,18 @@ import java.net.InetSocketAddress
 import java.nio.file.Paths
 
 import cats.effect.{Blocker, ExitCode}
-import cats.implicits._
 import fs2.io.udp.SocketGroup
+import io.chrisdavenport.log4cats.SelfAwareStructuredLogger
 import io.chrisdavenport.log4cats.slf4j.Slf4jLogger
-import io.chrisdavenport.log4cats.{Logger, SelfAwareStructuredLogger}
 import me.zanini.xplanerest.backend.UDPDatarefCommandHandler
 import me.zanini.xplanerest.config.YamlFileDatarefDescriptionLoader
-import me.zanini.xplanerest.http.{
-  DatarefDescription,
-  DatarefDirectoryService,
-  DatarefService
-}
+import me.zanini.xplanerest.http.{DatarefDirectoryService, DatarefService}
+import me.zanini.xplanerest.model.DatarefDescription
 import monix.eval.{Task, TaskApp}
 import org.http4s.implicits._
 import org.http4s.server.Router
 import org.http4s.server.blaze.BlazeServerBuilder
+import me.zanini.xplanerest.syntax.LoggingOps._
 
 object Boot extends TaskApp {
   private implicit def unsafeTaskLogger: SelfAwareStructuredLogger[Task] =
@@ -41,32 +38,20 @@ object Boot extends TaskApp {
           socket,
           new InetSocketAddress("127.0.0.1", 49000))
 
-        val makeDatarefServices = (datarefs: List[DatarefDescription]) =>
-          datarefs
-            .map(description => {
-              val service = DatarefService(description, datarefCommandHandler)
-
-              service match {
-                case Left(error) => {
-                  Logger[Task].error(
-                    s"Cannot initialize ${description.name}: $error. Will not be available") *> Task
-                    .delay(List())
-                }
-                case Right(svc) =>
-                  Task.delay(List(description -> svc))
-              }
-            })
-            .sequence
-            .map(_.flatten)
+        val makeDatarefServices = (datarefs: List[DatarefDescription[Task]]) =>
+          datarefs.map(d => (d, DatarefService(d, datarefCommandHandler)))
 
         for {
+          _ <- info("Loading dataref descriptions")
           descriptions <- datarefsDescriptionLoader.load
-          svc <- makeDatarefServices(descriptions)
+          _ <- info("Instantiating services")
+          svc = makeDatarefServices(descriptions)
           datarefDirectory = new DatarefDirectoryService[Task](svc)
           httpApp = Router("/v0/dref" -> datarefDirectory.router).orNotFound
           serverBuilder = BlazeServerBuilder[Task]
             .bindHttp(8080, "localhost")
             .withHttpApp(httpApp)
+          _ <- info("Starting server")
           _ <- serverBuilder.serve.compile.drain
         } yield ExitCode.Success
     })

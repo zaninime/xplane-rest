@@ -2,13 +2,14 @@ package me.zanini.xplanerest.http
 
 import cats.effect.Sync
 import cats.implicits._
+import me.zanini.xplanerest.model.DatarefDescription
 import org.http4s.dsl.Http4sDsl
 import org.http4s.headers.Allow
 import org.http4s.server.Router
 import org.http4s.{HttpRoutes, Request, Response}
 
 class DatarefDirectoryService[F[_]: Sync](
-    datarefs: List[(DatarefDescription, DatarefService[F, Any])])
+    datarefs: List[(DatarefDescription[F], DatarefService[F])])
     extends Http4sDsl[F] {
   def router = Router("/" -> routes)
 
