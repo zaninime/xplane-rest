@@ -21,7 +21,7 @@ trait DatarefDescriptionLoader[F[_]] {
 case class YamlRoot(datarefs: List[DatarefTextDescription])
 case class DatarefTextDescription(name: String, `type`: String)
 
-class YamlFileDatarefDescriptionLoader[F[_]: Sync: ContextShift]
+class YamlFileDatarefDescriptionLoader[F[_]:  ContextShift](implicit F: Sync[F])
     extends DatarefDescriptionLoader[F] {
 
   implicit def unsafeLogger: Logger[F] = Slf4jLogger.getLogger[F]
@@ -50,7 +50,7 @@ class YamlFileDatarefDescriptionLoader[F[_]: Sync: ContextShift]
       }
       .evalMap[F, List[DatarefDescription[F]]] {
         case Left(error)  => warn(error).as(List())
-        case Right(value) => Sync[F].delay(List(value))
+        case Right(value) => F.delay(List(value))
       }
       .flatMap(list => Stream.emits(list))
       .compile
