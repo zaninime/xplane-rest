@@ -1,7 +1,6 @@
 package me.zanini.xplanerest
 
 import java.net.InetSocketAddress
-import java.nio.file.Paths
 
 import cats.effect.{Blocker, ExitCode}
 import fs2.io.udp.SocketGroup
@@ -11,11 +10,12 @@ import me.zanini.xplanerest.backend.UDPDatarefCommandHandler
 import me.zanini.xplanerest.config.YamlFileDatarefDescriptionLoader
 import me.zanini.xplanerest.http.{DatarefDirectoryService, DatarefService}
 import me.zanini.xplanerest.model.DatarefDescription
+import me.zanini.xplanerest.resources.ResourceLoader
+import me.zanini.xplanerest.syntax.LoggingOps._
 import monix.eval.{Task, TaskApp}
 import org.http4s.implicits._
 import org.http4s.server.Router
 import org.http4s.server.blaze.BlazeServerBuilder
-import me.zanini.xplanerest.syntax.LoggingOps._
 
 object Boot extends TaskApp {
   private implicit def unsafeTaskLogger: SelfAwareStructuredLogger[Task] =
@@ -30,9 +30,9 @@ object Boot extends TaskApp {
 
     r.use({
       case (socket, blocker) =>
+        val resourceLoader = new ResourceLoader[Task]
         val datarefsDescriptionLoader =
-          new YamlFileDatarefDescriptionLoader[Task](Paths.get("datarefs.yaml"),
-                                                     blocker)
+          new YamlFileDatarefDescriptionLoader[Task]
 
         val datarefCommandHandler = new UDPDatarefCommandHandler[Task](
           socket,
@@ -43,7 +43,10 @@ object Boot extends TaskApp {
 
         for {
           _ <- info("Loading dataref descriptions")
-          descriptions <- datarefsDescriptionLoader.load
+          datarefFileContent = resourceLoader.load("/datarefs.yaml",
+                                                   4096,
+                                                   blocker)
+          descriptions <- datarefsDescriptionLoader.load(datarefFileContent)
           _ <- info("Instantiating services")
           svc = makeDatarefServices(descriptions)
           datarefDirectory = new DatarefDirectoryService[Task](svc)

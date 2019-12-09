@@ -1,10 +1,7 @@
 package me.zanini.xplanerest.config
 
-import java.nio.file.Path
-
-import cats.effect.{Blocker, ContextShift, Sync}
+import cats.effect.{ContextShift, Sync}
 import cats.syntax.functor._
-import fs2.io.file
 import fs2.{Stream, text}
 import io.chrisdavenport.log4cats.Logger
 import io.chrisdavenport.log4cats.slf4j.Slf4jLogger
@@ -18,31 +15,29 @@ import me.zanini.xplanerest.model.{
 import me.zanini.xplanerest.syntax.LoggingOps._
 
 trait DatarefDescriptionLoader[F[_]] {
-  def load: F[List[DatarefDescription[F]]]
+  def load(stream: Stream[F, Byte]): F[List[DatarefDescription[F]]]
 }
 
 case class YamlRoot(datarefs: List[DatarefTextDescription])
 case class DatarefTextDescription(name: String, `type`: String)
 
-class YamlFileDatarefDescriptionLoader[F[_]: Sync: ContextShift](
-    path: Path,
-    blocker: Blocker)
+class YamlFileDatarefDescriptionLoader[F[_]: Sync: ContextShift]
     extends DatarefDescriptionLoader[F] {
 
   implicit def unsafeLogger: Logger[F] = Slf4jLogger.getLogger[F]
 
-  override def load: F[List[DatarefDescription[F]]] =
-    file
-      .readAll(path, blocker, 4096)
+  override def load(stream: Stream[F, Byte]): F[List[DatarefDescription[F]]] =
+    stream
       .through(text.utf8Decode)
       .reduce(_ + _)
-      .flatMap(document =>
-        yaml.parser
-          .parse(document)
-          .flatMap(_.as[YamlRoot]) match {
-          case Left(error)  => Stream.raiseError(error)
-          case Right(value) => Stream(value)
-      })
+      .flatMap(
+        document =>
+          yaml.parser
+            .parse(document)
+            .flatMap(_.as[YamlRoot]) match {
+            case Left(error)  => Stream.raiseError(error)
+            case Right(value) => Stream(value)
+        })
       .flatMap(root => Stream.emits(root.datarefs))
       .map[Either[String, DatarefDescription[F]]] { description =>
         description.`type` match {
