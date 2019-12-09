@@ -7,7 +7,7 @@ let
   mainClass = "me.zanini.xplanerest.Boot";
 in sbt.mkDerivation rec {
   pname = "xplane-rest";
-  version = "0.1.0";
+  version = "0.1.1";
 
   depsSha256 = "1kac3x2zxfsisq4i5b0wq4lnm5yljwyk68h63bwcvy76pvipjk1m";
 
